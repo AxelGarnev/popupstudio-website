@@ -1,14 +1,15 @@
 ---
 interface Props {
   href?: string;
+  id?: string;
   variant?: 'primary' | 'pop' | 'ghost' | 'alert';
   size?: 'md' | 'lg';
 }
-const { href, variant = 'primary', size = 'md' } = Astro.props;
+const { id, href, variant = 'primary', size = 'md' } = Astro.props;
 const Tag = href ? 'a' : 'button';
 ---
 
-<Tag href={href} class:list={['btn', `btn--${variant}`, `btn--${size}`]}>
+<Tag href={href} id={id} class:list={['btn', `btn--${variant}`, `btn--${size}`]}>
   <slot />
 </Tag>
 

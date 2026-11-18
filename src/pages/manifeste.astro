@@ -1,0 +1,205 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Pill from "../components/Pill.astro";
+import CtaBand from "../components/CtaBand.astro";
+
+const title = "Manifeste — un web plus sobre, accessible et créatif | Popup Studio";
+const description = "Découvre les choix de Popup Studio pour créer un web plus sobre, accessible et singulier, avec une méthode expliquée sans poudre aux yeux.";
+
+// Repères pédagogiques fictifs : à remplacer par des mesures documentées avant publication.
+const stats = [
+  { value: "0,24 g", label: "CO₂ par page vue", note: "Exemple de calcul fictif, à mesurer sur le site concerné.", tone: "lime" },
+  { value: "France", label: "Hébergement à étudier", note: "On vérifie le lieu et les informations disponibles avant de choisir.", tone: "sky" },
+  { value: "AA", label: "Accessibilité à tester", note: "Un objectif de travail, pas un certificat délivré à la louche.", tone: "violet" },
+  { value: "0", unit: "traceur", label: "Publicitaire ajouté par défaut", note: "Repère sur les choix du studio, à confirmer projet par projet.", tone: "orange" },
+];
+
+const commandments = [
+  { number: "01", title: "Garder les octets à leur place", text: "Des images à la bonne taille, des formats adaptés et des SVG simples quand ils font le travail. Une vidéo qui démarre toute seule peut d’abord apprendre à demander la permission.", proof: "Images adaptées au besoin" },
+  { number: "02", title: "Écrire juste le JavaScript utile", text: "Le HTML fait déjà beaucoup. On ajoute du script quand il rend un vrai service, pas pour faire sautiller un bouton qui allait très bien immobile.", proof: "Aucun script décoratif" },
+  { number: "03", title: "Choisir l’hébergement avec les faits", text: "On regarde le lieu, les informations disponibles sur l’énergie et les besoins du projet. « Vert » n’est pas une preuve : si une donnée manque, on le dit.", proof: "Choix documenté, si les données existent" },
+  { number: "04", title: "Laisser les mouchards dehors", text: "Pas de traceur publicitaire ajouté par défaut. Si un outil de mesure est utile, on vérifie ce qu’il collecte et on choisit une option adaptée.", proof: "Pas de suivi publicitaire par défaut" },
+  { number: "05", title: "Rendre le site praticable", text: "Titres bien rangés, contrastes vérifiés, clavier pris au sérieux et contenus compréhensibles. L’accessibilité se teste ; elle ne se décrète pas à grand renfort de confettis.", proof: "Tests à prévoir sur chaque projet" },
+  { number: "06", title: "Te laisser les clés", text: "Le site doit rester compréhensible après livraison. On t’explique les choix, on documente ce qui compte et on évite les dépendances qui retiennent en otage.", proof: "Prise en main expliquée" },
+];
+
+const comparison = [
+  { kind: "Exemple conventionnel", weight: "3,5 Mo", carbon: "4,61 g CO₂/page", annual: "230,5 kg CO₂e/an", tone: "standard" },
+  { kind: "Exemple plus léger", weight: "184 Ko", carbon: "0,24 g CO₂/page", annual: "12 kg CO₂e/an", tone: "light" },
+];
+---
+
+<BaseLayout title={title} description={description}>
+    <section class="hero container manifesto-hero" aria-labelledby="manifesto-title">
+      <div class="manifesto-intro">
+        <Pill tone="lime">Un manifeste sans greenwashing</Pill>
+        <h1 id="manifesto-title">Un web qui a du caractère. Pas besoin de faire fondre la banquise.</h1>
+        <p class="hero__lead">Un site peut être beau, utile et singulier sans embarquer la moitié d’un data-center dans chaque page. Ici, on préfère le code bien choisi aux kilos de scripts qui font surtout du bruit.</p>
+        <div class="manifesto-pills">
+          <Pill tone="sky">Des choix expliqués, pas de poudre aux yeux</Pill>
+          <Pill tone="neutral">Sobre, accessible, à ton image</Pill>
+        </div>
+      </div>
+
+      <div class="stats__grid manifesto-stats" aria-label="Repères indicatifs et non vérifiés">
+        {stats.map((stat) => (
+          <article class:list={["stat", `stat--${stat.tone}`]}>
+            <p class="stat__value">{stat.value}{stat.unit && <span class="stat__unit"> {stat.unit}</span>}</p>
+            <h2 class="stat__label">{stat.label}</h2>
+            <p class="stat__text">{stat.note}</p>
+          </article>
+        ))}
+      </div>
+      <p class="manifesto-disclaimer">Repères fictifs ou indicatifs : ils ne décrivent pas un audit réalisé. Toute mesure publiée devra être datée, sourcée et vérifiable.</p>
+    </section>
+
+    <section class="band manifesto-commandments" id="commandements" aria-labelledby="commandments-title">
+      <div class="container">
+        <div class="manifesto-section-head">
+          <div>
+            <p class="eyebrow">Notre façon de faire</p>
+            <h2 id="commandments-title">Les 6 commandements du studio</h2>
+          </div>
+          <p class="section__lead">Pas gravés dans le marbre — le marbre est lourd — mais assez solides pour guider chaque projet.</p>
+        </div>
+        <div class="commandment-grid">
+          {commandments.map((item) => (
+            <article class="commandment-card">
+              <div class="commandment-top">
+                <span class="commandment-number">{item.number}</span>
+                <svg class="commandment-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  {item.number === "01" && <><path d="M12 3v18M5 7h14M7 7l-4 8h8L7 7Zm10 0-4 8h8l-4-8Z" /><path d="M8 21h8" /></>}
+                  {item.number === "02" && <><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14" /></>}
+                  {item.number === "03" && <><path d="M3 10.5 12 4l9 6.5V20H3v-9.5Z" /><path d="M8 20v-6h8v6M7 10h.01M12 10h.01M17 10h.01" /></>}
+                  {item.number === "04" && <><path d="m3 3 18 18M10.6 10.6a2 2 0 0 0 2.8 2.8" /><path d="M9.9 5.2A10.7 10.7 0 0 1 12 5c5 0 8.5 5 8.5 7s-1.1 2.9-2.5 4M6.2 6.2C3.9 7.7 2.5 10.4 2.5 12c0 2 3.5 7 9.5 7a9.4 9.4 0 0 0 3.2-.5" /></>}
+                  {item.number === "05" && <><circle cx="12" cy="12" r="9" /><path d="M12 8v8M8 12h8M5.6 5.6l12.8 12.8" /></>}
+                  {item.number === "06" && <><circle cx="8" cy="8" r="4" /><path d="M2 21v-2a6 6 0 0 1 12 0v2M16 11l2 2 4-4" /></>}
+                </svg>
+              </div>
+              <h3>{item.title}</h3>
+              <p class="commandment-copy">{item.text}</p>
+              <div class="commandment-proof">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6" /></svg>
+                <span>{item.proof}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="container section manifesto-method" aria-labelledby="method-title">
+      <div class="method-grid">
+        <div class="method-copy">
+          <p class="eyebrow">Les chiffres, sans la boule de cristal</p>
+          <h2 id="method-title">Comparer, oui. Faire croire à une mesure réelle, non.</h2>
+          <p>Une estimation dépend de ce qu’on compte : les données transférées, le nombre de pages vues et les hypothèses retenues pour le réseau et l’hébergement. On explique le périmètre au lieu de sortir un chiffre magique du chapeau.</p>
+          <aside class="jamy-note">
+            <p class="jamy-title">La minute de Jamy</p>
+            <p>« Le cloud n’a rien de vaporeux. Une page circule entre des machines, des réseaux et ton appareil. Tout ça consomme de l’énergie ; moins il y a de données à transférer, plus on évite le superflu. C’est tout bête, et ça mérite quand même qu’on vérifie les calculs ! »</p>
+          </aside>
+          <p class="method-caveat">La comparaison ci-contre est un exemple pédagogique fictif, pas un audit de Popup Studio ni une promesse de réduction. Pour publier un bilan réel, il faut préciser méthode, source et date.</p>
+        </div>
+
+        <div class="comparison-card" aria-label="Comparaison fictive à titre pédagogique">
+          <p class="comparison-kicker">Exemple de calcul · 50 000 pages vues par an</p>
+          <h3>À trafic égal, pour donner un ordre d’idée</h3>
+          {comparison.map((item) => (
+            <article class:list={["comparison-row", item.tone]}>
+              <div class="comparison-label"><span class="comparison-dot" aria-hidden="true"></span><h4>{item.kind}</h4></div>
+              <dl>
+                <div><dt>Poids de page</dt><dd>{item.weight}</dd></div>
+                <div><dt>Émission estimée</dt><dd>{item.carbon}</dd></div>
+                <div><dt>Projection annuelle</dt><dd>{item.annual}</dd></div>
+              </dl>
+              <div class="comparison-meter" aria-hidden="true"><span></span></div>
+            </article>
+          ))}
+          <p class="comparison-foot">Valeurs fictives, non mesurées. La projection illustrative utilise les mêmes hypothèses de calcul pour les deux exemples.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container manifesto-cta-wrap">
+      <CtaBand
+        title="Envie d’un site propre, rapide et singulier ?"
+        text="On peut parler de ton projet autour d’un café à Nantes ou en visio. Vingt minutes, des questions concrètes, zéro discours d’agence en costume."
+        ctaLabel="Parlons de ton projet"
+        ctaHref="/contact"
+      />
+    </section>
+</BaseLayout>
+
+<style>
+  .manifesto-hero { padding-block: 4rem var(--space-xl); }
+  .manifesto-intro { max-width: 56rem; }
+  .manifesto-intro h1 { max-width: 18ch; margin: var(--space-md) 0; font-size: 56px; line-height: 1.12; font-weight: 800; letter-spacing: -0.03em; }
+  .hero__lead { max-width: 56ch; font-size: 18px; line-height: 28px; color: var(--on-surface-variant); }
+  .manifesto-pills { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-lg); }
+  .manifesto-stats { margin-top: var(--space-xl); }
+  .stat--lime { --tone: var(--pop-lime); }
+  .stat--sky { --tone: var(--sky-tint); }
+  .stat--violet { --tone: var(--deep-violet); }
+  .stat--orange { --tone: var(--persimmon); }
+  .stat { min-height: 13rem; padding: var(--space-lg); color: var(--ink); background: var(--white); border: 1.5px solid var(--border-passive); border-top: 4px solid var(--tone); border-radius: var(--radius-lg); }
+  .stat__value { margin-bottom: var(--space-sm); color: var(--primary); font-family: var(--font-display); font-size: 36px; line-height: 1.15; font-weight: 800; letter-spacing: -0.03em; }
+  .stat__unit { font-family: var(--font-body); font-size: 14px; font-weight: 700; letter-spacing: 0; }
+  .stat__label { margin-bottom: var(--space-sm); font-size: 16px; line-height: 24px; font-weight: 700; }
+  .stat__text { color: var(--on-surface-variant); font-size: 13px; line-height: 20px; }
+  .manifesto-disclaimer { margin-top: var(--space-md); color: var(--on-surface-variant); font-size: 12px; line-height: 18px; }
+
+  .manifesto-commandments { padding-block: var(--space-xl); }
+  .manifesto-section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--gutter); margin-bottom: var(--space-xl); }
+  .manifesto-section-head h2, .method-copy h2 { max-width: 22ch; font-size: 40px; line-height: 48px; font-weight: 700; letter-spacing: -0.02em; }
+  .manifesto-section-head .section__lead { max-width: 40ch; margin: 0; }
+  .commandment-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); }
+  .commandment-card { display: flex; min-height: 20rem; flex-direction: column; padding: var(--space-lg); background: var(--white); border: 1.5px solid var(--border-passive); border-radius: var(--radius-lg); }
+  .commandment-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-lg); }
+  .commandment-number { color: var(--deep-violet); font-family: var(--font-display); font-size: 28px; line-height: 36px; font-weight: 800; }
+  .commandment-icon { width: 42px; height: 42px; padding: 9px; color: var(--primary); background: var(--pop-lime); border-radius: var(--radius-full); }
+  .commandment-card h3 { margin-bottom: var(--space-sm); color: var(--primary); font-size: 20px; line-height: 28px; }
+  .commandment-copy { color: var(--on-surface-variant); font-size: 14px; line-height: 22px; }
+  .commandment-proof { display: flex; align-items: flex-start; gap: var(--space-sm); margin: auto calc(-1 * var(--space-lg)) calc(-1 * var(--space-lg)); padding: var(--space-md) var(--space-lg); background: var(--surface-low); color: var(--primary); font-size: 12px; line-height: 18px; font-weight: 700; }
+  .commandment-proof svg { width: 17px; height: 17px; flex: 0 0 17px; }
+
+  .manifesto-method { padding-block: var(--space-xl); }
+  .method-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: var(--space-xl); align-items: start; }
+  .method-copy > p:not(.eyebrow) { margin-top: var(--space-md); color: var(--on-surface-variant); }
+  .jamy-note { margin-top: var(--space-lg); padding: var(--space-lg); background: var(--surface-container); border-radius: var(--radius-lg); }
+  .jamy-title { margin-bottom: var(--space-sm); color: var(--primary); font-weight: 700; }
+  .jamy-note p:last-child { color: var(--on-surface-variant); font-size: 14px; line-height: 22px; font-style: italic; }
+  .method-copy .method-caveat { font-size: 12px; line-height: 18px; }
+  .comparison-card { padding: var(--space-lg); background: var(--white); border: 1.5px solid var(--border-passive); border-radius: var(--radius-lg); }
+  .comparison-kicker { margin-bottom: var(--space-sm); color: var(--on-surface-variant); font-size: 11px; line-height: 16px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .comparison-card > h3 { margin-bottom: var(--space-lg); color: var(--primary); font-size: 20px; line-height: 28px; }
+  .comparison-row { margin-top: var(--space-md); padding: var(--space-md); border-radius: var(--radius-md); }
+  .comparison-row.standard { background: var(--surface-low); }
+  .comparison-row.light { background: rgba(200, 230, 118, 0.24); }
+  .comparison-label { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md); }
+  .comparison-label h4 { color: var(--primary); font-family: var(--font-body); font-size: 15px; line-height: 20px; font-weight: 700; }
+  .comparison-dot { width: 10px; height: 10px; flex: 0 0 10px; background: var(--persimmon); border-radius: var(--radius-full); }
+  .comparison-row.light .comparison-dot { background: var(--primary-container); }
+  .comparison-row dl { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-sm); margin: 0; }
+  .comparison-row dt { color: var(--on-surface-variant); font-size: 11px; line-height: 16px; }
+  .comparison-row dd { margin: var(--space-xs) 0 0; color: var(--ink); font-size: 13px; line-height: 19px; font-weight: 700; }
+  .comparison-meter { height: 8px; margin-top: var(--space-md); overflow: hidden; background: var(--surface-high); border-radius: var(--radius-full); }
+  .comparison-meter span { display: block; width: 100%; height: 100%; background: var(--persimmon); border-radius: inherit; }
+  .comparison-row.light .comparison-meter span { width: 5.2%; min-width: 8px; background: var(--primary-container); }
+  .comparison-foot { margin-top: var(--space-md); color: var(--on-surface-variant); font-size: 11px; line-height: 16px; }
+  .manifesto-cta-wrap { padding-bottom: var(--space-xl); }
+
+  @media (max-width: 64rem) {
+    .manifesto-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .commandment-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .method-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 48rem) {
+    .manifesto-hero { padding-block: var(--space-xl); }
+    .manifesto-intro h1 { font-size: 38px; line-height: 44px; letter-spacing: -0.02em; }
+    .manifesto-section-head { align-items: flex-start; flex-direction: column; margin-bottom: var(--space-lg); }
+    .manifesto-section-head h2, .method-copy h2 { font-size: 28px; line-height: 36px; }
+    .manifesto-stats, .commandment-grid { grid-template-columns: 1fr; }
+    .stat { min-height: auto; }
+    .comparison-row dl { grid-template-columns: 1fr; gap: var(--space-sm); }
+  }
+</style>
