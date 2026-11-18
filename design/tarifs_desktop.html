@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Popup Studio — Web éco-conçu &amp; créatif</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,600;0,700;0,800;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container":"#efeeeb","surface-tint":"#3f6653","outline-variant":"#c1c8c2","tertiary-fixed":"#ffdbd0","on-primary-container":"#86af99","error":"#ba1a1a","primary-fixed":"#c1ecd4","surface-dim":"#dbdad7","primary":"#012d1d","inverse-on-surface":"#f2f0ed","surface-variant":"#e4e2df","on-surface-variant":"#414844","tertiary-container":"#711e00","sky-tint":"#ACD6F6","on-primary-fixed-variant":"#274e3d","deep-violet":"#3A1B79","secondary-fixed-dim":"#b5d264","surface-container-lowest":"#ffffff","background":"#fbf9f6","secondary-fixed":"#d0ee7d","primary-container":"#1b4332","on-secondary":"#ffffff","on-tertiary-fixed-variant":"#842500","secondary":"#4f6600","on-surface":"#1b1c1a","on-error-container":"#93000a","ink-base":"#141514","surface-bright":"#fbf9f6","surface-container-high":"#eae8e5","secondary-container":"#cdec7b","on-tertiary-fixed":"#3a0b00","inverse-surface":"#30312f","pure-white":"#FFFFFF","surface-container-low":"#f5f3f0","on-secondary-container":"#536b00","on-secondary-fixed":"#161f00","tertiary-fixed-dim":"#ffb59e","on-error":"#ffffff","inverse-primary":"#a5d0b9","primary-fixed-dim":"#a5d0b9","tertiary":"#4c1100","on-tertiary-container":"#ff825a","error-container":"#ffdad6","on-secondary-fixed-variant":"#3b4d00","on-primary":"#ffffff","on-tertiary":"#ffffff","outline":"#717973","on-background":"#1b1c1a","surface-container-highest":"#e4e2df","on-primary-fixed":"#002114","surface":"#fbf9f6"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-md":"1rem","space-sm":"0.5rem",margin:"3rem","margin-mobile":"1.25rem","gutter-mobile":"1rem","space-lg":"1.75rem",gutter:"1.5rem","space-xs":"0.25rem","space-xl":"3rem"},fontFamily:{"body-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"headline-lg-mobile":["Epilogue"],"display-mobile":["Epilogue"],"title-md":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-md":["Epilogue"],"headline-lg":["Epilogue"],"label-lg":["Plus Jakarta Sans"],"title-lg":["Plus Jakarta Sans"],display:["Epilogue"],"body-sm":["Plus Jakarta Sans"],"headline-sm":["Epilogue"]},fontSize:{"body-md":["16px",{lineHeight:"24px",fontWeight:"400"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],"label-sm":["11px",{lineHeight:"16px",letterSpacing:"0.04em",fontWeight:"700"}],"headline-lg-mobile":["28px",{lineHeight:"36px",letterSpacing:"-0.01em",fontWeight:"700"}],"display-mobile":["38px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"800"}],"title-md":["18px",{lineHeight:"26px",fontWeight:"600"}],"label-md":["13px",{lineHeight:"18px",letterSpacing:"0.02em",fontWeight:"600"}],"headline-md":["28px",{lineHeight:"36px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-lg":["40px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-lg":["15px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"700"}],"title-lg":["20px",{lineHeight:"28px",fontWeight:"700"}],display:["56px",{lineHeight:"64px",letterSpacing:"-0.03em",fontWeight:"800"}],"body-sm":["14px",{lineHeight:"20px",fontWeight:"400"}],"headline-sm":["22px",{lineHeight:"30px",fontWeight:"600"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-6"><div class="flex items-center gap-4 shrink-0"><a class="group flex flex-col" data-path="accueil" href="#"><span class="font-headline-sm text-headline-sm text-primary tracking-tight group-hover:text-primary-container transition-colors">Popup Studio</span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium tracking-normal">Web éco-conçu &amp; créatif</span></a><div class="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="font-label-sm text-label-sm font-bold">Éco-index A • 0.08g CO₂</span></div></div><nav class="hidden md:flex items-center gap-1 p-1 rounded-full bg-surface-container-low" data-active-classes="bg-surface-container-high text-on-surface font-semibold rounded-full"><a class="px-4 py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="accueil" href="#">Accueil</a><a aria-current="page" class="px-4 py-2 transition-colors bg-surface-container-high text-on-surface font-semibold rounded-full" data-path="offres-&amp;-tarifs" href="#">Offres &amp; Tarifs</a><a class="px-4 py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="projets" href="#">Projets</a><a class="px-4 py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="contact" href="#">Contact</a></nav><div class="flex items-center gap-3 shrink-0"><a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-secondary-container text-on-secondary-container hover:bg-secondary-fixed transition-all font-label-md text-label-md font-bold" data-path="demander-un-devis" href="#"><span class="material-symbols-outlined text-[18px]">request_quote</span><span>Demander un devis 🚀</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-20rem)]"><div class="flex flex-col w-full">
+<!-- Top Intro Section -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 pt-10 pb-16 w-full">
+<div class="flex flex-col items-center text-center max-w-3xl mx-auto">
+<!-- Eco-badge -->
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary-container text-on-secondary-container shadow-sm mb-6">
+<span class="material-symbols-outlined text-[18px] text-secondary">eco</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-bold">TRANSPARENCE &amp; ÉCO-CONCEPTION</span>
+</div>
+<!-- Main Heading -->
+<h1 class="font-display text-display text-primary tracking-tight mb-4">
+        Des formules simples, adaptées à votre réalité
+      </h1>
+<!-- Subtitle -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-8">
+        Pas d'abonnements piégés ni de lignes incompréhensibles. Chaque site est garanti sobre, rapide et durable.
+      </p>
+<!-- Eco Metrics Bar -->
+<div class="inline-flex flex-wrap items-center justify-center gap-4 sm:gap-8 px-6 py-3 rounded-full bg-surface-container-high shadow-sm mb-10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-surface-tint text-[18px]">speed</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Poids moyen &lt; 350 Ko</span>
+</div>
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant hidden sm:block"></span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Note Eco-Index A (0,18g CO₂ / visite)</span>
+</div>
+</div>
+<!-- Payment Mode Selector -->
+<div class="p-1.5 rounded-full bg-surface-container-low shadow-sm inline-flex items-center" id="payment-toggle-wrapper">
+<button class="px-5 py-2 rounded-full font-label-md text-label-md font-bold transition-all bg-primary text-on-primary shadow-sm" id="btn-cash" onclick="setBilling('cash')" type="button">
+          Paiement comptant
+        </button>
+<button class="px-5 py-2 rounded-full font-label-md text-label-md font-medium text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-1.5" id="btn-split" onclick="setBilling('split')" type="button">
+<span>3x sans frais</span>
+<span class="px-1.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold">🌱</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Pricing Cards Section -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 pb-24 w-full">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+<!-- Card 1: Page Unique -->
+<div class="bg-surface-container-lowest rounded-xl p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="px-3 py-1 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface-variant font-bold">
+              ⏱ 1 semaine
+            </span>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">Formule Essentielle</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-2">PAGE UNIQUE</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 min-h-[40px]">
+            Artisans, freelances débutants, landing page d'événement ou lancement de projet pilote.
+          </p>
+<!-- Price Display -->
+<div class="py-4 mb-6 rounded-lg bg-surface-container-low px-4">
+<div class="flex items-baseline gap-1.5">
+<span class="font-display text-display text-primary font-bold tracking-tight price-val" data-cash="850 €" data-split="283 €">850 €</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-semibold price-period">net</span>
+</div>
+<p class="font-label-sm text-label-sm text-surface-tint mt-1 price-subtext font-medium">Option 3x sans frais disponible</p>
+</div>
+<!-- Feature List -->
+<ul class="space-y-3.5 mb-8">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Design sur-mesure sobre, réactif et optimisé pour mobile</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">1 page sculptée avec soin &amp; copywriting assisté</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Formulaire de contact sécurisé (anti-spam sans captcha lourd)</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Score éco-index A (&lt;0.2g CO₂ par visiteur)</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Optimisation SEO local &amp; hébergement vert conseillé</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Zéro cookies tiers intrusifs : pas de bandeau rébarbatif</span>
+</li>
+</ul>
+</div>
+<a class="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-surface-container font-label-md text-label-md font-bold text-on-surface hover:bg-surface-container-high transition-colors" data-path="contact" href="#">
+<span>Choisir la Page Unique</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<!-- Card 2: Site Vitrine (Featured) -->
+<div class="bg-surface-container-lowest rounded-xl p-8 flex flex-col justify-between shadow-xl relative lg:-mt-4 lg:mb-[-1rem]">
+<!-- Highlight Strip Accent -->
+<div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-secondary-container text-on-secondary-container shadow-sm flex items-center gap-1.5 whitespace-nowrap">
+<span class="font-label-sm text-label-sm font-bold">Le plus plébiscité ⭐</span>
+</div>
+<div>
+<div class="flex items-center justify-between mb-4 mt-2">
+<span class="px-3 py-1 rounded-full bg-surface-tint/15 font-label-sm text-label-sm text-primary font-bold">
+              ⏱ 2 à 3 semaines
+            </span>
+<span class="font-label-sm text-label-sm text-surface-tint uppercase tracking-wider font-bold">Recommandé</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-2">SITE VITRINE</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 min-h-[40px]">
+            TPE, indépendant.e.s installé.e.s, collectifs, assos et thérapeutes désireux d'asseoir leur crédibilité.
+          </p>
+<!-- Price Display -->
+<div class="py-4 mb-6 rounded-lg bg-surface-container-high px-4">
+<div class="flex items-baseline gap-1.5">
+<span class="font-display text-display text-primary font-bold tracking-tight price-val" data-cash="1 450 €" data-split="483 €">1 450 €</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-semibold price-period">net</span>
+</div>
+<p class="font-label-sm text-label-sm text-secondary font-semibold mt-1 price-subtext">Option 3x sans frais disponible (3 x 483 €)</p>
+</div>
+<!-- Feature List -->
+<ul class="space-y-3.5 mb-8">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">Tout ce qui compose la formule Page Unique</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">3 à 5 pages complètes (Accueil, Services, À propos, Contact...)</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">CMS intuitif sans code pour modifier vos textes en 1 clic</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Micro-animations CSS légères (zéro JavaScript inutile)</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Formation vidéo personnalisée de 30 min (autonomie garantie)</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Audit accessibilité WCAG AA (lisibilité et contrastes stricts)</span>
+</li>
+</ul>
+</div>
+<a class="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md font-bold hover:bg-secondary-fixed transition-colors shadow-sm" data-path="contact" href="#">
+<span>Choisir le Site Vitrine</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<!-- Card 3: Boutique en Ligne -->
+<div class="bg-surface-container-lowest rounded-xl p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="px-3 py-1 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface-variant font-bold">
+              ⏱ 3 à 4 semaines
+            </span>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">Vente Directe</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-2">BOUTIQUE EN LIGNE</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 min-h-[40px]">
+            Créateur.ices, vente directe, artisans et petites marques engagées prêtes à vendre sans engraisser les géants.
+          </p>
+<!-- Price Display -->
+<div class="py-4 mb-6 rounded-lg bg-surface-container-low px-4">
+<div class="flex items-baseline gap-1.5">
+<span class="font-display text-display text-primary font-bold tracking-tight price-val" data-cash="2 200 €" data-split="733 €">2 200 €</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-semibold price-period">net</span>
+</div>
+<p class="font-label-sm text-label-sm text-surface-tint mt-1 price-subtext font-medium">Option 3x sans frais disponible</p>
+</div>
+<!-- Feature List -->
+<ul class="space-y-3.5 mb-8">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">Tout ce qui compose la formule Site Vitrine</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Catalogue produits optimisé &amp; tunnel de commande fluide en 2 étapes</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Paiement sécurisé Stripe / CB (0% commission Popup Studio)</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Gestion des stocks simplifiée &amp; emails transactionnels sobres</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Conforme RGPD strict (protection des données et sérénité)</span>
+</li>
+</ul>
+</div>
+<a class="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-primary text-on-primary font-label-md text-label-md font-bold hover:bg-primary-container transition-colors shadow-sm" data-path="contact" href="#">
+<span>Choisir la Boutique</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Detailed Comparative Desktop Table -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 pb-24 w-full">
+<div class="mb-10 text-center">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-bold text-surface-tint">Comparatif Détaillé</span>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight mt-1">
+        Toutes les fonctionnalités à la loupe
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto mt-2">
+        La clarté avant tout : choisissez exactement l'envergure nécessaire à votre projet.
+      </p>
+</div>
+<div class="overflow-x-auto bg-surface-container-lowest rounded-xl shadow-sm p-6">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low rounded-lg">
+<th class="py-4 px-6 font-title-md text-title-md text-on-surface font-bold rounded-l-lg">Critères &amp; Livrables</th>
+<th class="py-4 px-6 font-title-md text-title-md text-on-surface font-bold text-center">Page Unique</th>
+<th class="py-4 px-6 font-title-md text-title-md text-primary font-bold text-center bg-secondary-container/30">Site Vitrine</th>
+<th class="py-4 px-6 font-title-md text-title-md text-on-surface font-bold text-center rounded-r-lg">Boutique en Ligne</th>
+</tr>
+</thead>
+<tbody class="divide-y-0">
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-6 font-body-sm text-body-sm text-on-surface font-medium">Nombre de pages sculptées</td>
+<td class="py-4 px-6 font-body-sm text-body-sm text-on-surface text-center">1 page optimisée</td>
+<td class="py-4 px-6 font-body-sm text-body-sm text-on-surface text-center bg-secondary-container/10 font-semibold">3 à 5 pages</td>
+<td class="py-4 px-6 font-body-sm text-body-sm text-on-surface text-center">Boutique + pages statiques</td>
+</tr>
+<tr class="bg-surface-container-lowest hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-6 font-body-sm text-body-sm text-on-surface font-medium">Délai indicatif de réalisation</td>
+<td class="py-4 px-6 font-body-sm text-body-sm text-on-surface text-center">1 semaine</td>
+<td class="py-4 px-6 font-body-sm text-body-sm text-on-surface text-center bg-secondary-container/10 font-semibold">2 à 3 semaines</td>
+<td class="py-4 px-6 font-body-sm text-body-sm text-on-surface text-center">3 à 4 semaines</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-6 font-body-sm text-body-sm text-on-surface font-medium">Score Éco-Index A certifié</td>
+<td class="py-4 px-6 text-center">
+<span class="material-symbols-outlined text-secondary text-[22px]">check_circle</span>
+</td>
+<td class="py-4 px-6 text-center bg-secondary-container/10">
+<span class="material-symbols-outlined text-secondary text-[22px]">check_circle</span>
+</td>
+<td class="py-4 px-6 text-center">
+<span class="material-symbols-outlined text-secondary text-[22px]">check_circle</span>
+</td>
+</tr>
+<tr class="bg-surface-container-lowest hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-6 font-body-sm text-body-sm text-on-surface font-medium">CMS sans code (gestion autonome)</td>
+<td class="py-4 px-6 text-center font-body-sm text-body-sm text-outline">—</td>
+<td class="py-4 px-6 text-center bg-secondary-container/10">
+<span class="material-symbols-outlined text-secondary text-[22px]">check_circle</span>
+</td>
+<td class="py-4 px-6 text-center">
+<span class="material-symbols-outlined text-secondary text-[22px]">check_circle</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-6 font-body-sm text-body-sm text-on-surface font-medium">Tunnel de commande &amp; Paiement Stripe</td>
+<td class="py-4 px-6 text-center font-body-sm text-body-sm text-outline">—</td>
+<td class="py-4 px-6 text-center bg-secondary-container/10 font-body-sm text-body-sm text-outline">—</td>
+<td class="py-4 px-6 text-center">
+<span class="material-symbols-outlined text-secondary text-[22px]">check_circle</span>
+</td>
+</tr>
+<tr class="bg-surface-container-lowest hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-6 font-body-sm text-body-sm text-on-surface font-medium">Formation vidéo personnalisée (30 min)</td>
+<td class="py-4 px-6 text-center font-body-sm text-body-sm text-outline">Guide PDF</td>
+<td class="py-4 px-6 text-center bg-secondary-container/10">
+<span class="material-symbols-outlined text-secondary text-[22px]">check_circle</span>
+</td>
+<td class="py-4 px-6 text-center">
+<span class="material-symbols-outlined text-secondary text-[22px]">check_circle</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-6 font-body-sm text-body-sm text-on-surface font-medium">Bilan d'accessibilité WCAG AA</td>
+<td class="py-4 px-6 text-center font-body-sm text-body-sm text-on-surface-variant">Standard</td>
+<td class="py-4 px-6 text-center bg-secondary-container/10">
+<span class="material-symbols-outlined text-secondary text-[22px]">check_circle</span>
+</td>
+<td class="py-4 px-6 text-center">
+<span class="material-symbols-outlined text-secondary text-[22px]">check_circle</span>
+</td>
+</tr>
+<tr class="bg-surface-container-low rounded-b-lg">
+<td class="py-4 px-6 font-label-md text-label-md text-on-surface font-bold rounded-l-lg">Tarif net</td>
+<td class="py-4 px-6 font-label-lg text-label-lg text-primary font-bold text-center">850 €</td>
+<td class="py-4 px-6 font-label-lg text-label-lg text-primary font-bold text-center bg-secondary-container/30">1 450 €</td>
+<td class="py-4 px-6 font-label-lg text-label-lg text-primary font-bold text-center rounded-r-lg">2 200 €</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- FAQ Section (2 Desktop Columns) -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 pb-24 w-full">
+<div class="mb-12">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold mb-3">
+<span class="material-symbols-outlined text-[16px] text-surface-tint">help_outline</span>
+<span>Questions fréquentes</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+        Vous avez des questions ? On a du bon sens.
+      </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mt-2">
+        La franchise, c'est aussi la marque de fabrique du studio.
+      </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- FAQ 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm flex flex-col justify-start">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">lock_open</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary">Est-ce que je serai autonome après la livraison ?</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant pl-11">
+          Oui à 100% ! Je ne garde personne en otage. Une vidéo pas-à-pas personnalisée de 30 minutes vous montre comment modifier vos textes, ajouter un article ou ajuster vos photos sans jamais toucher à une seule ligne de code.
+        </p>
+</div>
+<!-- FAQ 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm flex flex-col justify-start">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-8 h-8 rounded-full bg-sky-tint text-on-surface flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary">Pourquoi vos sites sont plus rapides ?</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant pl-11">
+          Zéro framework lourd de 5 Mo, code fait main propre, images compressées au gramme près et hébergement local. Moins de requêtes superflues, c'est une vitesse instantanée pour l'internaute.
+        </p>
+</div>
+<!-- FAQ 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm flex flex-col justify-start">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed text-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">sentiment_very_satisfied</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary">Et Norbert, il a pris quelle formule ?</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant pl-11">
+          Norbert a commencé par un Site Vitrine, puis a rapidement bifurqué sur la Boutique en Ligne pour ses tartes aux pommes ! Il n'a jamais eu besoin d'appeler le support un dimanche.
+        </p>
+</div>
+<!-- FAQ 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm flex flex-col justify-start">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary">Y a-t-il des frais cachés ou un abonnement ?</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant pl-11">
+          Aucun abonnement Popup Studio. Vous êtes propriétaire intégrale de votre outil. Vous ne payez que votre hébergement vert indépendant (environ 4 à 8€/mois directement au fournisseur).
+        </p>
+</div>
+</div>
+</section>
+<!-- Final CTA Callout Banner -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 pb-16 w-full">
+<div class="bg-primary rounded-xl p-10 lg:p-14 text-on-primary shadow-xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8">
+<!-- Content side -->
+<div class="max-w-2xl relative z-10 text-center lg:text-left">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm font-semibold mb-4">
+<span class="material-symbols-outlined text-[16px]">coffee</span>
+<span>Discutons simplement</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-pure-white tracking-tight mb-3">
+          Vous hésitez sur la formule ?
+        </h2>
+<p class="font-body-lg text-body-lg text-on-primary-container mb-4">
+          Faisons un appel café virtuel de 15 minutes sans engagement pour faire le point sur vos priorités.
+        </p>
+<div class="flex items-center justify-center lg:justify-start gap-2 text-on-primary-container font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed">check</span>
+<span>Zéro pitch commercial agressif, promis.</span>
+</div>
+</div>
+<!-- Action Button -->
+<div class="relative z-10 shrink-0">
+<a class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-secondary-container text-on-secondary-container hover:bg-secondary-fixed transition-all font-label-lg text-label-lg font-bold shadow-md hover:scale-[1.02]" data-path="contact" href="#">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+<span>Réserver un créneau (15 min)</span>
+</a>
+</div>
+<!-- Decorative subtle background shape -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-primary-container/40 pointer-events-none blur-3xl"></div>
+</div>
+</section>
+<!-- Dynamic payment mode script -->
+<script>
+    function setBilling(mode) {
+      const btnCash = document.getElementById('btn-cash');
+      const btnSplit = document.getElementById('btn-split');
+      const prices = document.querySelectorAll('.price-val');
+      const subtexts = document.querySelectorAll('.price-subtext');
+      const periods = document.querySelectorAll('.price-period');
+
+      if (mode === 'split') {
+        btnCash.className = 'px-5 py-2 rounded-full font-label-md text-label-md font-medium text-on-surface-variant hover:text-on-surface transition-all';
+        btnSplit.className = 'px-5 py-2 rounded-full font-label-md text-label-md font-bold transition-all bg-primary text-on-primary shadow-sm flex items-center gap-1.5';
+
+        prices.forEach(p => {
+          p.textContent = p.getAttribute('data-split');
+        });
+        periods.forEach(p => {
+          p.textContent = '/ mois (pendant 3 mois)';
+        });
+        subtexts[0].textContent = 'Total : 850 € net • 0% de frais';
+        subtexts[1].textContent = 'Total : 1 450 € net • 0% de frais';
+        subtexts[2].textContent = 'Total : 2 200 € net • 0% de frais';
+      } else {
+        btnCash.className = 'px-5 py-2 rounded-full font-label-md text-label-md font-bold transition-all bg-primary text-on-primary shadow-sm';
+        btnSplit.className = 'px-5 py-2 rounded-full font-label-md text-label-md font-medium text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-1.5';
+
+        prices.forEach(p => {
+          p.textContent = p.getAttribute('data-cash');
+        });
+        periods.forEach(p => {
+          p.textContent = 'net';
+        });
+        subtexts[0].textContent = 'Option 3x sans frais disponible';
+        subtexts[1].textContent = 'Option 3x sans frais disponible (3 x 483 €)';
+        subtexts[2].textContent = 'Option 3x sans frais disponible';
+      }
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-low pt-16 pb-12 mt-space-xl"><div class="max-w-7xl mx-auto px-6 lg:px-12"><div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-14"><div class="md:col-span-5 space-y-4"><div class="flex items-center gap-2"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">Popup Studio</span><span class="px-2 py-0.5 rounded-full bg-secondary-container font-label-sm text-label-sm text-on-secondary-container font-bold">Studio Vert</span></div><p class="font-body-md text-body-md text-on-surface-variant max-w-sm">Axel, créateur de sites légers, complices et ultralégers pour entrepreneurs audacieux et marques engagées.</p><div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface"><span class="material-symbols-outlined text-secondary text-[18px]">eco</span><span class="font-label-sm text-label-sm font-semibold">Empreinte numérique minimale garantie</span></div></div><div class="md:col-span-3 space-y-4"><p class="font-label-lg text-label-lg text-on-surface font-bold uppercase tracking-wider">Navigation</p><ul class="space-y-2.5"><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="accueil" href="#">Accueil</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="offres-&amp;-tarifs" href="#">Offres &amp; Tarifs</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="projets" href="#">Projets</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="#">Contact</a></li></ul></div><div class="md:col-span-4 space-y-4"><p class="font-label-lg text-label-lg text-on-surface font-bold uppercase tracking-wider">Transparence &amp; Éthique</p><ul class="space-y-2.5"><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="manifeste-eco" href="#">Manifeste Éco-conception</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="bilan-carbone" href="#">Bilan Carbone &amp; Méthodologie</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="mentions-legales" href="#">Mentions légales</a></li></ul><div class="pt-2"><p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed bg-surface px-4 py-3 rounded-xl">Site éco-conçu, plus propre que 71% des sites sur le web • Hébergement vert en circuit court</p></div></div></div><div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4"><p class="font-label-md text-label-md text-on-surface-variant">© Popup Studio — Moins de code, plus d'audace.</p><p class="font-label-sm text-label-sm text-on-surface-variant">Fabriqué avec sobriété numérique en France</p></div></div></footer></body></html>

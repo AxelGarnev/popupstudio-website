@@ -1,11 +1,462 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import OfferCard from "../components/OfferCard.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const offers = [
+  {
+    tag: "Formule express",
+    name: "Page Unique",
+    price: "850 €",
+    note: "Paiement en 3 fois sans frais possible.",
+    features: [
+      "Design sur mesure, sobre et responsive",
+      "Une page sculptée avec soin",
+      "Formulaire de contact sans cookies",
+      "Hébergement conseillé et configuré",
+    ],
+    cta: "Choisir la Page Unique",
+    href: "/contact",
+  },
+  {
+    tag: "Formule complète",
+    name: "Site Vitrine",
+    price: "1 450 €",
+    note: "Paiement en 3 fois sans frais possible.",
+    features: [
+      "3 à 5 pages sur mesure",
+      "Référencement de base soigné",
+      "Formation vidéo de 30 minutes",
+      "Autonomie après livraison",
+    ],
+    cta: "Choisir le Site Vitrine",
+    href: "/contact",
+    featured: true,
+  },
+  {
+    tag: "Formule commerce",
+    name: "Boutique en Ligne",
+    price: "2 200 €",
+    note: "Paiement en 3 fois sans frais possible.",
+    features: [
+      "Catalogue produits et tunnel de commande",
+      "Paiement en ligne sécurisé",
+      "Emails transactionnels sobres",
+      "Formation vidéo de 30 minutes",
+    ],
+    cta: "Choisir la Boutique",
+    href: "/contact",
+  },
+];
+
+// FICTIF : tous les chiffres ci-dessous sont provisoires, à ajuster plus tard
+const stats = [
+  { value: "4,6 g", label: "de CO₂ par vue", text: "L’empreinte moyenne d’une page web classique. Ça paraît peu, jusqu’à multiplier par des millions de visites.", chip: "Page web standard", tone: "var(--persimmon)" },
+  { value: "−65 %", label: "d’empreinte nette", text: "Moins d’images lourdes, moins de scripts, un code léger : l’éco-conception en pratique.", chip: "Méthode Popup Studio", tone: "var(--pop-lime)" },
+  { value: "71 %", label: "plus propre que le web", text: "Un site sobre se classe mieux que la majorité des sites mesurés.", chip: "Valeur indicative", tone: "var(--sky-tint)" },
+];
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout
+  title="Accueil"
+  description="Popup Studio crée des sites web éco-conçus et créatifs pour les indépendant.e.s, TPE, associations et créateur.ices. Moins de code, plus d’audace."
+>
+  <!-- 1. HERO -->
+  <section class="hero container">
+    <!-- FICTIF -->
+    <span class="pill pill--lime">Éco-index A • 0,08 g de CO₂ par visite</span>
+    <h1>
+      Création de sites web engagés pour indépendant.e.s & créateur.ices
+    </h1>
+    <p class="hero__lead">
+      (En gros : tout ce que tu veux, mais un site web pas égoïste ni glouton en énergie.)
+    </p>
+    <div class="hero__actions">
+      <a href="/contact" class="btn btn--primary">Demander un devis gratuit</a>
+      <a href="/offres-tarifs" class="btn btn--ghost">Découvrir les offres</a>
+    </div>
+    <ul class="hero__chips">
+      <li class="chip">Chargement ultra-rapide</li>
+      <li class="chip">Hébergé en France</li>
+      <li class="chip">Zéro cookie</li>
+    </ul>
+  </section>
+
+  <!-- 2. NORBERT -->
+  <section class="band">
+    <div class="container norbert">
+      <div class="norbert__text">
+        <p class="eyebrow">Pourquoi un site sobre ?</p>
+        <h2>Même quand on s’appelle Norbert (et qu’on fait des merveilles)</h2>
+        <p>
+          Prends Norbert. Il est pâtissier amateur et il fait des tartes aux pommes
+          à tomber. Le problème ? Son site pèse plus lourd que sa pâte feuilletée
+          et personne ne le trouve.
+        </p>
+        <p>
+          Spoiler : Norbert n’existe pas. C’est notre boutade pédagogique, mais
+          son problème, lui, est très réel : un site trop lourd fatigue tout le
+          monde, de ton visiteur à la planète.
+        </p>
+        <p class="norbert__quote">
+          Un site léger, c’est un site qui s’affiche vite, qui consomme peu
+          et que tout le monde peut utiliser.
+        </p>
+      </div>
+      <div class="norbert__card" aria-hidden="true">
+        <span class="norbert__emoji">🥧</span>
+        <p>Norbert, pâtissier imaginaire, tartes aux pommes bien réelles dans nos têtes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. STATS (« Jamy ») -->
+  <section class="stats">
+    <div class="container">
+      <p class="eyebrow eyebrow--light">Vulgarisation scientifique & bienveillante</p>
+      <h2>Hop hop hop ! Oui mais Jamy… pourquoi ton site peut (et doit) faire mieux pour la planète ?</h2>
+      <p class="stats__lead">
+        Internet consomme beaucoup d’électricité. La bonne nouvelle ? On peut
+        réduire ce poids par quelques choix simples, sans rien perdre en style.
+      </p>
+      <div class="stats__grid">
+        {stats.map((s) => (
+          <article class="stat" style={`--tone:${s.tone}`}>
+            <p class="stat__value">{s.value}</p>
+            <h3 class="stat__label">{s.label}</h3>
+            <p class="stat__text">{s.text}</p>
+            <span class="stat__chip">{s.chip}</span>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. OFFRES -->
+  <section class="section container">
+    <p class="eyebrow">Solutions & accompagnement</p>
+    <h2>Ce que je peux faire pour toi</h2>
+    <p class="section__lead">Trois formules claires, sans jargon technique ni frais cachés.</p>
+    <div class="offers">
+      {offers.map((o) => <OfferCard {...o} />)}
+    </div>
+    <p class="section__more">
+      <a href="/offres-tarifs" class="link-arrow">Comparer toutes les formules en détail →</a>
+    </p>
+  </section>
+
+  <!-- 5. PROJETS -->
+  <section class="section container">
+    <div class="section__head">
+      <div>
+        <p class="eyebrow">Nouveautés numériques</p>
+        <h2>Des sites qui claquent, sans polluer</h2>
+      </div>
+      <a href="/projets" class="btn btn--ghost">Voir tous les projets</a>
+    </div>
+    <article class="project">
+      <!-- Remplace par ton visuel Stitch -->
+      <img src="/images/saboom.webp" alt="Aperçu du site SABOOM, boutique de bijoux artisanaux" width="720" height="420" loading="lazy" />
+      <div class="project__body">
+        <span class="pill pill--sky">E-commerce • Bijoux artisanaux</span>
+        <h3>SABOOM</h3>
+        <p>
+          Une identité pétillante pour des bijoux en pâte polymère, avec un site
+          pensé pour rester léger sans rien perdre de sa couleur.
+        </p>
+        <!-- FICTIF : chiffres provisoires -->
+        <ul class="project__metrics">
+          <li><span>Poids page</span> 240 Ko</li>
+          <li><span>Éco-index</span> A</li>
+          <li><span>Chargement</span> 0,6 s</li>
+        </ul>
+        <a href="/projets" class="link-arrow">Voir l’étude de cas →</a>
+      </div>
+    </article>
+  </section>
+
+  <!-- 6. TÉMOIGNAGE -->
+  <section class="section container">
+    <!-- FICTIF : témoignage provisoire -->
+    <figure class="quote">
+      <blockquote>
+        « Un site ultra rapide, canon, et qui correspond exactement à mes valeurs
+        écolos. Et Axel m’a écouté et fait rire en même temps. »
+      </blockquote>
+      <figcaption>Léa M., créatrice indépendante</figcaption>
+    </figure>
+  </section>
+
+  <!-- 7. CTA FINAL -->
+  <section class="container">
+    <div class="cta">
+      <p class="eyebrow eyebrow--light">Passe à l’action</p>
+      <h2>Prêt.e à créer un site qui te ressemble (sans carboniser la planète) ?</h2>
+      <p>
+        On s’appelle 20 minutes pour faire le tour de tes besoins, estimer ton
+        budget et voir ensemble ce qui est possible.
+      </p>
+      <div class="hero__actions">
+        <a href="/contact" class="btn btn--lime">Discuter de mon projet</a>
+        <a href="mailto:axel@popupstudio.fr" class="cta__mail">ou écris-moi : axel@popupstudio.fr</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* --- Atomes --- */
+  .eyebrow {
+    margin-bottom: var(--space-sm);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+  }
+  .eyebrow--light { color: var(--on-primary-container); }
+  h2 {
+    font-size: 40px;
+    line-height: 48px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .pill {
+    display: inline-block;
+    padding: var(--space-xs) 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 16px;
+  }
+  .pill--lime { background: var(--pop-lime); }
+  .pill--sky { background: var(--sky-tint); }
+  .chip {
+    padding: var(--space-xs) 0.75rem;
+    background: var(--white);
+    border: 1.5px solid var(--border-passive);
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 1.5px solid var(--ink);
+    border-radius: var(--radius-full);
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .btn:hover, .btn:focus-visible { box-shadow: var(--shadow-offset); }
+  .btn:active { transform: translate(2px, 2px); box-shadow: none; }
+  .btn--primary { background: var(--primary-container); color: var(--white); }
+  .btn--ghost { background: transparent; }
+  .btn--ghost:hover { background: var(--pop-lime); }
+  .btn--lime { background: var(--pop-lime); color: var(--ink); }
+  .link-arrow { font-weight: 700; text-underline-offset: 4px; }
+
+  /* --- Sections --- */
+  .section { padding-block: var(--space-xl); }
+  .section__lead { margin-top: var(--space-sm); color: var(--on-surface-variant); }
+  .section__more { margin-top: var(--space-lg); text-align: center; }
+  .section__head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--gutter);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-lg);
+  }
+
+  /* --- Hero --- */
+  .hero {
+    padding-block: 5rem var(--space-xl);
+    text-align: center;
+  }
+  .hero h1 {
+    max-width: 22ch;
+    margin: var(--space-md) auto;
+    font-size: 56px;
+    line-height: 64px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+  .hero__lead {
+    max-width: 46ch;
+    margin: 0 auto var(--space-lg);
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--on-surface-variant);
+  }
+  .hero__actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .hero__chips {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--space-lg);
+  }
+
+  /* --- Norbert --- */
+  .band { background: var(--surface-low); padding-block: var(--space-xl); }
+  .norbert {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+  .norbert__text { display: flex; flex-direction: column; gap: var(--space-md); }
+  .norbert__text p { font-size: 18px; line-height: 28px; }
+  .norbert__quote {
+    padding: var(--space-md) var(--space-lg);
+    background: var(--primary-container);
+    color: var(--white);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+  }
+  .norbert__card {
+    padding: var(--space-xl) var(--space-lg);
+    background: var(--pop-lime);
+    border: 1.5px solid var(--ink);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-offset);
+    text-align: center;
+  }
+  .norbert__emoji { display: block; font-size: 64px; margin-bottom: var(--space-md); }
+  .norbert__card p { font-weight: 600; }
+
+  /* --- Stats --- */
+  .stats {
+    padding-block: var(--space-xl);
+    background: var(--primary-container);
+    color: var(--white);
+  }
+  .stats h2 { max-width: 24ch; }
+  .stats__lead { max-width: 56ch; margin: var(--space-md) 0 var(--space-lg); color: var(--primary-fixed, #c1ecd4); }
+  .stats__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gutter);
+  }
+  .stat {
+    padding: var(--space-lg);
+    background: var(--primary);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-top: 4px solid var(--tone);
+    border-radius: var(--radius-lg);
+  }
+  .stat__value {
+    font-family: var(--font-display);
+    font-size: 40px;
+    line-height: 48px;
+    font-weight: 800;
+    color: var(--tone);
+  }
+  .stat__label { margin: var(--space-xs) 0 var(--space-sm); font-size: 20px; }
+  .stat__text { font-size: 14px; line-height: 20px; color: var(--primary-fixed, #c1ecd4); }
+  .stat__chip {
+    display: inline-block;
+    margin-top: var(--space-md);
+    padding: var(--space-xs) 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-full);
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* --- Offres --- */
+  .offers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gutter);
+    margin-top: var(--space-xl);
+    align-items: stretch;
+  }
+
+  /* --- Projet --- */
+  .project {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    background: var(--white);
+    border: 1.5px solid var(--border-passive);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .project img { width: 100%; height: 100%; object-fit: cover; background: var(--surface-container); }
+  .project__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+  }
+  .project__body h3 { font-size: 28px; line-height: 36px; }
+  .project__metrics {
+    display: flex;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+    font-weight: 700;
+  }
+  .project__metrics span {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+  }
+
+  /* --- Témoignage --- */
+  .quote {
+    margin: 0;
+    padding: var(--space-xl);
+    background: var(--surface-low);
+    border-radius: var(--radius-lg);
+    text-align: center;
+  }
+  .quote blockquote {
+    max-width: 48ch;
+    margin: 0 auto var(--space-md);
+    font-family: var(--font-display);
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .quote figcaption { font-size: 14px; font-weight: 600; color: var(--on-surface-variant); }
+
+  /* --- CTA final --- */
+  .cta {
+    margin-bottom: var(--space-xl);
+    padding: var(--space-xl);
+    background: var(--primary-container);
+    color: var(--white);
+    border-radius: var(--radius-xl);
+    text-align: center;
+  }
+  .cta h2 { max-width: 24ch; margin: 0 auto var(--space-md); }
+  .cta > p:not(.eyebrow) {
+    max-width: 52ch;
+    margin: 0 auto var(--space-lg);
+    color: var(--primary-fixed, #c1ecd4);
+  }
+  .cta__mail { color: var(--white); font-size: 14px; text-underline-offset: 4px; }
+
+  /* --- Responsive --- */
+  @media (max-width: 64rem) {
+    .offers, .stats__grid { grid-template-columns: 1fr; }
+    .norbert, .project { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 48rem) {
+    .hero { padding-block: var(--space-xl); }
+    .hero h1 { font-size: 38px; line-height: 44px; letter-spacing: -0.02em; }
+    h2 { font-size: 28px; line-height: 36px; }
+    .quote blockquote { font-size: 22px; line-height: 30px; }
+  }
+</style>

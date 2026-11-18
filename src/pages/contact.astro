@@ -1,0 +1,230 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const steps = [
+  { n: "1", title: "Échange initial (20 min)", text: "On échange par e-mail ou en visio courte pour cerner tes besoins, tes cibles et l’âme de ton projet.", tag: "Sans engagement" },
+  { n: "2", title: "Devis clair et transparent", text: "Je t’envoie un devis détaillé, sans jargon nébuleux, avec un tarif TTC et ce qui est inclus.", tag: "Tarif forfaitaire TTC" },
+  { n: "3", title: "C’est parti !", text: "Une fois validé, on lance les maquettes sobres et légères, prêtes à faire décoller ton activité.", tag: "Suivi à chaque étape" },
+];
+
+const formats = [
+  { id: "page-unique", name: "Page Unique", price: "dès 850 € TTC", text: "Direct, efficace, punchy. Idéal pour un lancement rapide." },
+  { id: "site-vitrine", name: "Site Vitrine", price: "dès 1 450 € TTC", text: "3 à 5 pages sur mesure pour raconter ton savoir-faire.", checked: true },
+  { id: "boutique", name: "Boutique en Ligne", price: "dès 2 200 € TTC", text: "Vends tes pépites en douceur avec un checkout fluide." },
+  { id: "sur-mesure", name: "Refonte / Sur-mesure", price: "Sur devis", text: "Audit, refonte, coaching ou besoins atypiques." },
+];
+---
+
+<BaseLayout
+  title="Contact"
+  description="Parlons de ton projet de site éco-conçu. Écris à Axel, Popup Studio, studio web basé à Nantes."
+>
+  <section class="hero container">
+    <span class="pill pill--lime">Parlons de ton projet</span>
+    <h1>Partons à l’aventure !</h1>
+    <p class="hero__lead">
+      Des choses à dire ? Des choses à partager ou à vendre ? Écris-moi, je réponds en général rapidement, avec le sourire (et une tasse de thé chaud).
+    </p>
+  </section>
+
+  <section class="container contact">
+    <aside class="side">
+      <div class="side__card">
+        <p class="eyebrow">L’adresse de l’atelier</p>
+        <p class="side__mail">axel@popupstudio.fr</p>
+        <div class="side__actions">
+          <button type="button" class="btn btn--soft" id="copy-mail">Copier l’e-mail</button>
+          <a href="mailto:axel@popupstudio.fr" class="btn btn--primary">Écrire</a>
+        </div>
+        <p class="side__feedback" id="copy-feedback" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="side__card">
+        <h2 class="side__title">Basé à Nantes</h2>
+        <p>Accompagnement partout en visio, ou autour d’un vrai café si on est dans le coin.</p>
+      </div>
+
+      <div class="side__card">
+        <h2 class="side__title">Respect de ta vie privée</h2>
+        <p>
+          Pas de reCAPTCHA ni de traceurs publicitaires sur ce formulaire. Tes données ne servent qu’à répondre à ta demande.
+        </p>
+      </div>
+    </aside>
+
+    <!-- Formulaire en attente : choisir un outil sans cookies puis renseigner `action` -->
+    <form class="form" method="post" action="#" novalidate>
+      <div class="form__row">
+        <div class="field">
+          <label for="name">Ton prénom ou nom</label>
+          <input id="name" name="name" type="text" placeholder="Norbert ou Brigitte" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="email">Ton adresse e-mail</label>
+          <input id="email" name="email" type="email" placeholder="norbert@mesbonnestartes.fr" autocomplete="email" required />
+        </div>
+      </div>
+
+      <fieldset class="formats">
+        <legend>Sélectionne le format rêvé pour ta présence web</legend>
+        <div class="formats__grid">
+          {formats.map((f) => (
+            <label class="format" for={f.id}>
+              <input type="radio" name="format" id={f.id} value={f.name} checked={f.checked} />
+              <span class="format__head">
+                <strong>{f.name}</strong>
+                <em>{f.price}</em>
+              </span>
+              <span class="format__text">{f.text}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="message">Ton message / parle-moi de ton projet</label>
+        <textarea id="message" name="message" rows="5" placeholder="Raconte-moi ton activité, tes envies et tes délais…" required></textarea>
+      </div>
+
+      <label class="consent">
+        <input type="checkbox" name="consent" required />
+        <span>J’accepte d’être recontacté.e (promis, zéro pub, zéro newsletter spam).</span>
+      </label>
+
+      <button type="submit" class="btn btn--primary btn--block">Envoyer ma demande</button>
+    </form>
+  </section>
+
+  <section class="container section">
+    <h2 class="center">Comment se passe la suite ?</h2>
+    <p class="center section__lead">Transparence et bienveillance à chaque étape de la collaboration.</p>
+    <div class="steps">
+      {steps.map((s) => (
+        <article class="step">
+          <span class="step__n">{s.n}</span>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+          <span class="step__tag">{s.tag}</span>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const btn = document.getElementById("copy-mail");
+  const feedback = document.getElementById("copy-feedback");
+  btn?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText("axel@popupstudio.fr");
+      if (feedback) feedback.textContent = "Adresse copiée !";
+    } catch {
+      if (feedback) feedback.textContent = "Copie impossible, sélectionne l’adresse à la main.";
+    }
+  });
+</script>
+
+<style>
+  .eyebrow {
+    margin-bottom: var(--space-sm); font-size: 11px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-surface-variant);
+  }
+  .center { text-align: center; }
+  h2 { font-size: 28px; line-height: 36px; font-weight: 700; letter-spacing: -0.01em; }
+  .pill {
+    display: inline-block; padding: var(--space-xs) 0.75rem; border-radius: var(--radius-full);
+    font-size: 11px; font-weight: 700; letter-spacing: 0.04em; line-height: 16px;
+  }
+  .pill--lime { background: var(--pop-lime); }
+  .btn {
+    display: inline-block; padding: 0.75rem 1.5rem;
+    border: 1.5px solid var(--ink); border-radius: var(--radius-full);
+    font-family: inherit; font-size: 15px; font-weight: 700; text-decoration: none; cursor: pointer;
+  }
+  .btn--primary { background: var(--primary-container); color: var(--white); }
+  .btn--soft { background: var(--surface-container); color: var(--ink); }
+  .btn--block { display: block; width: 100%; padding-block: 1rem; font-size: 17px; }
+  .btn:hover, .btn:focus-visible { box-shadow: var(--shadow-offset); }
+  .btn:active { transform: translate(2px, 2px); box-shadow: none; }
+
+  .section { padding-block: var(--space-xl); }
+  .section__lead { margin-top: var(--space-sm); color: var(--on-surface-variant); }
+
+  .hero { padding-block: 4rem var(--space-lg); }
+  .hero h1 {
+    margin: var(--space-md) 0; font-size: 56px; line-height: 64px;
+    font-weight: 800; letter-spacing: -0.03em;
+  }
+  .hero__lead { max-width: 56ch; font-size: 18px; line-height: 28px; color: var(--on-surface-variant); }
+
+  .contact { display: grid; grid-template-columns: 1fr 1.6fr; gap: var(--space-xl); align-items: start; padding-bottom: var(--space-xl); }
+  .side { display: flex; flex-direction: column; gap: var(--gutter); }
+  .side__card {
+    padding: var(--space-lg); background: var(--surface-low);
+    border-radius: var(--radius-lg); font-size: 14px; line-height: 22px;
+  }
+  .side__title { font-size: 18px; line-height: 26px; margin-bottom: var(--space-xs); }
+  .side__mail {
+    padding: var(--space-sm) var(--space-md); background: var(--white);
+    border-radius: var(--radius); font-weight: 600; font-size: 16px;
+  }
+  .side__actions { display: flex; gap: var(--space-sm); margin-top: var(--space-md); }
+  .side__actions .btn { flex: 1; text-align: center; padding-inline: var(--space-md); font-size: 14px; }
+  .side__feedback { min-height: 1.25rem; margin-top: var(--space-sm); font-size: 13px; font-weight: 600; }
+
+  .form {
+    display: flex; flex-direction: column; gap: var(--space-lg);
+    padding: var(--space-xl); background: var(--white);
+    border: 1.5px solid var(--border-passive); border-radius: var(--radius-lg);
+  }
+  .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); }
+  .field { display: flex; flex-direction: column; gap: var(--space-sm); }
+  .field label, .formats legend { font-size: 14px; font-weight: 600; }
+  input[type="text"], input[type="email"], textarea {
+    width: 100%; padding: 0.75rem 1rem; background: var(--white);
+    border: 1.5px solid var(--ink); border-radius: var(--radius-md, 0.75rem);
+    font-family: inherit; font-size: 16px; color: var(--ink);
+  }
+  input::placeholder, textarea::placeholder { color: var(--outline, #717973); }
+  input:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--primary-container); outline-offset: 2px; box-shadow: var(--shadow-offset);
+  }
+
+  .formats { border: 0; padding: 0; margin: 0; }
+  .formats legend { margin-bottom: var(--space-sm); padding: 0; }
+  .formats__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+  .format {
+    display: flex; flex-direction: column; gap: var(--space-xs);
+    padding: var(--space-md); background: var(--surface-low);
+    border: 1.5px solid transparent; border-radius: var(--radius-lg); cursor: pointer; position: relative;
+  }
+  .format input { position: absolute; opacity: 0; }
+  .format:has(input:checked) { background: #eef7ea; border-color: var(--ink); }
+  .format:has(input:focus-visible) { outline: 2px solid var(--primary-container); outline-offset: 2px; }
+  .format__head { display: flex; justify-content: space-between; gap: var(--space-sm); align-items: baseline; }
+  .format__head em { font-style: normal; font-size: 12px; font-weight: 700; color: var(--on-surface-variant); }
+  .format__text { font-size: 13px; line-height: 18px; color: var(--on-surface-variant); }
+
+  .consent { display: flex; gap: var(--space-sm); align-items: flex-start; font-size: 14px; cursor: pointer; }
+  .consent input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--primary-container); }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); margin-top: var(--space-lg); }
+  .step { padding: var(--space-lg); background: var(--surface-low); border-radius: var(--radius-lg); }
+  .step__n {
+    display: inline-grid; place-items: center; width: 40px; height: 40px;
+    margin-bottom: var(--space-md); background: var(--pop-lime);
+    border-radius: var(--radius-full); font-weight: 800; font-size: 18px;
+  }
+  .step h3 { font-size: 20px; line-height: 28px; }
+  .step p { margin: var(--space-sm) 0 var(--space-md); font-size: 14px; line-height: 22px; color: var(--on-surface-variant); }
+  .step__tag { font-size: 12px; font-weight: 700; color: var(--primary-container); }
+
+  @media (max-width: 64rem) {
+    .contact, .steps { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 48rem) {
+    .hero h1 { font-size: 38px; line-height: 44px; letter-spacing: -0.02em; }
+    .form { padding: var(--space-lg); }
+    .form__row, .formats__grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,150 @@
+---
+const year = new Date().getFullYear();
+const nav = [
+  { href: "/", label: "Accueil" },
+  { href: "/offres-tarifs", label: "Offres & Tarifs" },
+  { href: "/projets", label: "Projets" },
+  { href: "/contact", label: "Contact" },
+];
+const legal = [
+  { href: "/manifeste", label: "Manifeste éco-conception" },
+  { href: "/bilan-carbone", label: "Bilan carbone & méthodologie" },
+  { href: "/mentions-legales", label: "Mentions légales" },
+];
+---
+
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <p class="footer__name">Popup Studio</p>
+      <p class="footer__desc">
+        Axel, créateur de sites légers, complices et créatifs pour les
+        indépendant.e.s, créateur.ices et marques engagées.
+      </p>
+      <span class="chip">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M11 20A7 7 0 0 1 4 13c0-4 3-9 9-11 2 6 7 7 7 11a7 7 0 0 1-7 7z" />
+          <path d="M11 20c0-4 2-7 5-9" />
+        </svg>
+        Site éco-conçu, zéro cookie
+      </span>
+    </div>
+
+    <nav class="footer__col" aria-labelledby="footer-nav">
+      <h2 id="footer-nav" class="footer__title">Navigation</h2>
+      <ul class="footer__links">
+        {nav.map(({ href, label }) => (
+          <li><a href={href}>{label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <nav class="footer__col" aria-labelledby="footer-ethic">
+      <h2 id="footer-ethic" class="footer__title">Transparence & éthique</h2>
+      <ul class="footer__links">
+        {legal.map(({ href, label }) => (
+          <li><a href={href}>{label}</a></li>
+        ))}
+      </ul>
+      <!-- FICTIF : valeur à ajuster plus tard -->
+      <p class="footer__note">
+        Site éco-conçu, plus propre que 71 % des sites sur le web •
+        Hébergement vert en circuit court
+      </p>
+    </nav>
+  </div>
+
+  <div class="container footer__bottom">
+    <p>© {year} Popup Studio — Moins de code, plus d’audace.</p>
+    <p>Fabriqué avec sobriété numérique à Nantes</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    margin-top: var(--space-xl);
+    padding-block: var(--space-xl) var(--space-lg);
+    background: var(--surface-low);
+    border-top: 1.5px solid var(--border-passive);
+  }
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.4fr;
+    gap: var(--space-xl) var(--gutter);
+  }
+  .footer__brand { max-width: 22rem; }
+  .footer__name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-sm);
+  }
+  .footer__desc {
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--on-surface-variant);
+    margin-bottom: var(--space-md);
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) 0.625rem;
+    background: var(--surface-high);
+    border-radius: var(--radius-full);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 16px;
+  }
+
+  .footer__title {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-md);
+  }
+  .footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    font-size: 14px;
+  }
+  .footer__links a {
+    color: var(--on-surface-variant);
+    text-decoration: none;
+  }
+  .footer__links a:hover {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .footer__note {
+    margin-top: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--white);
+    border: 1.5px solid var(--border-passive);
+    border-radius: var(--radius);
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--gutter);
+    flex-wrap: wrap;
+    margin-top: var(--space-xl);
+    padding-top: var(--space-md);
+    border-top: 1.5px solid var(--border-passive);
+    font-size: 13px;
+    color: var(--on-surface-variant);
+  }
+
+  @media (max-width: 48rem) {
+    .footer__grid { grid-template-columns: 1fr; }
+  }
+</style>

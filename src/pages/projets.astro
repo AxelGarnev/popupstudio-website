@@ -1,0 +1,160 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const practices = [
+  {
+    title: "Images taillées au gramme près",
+    text: "Formats modernes (WebP/AVIF), redimensionnées selon l’écran, pour ne jamais envoyer plus que nécessaire.",
+    tone: "var(--pop-lime)",
+  },
+  {
+    title: "Peu de scripts tiers",
+    text: "Pas de méga-scripts de suivi ni de bibliothèques gourmandes. Du HTML sémantique et du CSS léger, pensés sur mesure.",
+    tone: "var(--sky-tint)",
+  },
+  {
+    title: "Hébergement choisi avec soin",
+    text: "Je t’aide à choisir un hébergeur adapté et responsable, sans promesse magique : on regarde ensemble ce qui est transparent.",
+    tone: "var(--secondary-container)",
+  },
+];
+---
+
+<BaseLayout
+  title="Projets"
+  description="Les réalisations de Popup Studio : un aperçu de sites légers, singuliers et pensés pour consommer peu. Découvre SABOOM."
+>
+  <section class="hero container">
+    <span class="pill pill--lime">Nos bébés numériques</span>
+    <h1>Des créations engagées, légères et singulières</h1>
+    <p class="hero__lead">
+      Ici, pas de sites obèses de 15 Mo ni de templates froids. Que de l’artisanal, ultra-léger et calibré pour convertir sans réchauffer la banquise.
+    </p>
+  </section>
+
+  <section class="container section">
+    <article class="project">
+      <!-- Remplace par ton visuel Stitch -->
+      <img src="/images/saboom.webp" alt="Aperçu du site SABOOM, boutique de bijoux artisanaux" width="720" height="480" loading="lazy" />
+      <div class="project__body">
+        <span class="pill pill--sky">E-commerce • Bijoux artisanaux</span>
+        <h2>SABOOM</h2>
+        <p>
+          Une identité pétillante pour des bijoux artisanaux en pâte polymère. Un site pensé pour que les couleurs et les formes restent au premier plan, sans que la page ne devienne un poids lourd.
+        </p>
+        <!-- FICTIF : chiffres provisoires -->
+        <dl class="project__metrics">
+          <div><dt>Poids total</dt><dd>240 Ko</dd></div>
+          <div><dt>Éco-index</dt><dd>A</dd></div>
+          <div><dt>Chargement</dt><dd>0,6 s</dd></div>
+        </dl>
+        <ul class="project__tags">
+          <li class="chip">#Ecommerce</li>
+          <li class="chip">#Artisanat</li>
+          <li class="chip">#Sobriété</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <section class="band">
+    <div class="container">
+      <p class="eyebrow">Sous le capot</p>
+      <h2>L’éco-conception en pratique sur nos projets</h2>
+      <p class="section__lead">Pas de greenwashing : voici comment nos sites chargent en un clin d’œil sans ruiner ta facture énergétique ni celle de la planète.</p>
+      <div class="practices">
+        {practices.map((p) => (
+          <article class="practice" style={`--tone:${p.tone}`}>
+            <span class="practice__dot" aria-hidden="true"></span>
+            <h3>{p.title}</h3>
+            <p>{p.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="cta">
+      <h2>Tu veux que ton projet apparaisse ici ?</h2>
+      <p>Fais briller ton savoir-faire sans plomber le web. Parlons de tes objectifs et de ton futur site sur mesure.</p>
+      <a href="/contact" class="btn btn--lime">Lancer mon projet</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    margin-bottom: var(--space-sm);
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--on-surface-variant);
+  }
+  h2 { font-size: 40px; line-height: 48px; font-weight: 700; letter-spacing: -0.02em; }
+  .pill {
+    display: inline-block; padding: var(--space-xs) 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 11px; font-weight: 700; letter-spacing: 0.04em; line-height: 16px;
+  }
+  .pill--lime { background: var(--pop-lime); }
+  .pill--sky { background: var(--sky-tint); }
+  .chip {
+    padding: var(--space-xs) 0.75rem; background: var(--surface-low);
+    border: 1.5px solid var(--border-passive); border-radius: var(--radius-full);
+    font-size: 12px; font-weight: 600;
+  }
+  .btn {
+    display: inline-block; padding: 0.75rem 1.5rem;
+    border: 1.5px solid var(--ink); border-radius: var(--radius-full);
+    font-size: 15px; font-weight: 700; text-decoration: none;
+  }
+  .btn--lime { background: var(--pop-lime); color: var(--ink); }
+  .btn:hover, .btn:focus-visible { box-shadow: var(--shadow-offset); }
+
+  .section { padding-block: var(--space-lg) var(--space-xl); }
+  .section__lead { margin-top: var(--space-sm); max-width: 60ch; color: var(--on-surface-variant); }
+
+  .hero { padding-block: 4rem var(--space-lg); }
+  .hero h1 {
+    max-width: 22ch; margin: var(--space-md) 0;
+    font-size: 56px; line-height: 64px; font-weight: 800; letter-spacing: -0.03em;
+  }
+  .hero__lead { max-width: 56ch; font-size: 18px; line-height: 28px; color: var(--on-surface-variant); }
+
+  .project {
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    background: var(--white); border: 1.5px solid var(--border-passive);
+    border-radius: var(--radius-lg); overflow: hidden;
+  }
+  .project img { width: 100%; height: 100%; object-fit: cover; background: var(--surface-container); }
+  .project__body { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-md); padding: var(--space-xl) var(--space-lg); }
+  .project__body h2 { font-size: 40px; }
+  .project__metrics { display: flex; gap: var(--space-lg); flex-wrap: wrap; }
+  .project__metrics dt { font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--on-surface-variant); }
+  .project__metrics dd { margin: 0; font-weight: 700; font-size: 18px; }
+  .project__tags { display: flex; gap: var(--space-sm); flex-wrap: wrap; }
+
+  .band { padding-block: var(--space-xl); background: var(--surface-low); }
+  .practices { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); margin-top: var(--space-lg); }
+  .practice {
+    padding: var(--space-lg); background: var(--white);
+    border: 1.5px solid var(--border-passive); border-top: 4px solid var(--tone);
+    border-radius: var(--radius-lg);
+  }
+  .practice__dot { display: block; width: 28px; height: 28px; margin-bottom: var(--space-md); background: var(--tone); border-radius: var(--radius); }
+  .practice h3 { font-size: 20px; line-height: 28px; }
+  .practice p { margin-top: var(--space-sm); font-size: 14px; line-height: 22px; color: var(--on-surface-variant); }
+
+  .cta {
+    margin: var(--space-xl) 0; padding: var(--space-xl);
+    background: var(--primary-container); color: var(--white);
+    border-radius: var(--radius-xl); text-align: center;
+  }
+  .cta h2 { margin-bottom: var(--space-md); }
+  .cta p { max-width: 52ch; margin: 0 auto var(--space-lg); color: #c1ecd4; }
+
+  @media (max-width: 64rem) { .project, .practices { grid-template-columns: 1fr; } }
+  @media (max-width: 48rem) {
+    .hero h1 { font-size: 38px; line-height: 44px; letter-spacing: -0.02em; }
+    h2, .project__body h2 { font-size: 28px; line-height: 36px; }
+  }
+</style>

@@ -1,0 +1,115 @@
+/* ---------- Polices auto-hébergées ---------- */
+@font-face {
+  font-family: "Epilogue";
+  src: url("/fonts/epilogue/epilogue-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Epilogue";
+  src: url("/fonts/epilogue/epilogue-800.woff2") format("woff2");
+  font-weight: 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/fonts/plus-jakarta-sans/plus-jakarta-sans-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/fonts/plus-jakarta-sans/plus-jakarta-sans-600.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/fonts/plus-jakarta-sans/plus-jakarta-sans-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* ---------- Tokens (DESIGN.md) ---------- */
+:root {
+  --surface: #fbf9f6;
+  --surface-low: #f5f3f0;
+  --surface-container: #efeeeb;
+  --surface-high: #eae8e5;
+  --white: #ffffff;
+  --ink: #141514;
+  --on-surface-variant: #414844;
+  --outline: #717973;
+  --outline-variant: #c1c8c2;
+  --border-passive: rgba(20, 21, 20, 0.12);
+
+  --primary: #012d1d;
+  --primary-container: #1b4332;
+  --on-primary-container: #86af99;
+  --pop-lime: #c8e676;
+  --persimmon: #f45010;
+  --deep-violet: #3a1b79;
+  --sky-tint: #acd6f6;
+
+  --font-display: "Epilogue", system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+
+  --radius-sm: 0.25rem;
+  --radius: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+
+  --gutter: 1.5rem;
+  --margin: 3rem;
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.75rem;
+  --space-xl: 3rem;
+
+  --shadow-offset: 2px 2px 0 var(--ink);
+  --container: 72rem;
+}
+
+@media (max-width: 48rem) {
+  :root {
+    --gutter: 1rem;
+    --margin: 1.25rem;
+  }
+}
+
+/* ---------- Reset minimal ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 24px;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { font-family: var(--font-display); margin: 0; }
+p { margin: 0; }
+a { color: inherit; }
+button { font: inherit; cursor: pointer; }
+img, svg { display: block; max-width: 100%; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+/* ---------- Utilitaires ---------- */
+.container {
+  width: min(100% - 2 * var(--margin), var(--container));
+  margin-inline: auto;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+:focus-visible {
+  outline: 2px solid var(--primary-container);
+  outline-offset: 2px;
+}

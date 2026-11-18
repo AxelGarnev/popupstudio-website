@@ -1,0 +1,278 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import OfferCard from "../components/OfferCard.astro";
+
+const offers = [
+  {
+    tag: "1 semaine • formule essentielle",
+    name: "Page Unique",
+    price: "850 €",
+    note: "Paiement en 3 fois sans frais possible (Alma, par exemple).",
+    features: [
+      "Design sur mesure, sobre et responsive",
+      "Une page sculptée avec soin",
+      "Formulaire de contact sans cookies",
+      "Optimisation pour le référencement de base",
+    ],
+    cta: "Choisir la Page Unique",
+    href: "/contact",
+  },
+  {
+    tag: "2 à 3 semaines • recommandé",
+    name: "Site Vitrine",
+    price: "1 450 €",
+    note: "Paiement en 3 fois sans frais possible (Alma, par exemple).",
+    features: [
+      "Tout ce qui compose la Page Unique",
+      "3 à 5 pages complètes (accueil, services, à propos, contact…)",
+      "Gestion simple de tes contenus, sans coder",
+      "Formation vidéo personnalisée de 30 minutes",
+      "Attention portée à l’accessibilité",
+    ],
+    cta: "Choisir le Site Vitrine",
+    href: "/contact",
+    featured: true,
+  },
+  {
+    tag: "3 à 4 semaines • vente en ligne",
+    name: "Boutique en Ligne",
+    price: "2 200 €",
+    note: "Paiement en 3 fois sans frais possible (Alma, par exemple).",
+    features: [
+      "Tout ce qui compose le Site Vitrine",
+      "Catalogue produits et tunnel de commande fluide",
+      "Paiement en ligne sécurisé",
+      "Gestion des stocks simplifiée",
+      "Emails transactionnels sobres",
+    ],
+    cta: "Choisir la Boutique",
+    href: "/contact",
+  },
+];
+
+// FICTIF : valeurs provisoires, à ajuster
+const table = [
+  { label: "Nombre de pages", values: ["1 page optimisée", "3 à 5 pages", "Boutique + pages"] },
+  { label: "Délai indicatif", values: ["1 semaine", "2 à 3 semaines", "3 à 4 semaines"] },
+  { label: "Formulaire de contact sans cookies", values: [true, true, true] },
+  { label: "Gestion autonome de tes contenus", values: [false, true, true] },
+  { label: "Tunnel de commande & paiement en ligne", values: [false, false, true] },
+  { label: "Formation vidéo de 30 minutes", values: ["Guide PDF", true, true] },
+  { label: "Tarif TTC", values: ["850 €", "1 450 €", "2 200 €"] },
+];
+
+const faq = [
+  {
+    q: "Est-ce que je serai autonome après la livraison ?",
+    a: "Oui, c’est même le but. Je ne garde personne en otage : une vidéo de 30 minutes, personnalisée, te montre comment modifier tes textes, ajouter une page ou changer tes photos sans toucher à une seule ligne de code.",
+  },
+  {
+    q: "Pourquoi tes sites sont plus rapides ?",
+    a: "Peu de dépendances lourdes, des images compressées, du code fait main et propre. Moins de choses à charger, donc une page qui s’affiche vite, même avec une connexion moyenne.",
+  },
+  {
+    q: "Et Norbert, il a pris quelle formule ?",
+    a: "Norbert n’existe pas, c’est une boutade. Mais s’il vendait ses tartes aux pommes en ligne, il aurait sans doute pris la Boutique en Ligne, avec un tunnel de commande sans prise de tête.",
+  },
+  {
+    q: "Y a-t-il des frais cachés ou un abonnement ?",
+    a: "Aucun abonnement Popup Studio. Tu es propriétaire de ton site. Il reste l’hébergement et le nom de domaine, que je t’aide à choisir et dont on parle dès le départ : pas de surprise.",
+  },
+];
+---
+
+<BaseLayout
+  title="Offres & Tarifs"
+  description="Trois formules simples et transparentes : Page Unique, Site Vitrine, Boutique en Ligne. Tarifs TTC, paiement en 3 fois sans frais possible."
+>
+  <!-- HERO -->
+  <section class="hero container">
+    <span class="pill pill--lime">Transparence & éco-conception</span>
+    <h1>Des formules simples, adaptées à ta réalité</h1>
+    <p class="hero__lead">
+      Pas d’abonnement piégé ni de lignes incompréhensibles. Chaque site est pensé pour rester sobre, rapide et durable.
+    </p>
+    <!-- FICTIF -->
+    <ul class="hero__chips">
+      <li class="chip">Poids moyen ≈ 350 Ko</li>
+      <li class="chip">Note Éco-index A visée</li>
+    </ul>
+  </section>
+
+  <!-- OFFRES -->
+  <section class="container section">
+    <div class="offers">
+      {offers.map((o) => <OfferCard {...o} />)}
+    </div>
+    <p class="section__note">
+      Tous les tarifs sont <strong>TTC</strong>. Le paiement en 3 fois sans frais est possible (Alma, par exemple).
+    </p>
+  </section>
+
+  <!-- COMPARATIF -->
+  <section class="container section">
+    <p class="eyebrow eyebrow--center">Comparatif détaillé</p>
+    <h2 class="center">Toutes les fonctionnalités à la loupe</h2>
+    <p class="section__lead center">La clarté avant tout : choisis exactement l’enveloppe nécessaire à ton projet.</p>
+
+    <div class="table-wrap">
+      <table class="compare">
+        <caption class="sr-only">Comparatif des formules Page Unique, Site Vitrine et Boutique en Ligne</caption>
+        <thead>
+          <tr>
+            <th scope="col">Critères & livrables</th>
+            <th scope="col">Page Unique</th>
+            <th scope="col" class="compare__hl">Site Vitrine</th>
+            <th scope="col">Boutique en Ligne</th>
+          </tr>
+        </thead>
+        <tbody>
+          {table.map((row) => (
+            <tr>
+              <th scope="row">{row.label}</th>
+              {row.values.map((v, i) => (
+                <td class:list={{ compare__hl: i === 1 }}>
+                  {v === true && (
+                    <>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+                      <span class="sr-only">Inclus</span>
+                    </>
+                  )}
+                  {v === false && (
+                    <>
+                      <span aria-hidden="true">—</span>
+                      <span class="sr-only">Non inclus</span>
+                    </>
+                  )}
+                  {typeof v === "string" && v}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="container section">
+    <p class="eyebrow">Questions fréquentes</p>
+    <h2>Tu as des questions ? On a du bon sens.</h2>
+    <p class="section__lead">La franchise, c’est aussi la marque de fabrique du studio.</p>
+    <div class="faq">
+      {faq.map((item) => (
+        <details class="faq__item">
+          <summary>{item.q}</summary>
+          <p>{item.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="container">
+    <div class="cta">
+      <h2>Tu hésites sur la formule ?</h2>
+      <p>On fait un appel de découverte de 20 minutes, sans engagement, pour faire le point sur tes priorités.</p>
+      <a href="/contact" class="btn btn--lime">Réserver un créneau (20 min)</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    margin-bottom: var(--space-sm);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+  }
+  .eyebrow--center, .center { text-align: center; }
+  h2 { font-size: 40px; line-height: 48px; font-weight: 700; letter-spacing: -0.02em; }
+  .pill {
+    display: inline-block;
+    padding: var(--space-xs) 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 11px; font-weight: 700; letter-spacing: 0.04em; line-height: 16px;
+  }
+  .pill--lime { background: var(--pop-lime); }
+  .chip {
+    padding: var(--space-xs) 0.75rem;
+    background: var(--white);
+    border: 1.5px solid var(--border-passive);
+    border-radius: var(--radius-full);
+    font-size: 12px; font-weight: 600;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 1.5px solid var(--ink);
+    border-radius: var(--radius-full);
+    font-size: 15px; font-weight: 700; text-decoration: none;
+  }
+  .btn--lime { background: var(--pop-lime); color: var(--ink); }
+  .btn:hover, .btn:focus-visible { box-shadow: var(--shadow-offset); }
+
+  .section { padding-block: var(--space-xl); }
+  .section__lead { margin-top: var(--space-sm); color: var(--on-surface-variant); }
+  .section__note { margin-top: var(--space-lg); text-align: center; font-size: 14px; color: var(--on-surface-variant); }
+
+  .hero { padding-block: 4rem var(--space-lg); text-align: center; }
+  .hero h1 {
+    max-width: 20ch; margin: var(--space-md) auto;
+    font-size: 56px; line-height: 64px; font-weight: 800; letter-spacing: -0.03em;
+  }
+  .hero__lead { max-width: 52ch; margin: 0 auto; font-size: 18px; line-height: 28px; color: var(--on-surface-variant); }
+  .hero__chips { display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap; margin-top: var(--space-lg); }
+
+  .offers { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); align-items: stretch; }
+
+  .table-wrap { margin-top: var(--space-lg); overflow-x: auto; }
+  .compare {
+    width: 100%; min-width: 40rem; border-collapse: collapse;
+    background: var(--white);
+    border: 1.5px solid var(--border-passive);
+    border-radius: var(--radius-lg);
+    font-size: 14px;
+  }
+  .compare th, .compare td {
+    padding: var(--space-md);
+    text-align: center;
+    border-bottom: 1px solid var(--border-passive);
+  }
+  .compare thead th { background: var(--surface-container); font-weight: 700; }
+  .compare tbody th { text-align: left; font-weight: 600; }
+  .compare__hl { background: rgba(200, 230, 118, 0.25); }
+  .compare td svg { color: var(--primary-container); vertical-align: middle; }
+
+  .faq { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gutter); margin-top: var(--space-lg); }
+  .faq__item {
+    padding: var(--space-md) var(--space-lg);
+    background: var(--white);
+    border: 1.5px solid var(--border-passive);
+    border-radius: var(--radius-lg);
+  }
+  .faq__item summary { cursor: pointer; font-weight: 700; font-size: 16px; }
+  .faq__item summary:focus-visible { outline: 2px solid var(--primary-container); outline-offset: 4px; }
+  .faq__item p { margin-top: var(--space-sm); font-size: 14px; line-height: 22px; color: var(--on-surface-variant); }
+
+  .cta {
+    margin-bottom: var(--space-xl); padding: var(--space-xl);
+    background: var(--primary-container); color: var(--white);
+    border-radius: var(--radius-xl); text-align: center;
+  }
+  .cta h2 { margin-bottom: var(--space-md); }
+  .cta p { max-width: 52ch; margin: 0 auto var(--space-lg); color: #c1ecd4; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap;
+  }
+
+  @media (max-width: 64rem) { .offers, .faq { grid-template-columns: 1fr; } }
+  @media (max-width: 48rem) {
+    .hero h1 { font-size: 38px; line-height: 44px; letter-spacing: -0.02em; }
+    h2 { font-size: 28px; line-height: 36px; }
+  }
+</style>
