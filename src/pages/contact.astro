@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from '../components/Button.astro';
+import Pill from '../components/Pill.astro';
 
 const steps = [
   { n: "1", title: "Échange initial (20 min)", text: "On échange par e-mail ou en visio courte pour cerner tes besoins, tes cibles et l’âme de ton projet.", tag: "Sans engagement" },
@@ -20,7 +22,7 @@ const formats = [
   description="Parlons de ton projet de site éco-conçu. Écris à Axel, Popup Studio, studio web basé à Nantes."
 >
   <section class="hero container">
-    <span class="pill pill--lime">Parlons de ton projet</span>
+    <Pill tone="lime">Parlons de ton projet</Pill>
     <h1>Partons à l’aventure !</h1>
     <p class="hero__lead">
       Des choses à dire ? Des choses à partager ou à vendre ? Écris-moi, je réponds en général rapidement, avec le sourire (et une tasse de thé chaud).
@@ -33,7 +35,7 @@ const formats = [
         <p class="eyebrow">L’adresse de l’atelier</p>
         <p class="side__mail">axel@popupstudio.fr</p>
         <div class="side__actions">
-          <button type="button" class="btn btn--soft" id="copy-mail">Copier l’e-mail</button>
+          <Button type="button" class="btn btn--soft" id="copy-mail">Copier l’e-mail</Button>
           <a href="mailto:axel@popupstudio.fr" class="btn btn--primary">Écrire</a>
         </div>
         <p class="side__feedback" id="copy-feedback" role="status" aria-live="polite"></p>
@@ -91,7 +93,7 @@ const formats = [
         <span>J’accepte d’être recontacté.e (promis, zéro pub, zéro newsletter spam).</span>
       </label>
 
-      <button type="submit" class="btn btn--primary btn--block">Envoyer ma demande</button>
+      <Button type="submit" variant="primary" class="btn btn--block">Envoyer ma demande</Button>
     </form>
   </section>
 
@@ -131,22 +133,6 @@ const formats = [
   }
   .center { text-align: center; }
   h2 { font-size: 28px; line-height: 36px; font-weight: 700; letter-spacing: -0.01em; }
-  .pill {
-    display: inline-block; padding: var(--space-xs) 0.75rem; border-radius: var(--radius-full);
-    font-size: 11px; font-weight: 700; letter-spacing: 0.04em; line-height: 16px;
-  }
-  .pill--lime { background: var(--pop-lime); }
-  .btn {
-    display: inline-block; padding: 0.75rem 1.5rem;
-    border: 1.5px solid var(--ink); border-radius: var(--radius-full);
-    font-family: inherit; font-size: 15px; font-weight: 700; text-decoration: none; cursor: pointer;
-  }
-  .btn--primary { background: var(--primary-container); color: var(--white); }
-  .btn--soft { background: var(--surface-container); color: var(--ink); }
-  .btn--block { display: block; width: 100%; padding-block: 1rem; font-size: 17px; }
-  .btn:hover, .btn:focus-visible { box-shadow: var(--shadow-offset); }
-  .btn:active { transform: translate(2px, 2px); box-shadow: none; }
-
   .section { padding-block: var(--space-xl); }
   .section__lead { margin-top: var(--space-sm); color: var(--on-surface-variant); }
 

@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import OfferCard from "../components/OfferCard.astro";
+import Pill from '../components/Pill.astro';
+import CtaBand from '../components/CtaBand.astro';
 
 const offers = [
   {
@@ -87,7 +89,7 @@ const faq = [
 >
   <!-- HERO -->
   <section class="hero container">
-    <span class="pill pill--lime">Transparence & éco-conception</span>
+    <Pill tone="lime">Transparence & éco-conception</Pill>
     <h1>Des formules simples, adaptées à ta réalité</h1>
     <p class="hero__lead">
       Pas d’abonnement piégé ni de lignes incompréhensibles. Chaque site est pensé pour rester sobre, rapide et durable.
@@ -171,11 +173,7 @@ const faq = [
 
   <!-- CTA -->
   <section class="container">
-    <div class="cta">
-      <h2>Tu hésites sur la formule ?</h2>
-      <p>On fait un appel de découverte de 20 minutes, sans engagement, pour faire le point sur tes priorités.</p>
-      <a href="/contact" class="btn btn--lime">Réserver un créneau (20 min)</a>
-    </div>
+    <CtaBand title="Tu hésites sur la formule ?" text="On fait un appel de découverte de 20 minutes, sans engagement, pour faire le point sur tes priorités." ctaHref="/contact" ctaLabel="Réserver un créneau (20 min)" />
   </section>
 </BaseLayout>
 
@@ -190,13 +188,6 @@ const faq = [
   }
   .eyebrow--center, .center { text-align: center; }
   h2 { font-size: 40px; line-height: 48px; font-weight: 700; letter-spacing: -0.02em; }
-  .pill {
-    display: inline-block;
-    padding: var(--space-xs) 0.75rem;
-    border-radius: var(--radius-full);
-    font-size: 11px; font-weight: 700; letter-spacing: 0.04em; line-height: 16px;
-  }
-  .pill--lime { background: var(--pop-lime); }
   .chip {
     padding: var(--space-xs) 0.75rem;
     background: var(--white);
@@ -204,15 +195,6 @@ const faq = [
     border-radius: var(--radius-full);
     font-size: 12px; font-weight: 600;
   }
-  .btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    border: 1.5px solid var(--ink);
-    border-radius: var(--radius-full);
-    font-size: 15px; font-weight: 700; text-decoration: none;
-  }
-  .btn--lime { background: var(--pop-lime); color: var(--ink); }
-  .btn:hover, .btn:focus-visible { box-shadow: var(--shadow-offset); }
 
   .section { padding-block: var(--space-xl); }
   .section__lead { margin-top: var(--space-sm); color: var(--on-surface-variant); }
@@ -256,14 +238,6 @@ const faq = [
   .faq__item summary { cursor: pointer; font-weight: 700; font-size: 16px; }
   .faq__item summary:focus-visible { outline: 2px solid var(--primary-container); outline-offset: 4px; }
   .faq__item p { margin-top: var(--space-sm); font-size: 14px; line-height: 22px; color: var(--on-surface-variant); }
-
-  .cta {
-    margin-bottom: var(--space-xl); padding: var(--space-xl);
-    background: var(--primary-container); color: var(--white);
-    border-radius: var(--radius-xl); text-align: center;
-  }
-  .cta h2 { margin-bottom: var(--space-md); }
-  .cta p { max-width: 52ch; margin: 0 auto var(--space-lg); color: #c1ecd4; }
 
   .sr-only {
     position: absolute; width: 1px; height: 1px; overflow: hidden;

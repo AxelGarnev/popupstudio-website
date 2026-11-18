@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Pill from '../components/Pill.astro';
+import CtaBand from '../components/CtaBand.astro';
 
 const practices = [
   {
@@ -25,7 +27,7 @@ const practices = [
   description="Les réalisations de Popup Studio : un aperçu de sites légers, singuliers et pensés pour consommer peu. Découvre SABOOM."
 >
   <section class="hero container">
-    <span class="pill pill--lime">Nos bébés numériques</span>
+    <Pill tone="lime">Nos bébés numériques</Pill>
     <h1>Des créations engagées, légères et singulières</h1>
     <p class="hero__lead">
       Ici, pas de sites obèses de 15 Mo ni de templates froids. Que de l’artisanal, ultra-léger et calibré pour convertir sans réchauffer la banquise.
@@ -37,7 +39,7 @@ const practices = [
       <!-- Remplace par ton visuel Stitch -->
       <img src="/images/saboom.webp" alt="Aperçu du site SABOOM, boutique de bijoux artisanaux" width="720" height="480" loading="lazy" />
       <div class="project__body">
-        <span class="pill pill--sky">E-commerce • Bijoux artisanaux</span>
+        <Pill tone="sky">E-commerce • Bijoux artisanaux</Pill>
         <h2>SABOOM</h2>
         <p>
           Une identité pétillante pour des bijoux artisanaux en pâte polymère. Un site pensé pour que les couleurs et les formes restent au premier plan, sans que la page ne devienne un poids lourd.
@@ -75,11 +77,7 @@ const practices = [
   </section>
 
   <section class="container">
-    <div class="cta">
-      <h2>Tu veux que ton projet apparaisse ici ?</h2>
-      <p>Fais briller ton savoir-faire sans plomber le web. Parlons de tes objectifs et de ton futur site sur mesure.</p>
-      <a href="/contact" class="btn btn--lime">Lancer mon projet</a>
-    </div>
+    <CtaBand title="Tu veux que ton projet apparaisse ici ?" text="Fais briller ton savoir-faire sans plomber le web. Parlons de tes objectifs et de ton futur site sur mesure" ctaHref="/contact" ctaLabel="Lancer mon projet" />
   </section>
 </BaseLayout>
 
@@ -90,25 +88,11 @@ const practices = [
     color: var(--on-surface-variant);
   }
   h2 { font-size: 40px; line-height: 48px; font-weight: 700; letter-spacing: -0.02em; }
-  .pill {
-    display: inline-block; padding: var(--space-xs) 0.75rem;
-    border-radius: var(--radius-full);
-    font-size: 11px; font-weight: 700; letter-spacing: 0.04em; line-height: 16px;
-  }
-  .pill--lime { background: var(--pop-lime); }
-  .pill--sky { background: var(--sky-tint); }
   .chip {
     padding: var(--space-xs) 0.75rem; background: var(--surface-low);
     border: 1.5px solid var(--border-passive); border-radius: var(--radius-full);
     font-size: 12px; font-weight: 600;
   }
-  .btn {
-    display: inline-block; padding: 0.75rem 1.5rem;
-    border: 1.5px solid var(--ink); border-radius: var(--radius-full);
-    font-size: 15px; font-weight: 700; text-decoration: none;
-  }
-  .btn--lime { background: var(--pop-lime); color: var(--ink); }
-  .btn:hover, .btn:focus-visible { box-shadow: var(--shadow-offset); }
 
   .section { padding-block: var(--space-lg) var(--space-xl); }
   .section__lead { margin-top: var(--space-sm); max-width: 60ch; color: var(--on-surface-variant); }
@@ -143,14 +127,6 @@ const practices = [
   .practice__dot { display: block; width: 28px; height: 28px; margin-bottom: var(--space-md); background: var(--tone); border-radius: var(--radius); }
   .practice h3 { font-size: 20px; line-height: 28px; }
   .practice p { margin-top: var(--space-sm); font-size: 14px; line-height: 22px; color: var(--on-surface-variant); }
-
-  .cta {
-    margin: var(--space-xl) 0; padding: var(--space-xl);
-    background: var(--primary-container); color: var(--white);
-    border-radius: var(--radius-xl); text-align: center;
-  }
-  .cta h2 { margin-bottom: var(--space-md); }
-  .cta p { max-width: 52ch; margin: 0 auto var(--space-lg); color: #c1ecd4; }
 
   @media (max-width: 64rem) { .project, .practices { grid-template-columns: 1fr; } }
   @media (max-width: 48rem) {

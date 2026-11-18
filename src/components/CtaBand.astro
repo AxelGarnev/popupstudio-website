@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+  text?: string;
+  ctaLabel: string;
+  ctaHref: string;
+}
+const { title, text, ctaLabel, ctaHref } = Astro.props;
+import Button from './Button.astro';
+---
+
+<section class="cta">
+  <h2>{title}</h2>
+  {text && <p>{text}</p>}
+  <Button href={ctaHref} variant="pop" size="lg">{ctaLabel}</Button>
+</section>
+
+<style>
+  .cta {
+    background: #1b4332;
+    color: #fff;
+    border-radius: 1rem;
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+  .cta h2 { font-family: 'Epilogue', sans-serif; font-weight: 800; margin: 0 0 0.75rem; }
+  .cta p { margin: 0 0 1.75rem; }
+</style>

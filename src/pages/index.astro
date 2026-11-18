@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import OfferCard from "../components/OfferCard.astro";
+import Pill from '../components/Pill.astro';
+import CtaBand from '../components/CtaBand.astro';
 
 const offers = [
   {
@@ -63,7 +65,7 @@ const stats = [
   <!-- 1. HERO -->
   <section class="hero container">
     <!-- FICTIF -->
-    <span class="pill pill--lime">Éco-index A • 0,08 g de CO₂ par visite</span>
+    <Pill tone="lime">Éco-index A • 0,08 g de CO₂ par visite</Pill>
     <h1>
       Création de sites web engagés pour indépendant.e.s & créateur.ices
     </h1>
@@ -157,7 +159,7 @@ const stats = [
       <!-- Remplace par ton visuel Stitch -->
       <img src="/images/saboom.webp" alt="Aperçu du site SABOOM, boutique de bijoux artisanaux" width="720" height="420" loading="lazy" />
       <div class="project__body">
-        <span class="pill pill--sky">E-commerce • Bijoux artisanaux</span>
+        <Pill tone="sky">E-commerce • Bijoux artisanaux</Pill>
         <h3>SABOOM</h3>
         <p>
           Une identité pétillante pour des bijoux en pâte polymère, avec un site
@@ -220,17 +222,6 @@ const stats = [
     font-weight: 700;
     letter-spacing: -0.02em;
   }
-  .pill {
-    display: inline-block;
-    padding: var(--space-xs) 0.75rem;
-    border-radius: var(--radius-full);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    line-height: 16px;
-  }
-  .pill--lime { background: var(--pop-lime); }
-  .pill--sky { background: var(--sky-tint); }
   .chip {
     padding: var(--space-xs) 0.75rem;
     background: var(--white);
@@ -239,21 +230,6 @@ const stats = [
     font-size: 12px;
     font-weight: 600;
   }
-  .btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    border: 1.5px solid var(--ink);
-    border-radius: var(--radius-full);
-    font-size: 15px;
-    font-weight: 700;
-    text-decoration: none;
-  }
-  .btn:hover, .btn:focus-visible { box-shadow: var(--shadow-offset); }
-  .btn:active { transform: translate(2px, 2px); box-shadow: none; }
-  .btn--primary { background: var(--primary-container); color: var(--white); }
-  .btn--ghost { background: transparent; }
-  .btn--ghost:hover { background: var(--pop-lime); }
-  .btn--lime { background: var(--pop-lime); color: var(--ink); }
   .link-arrow { font-weight: 700; text-underline-offset: 4px; }
 
   /* --- Sections --- */

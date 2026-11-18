@@ -1,0 +1,41 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'pop' | 'ghost' | 'alert';
+  size?: 'md' | 'lg';
+}
+const { href, variant = 'primary', size = 'md' } = Astro.props;
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag href={href} class:list={['btn', `btn--${variant}`, `btn--${size}`]}>
+  <slot />
+</Tag>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    border: 1.5px solid #141514;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+  .btn--md { padding: 0.5rem 1.25rem; font-size: 15px; }
+  .btn--lg { padding: 0.75rem 1.75rem; font-size: 16px; }
+
+  .btn--primary { background: #1b4332; color: #fff; border-color: #1b4332; }
+  .btn--pop     { background: #c8e676; color: #141514; }
+  .btn--alert   { background: #f45010; color: #fff; border-color: #f45010; }
+  .btn--ghost   { background: transparent; color: #141514; }
+  .btn--ghost:hover { background: #c8e676; }
+
+  .btn:hover { box-shadow: 2px 2px 0 #141514; }
+  .btn:active { transform: translate(2px, 2px); box-shadow: none; }
+  .btn:focus-visible { outline: 3px solid #1b4332; outline-offset: 3px; }
+</style>
