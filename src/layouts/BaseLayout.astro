@@ -2,12 +2,15 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import CtaFinal from "../components/CtaFinal.astro";
 
 interface Props {
   title: string;
   description?: string;
+  showCta?: boolean;
+  ctaTitle?: string;
 }
-const { title, description = "Popup Studio — Web éco-conçu & créatif à Nantes." } = Astro.props;
+const { title, description = "Popup Studio — Web éco-conçu & créatif à Nantes.", showCta = true, ctaTitle } = Astro.props;
 ---
 
 <!doctype html>
@@ -23,6 +26,7 @@ const { title, description = "Popup Studio — Web éco-conçu & créatif à Nan
     <main>
       <slot />
     </main>
+    {showCta && <CtaFinal titre={ctaTitle} />}
     <Footer />
   </body>
 </html>

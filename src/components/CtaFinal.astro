@@ -1,0 +1,52 @@
+---
+import Button from "./Button.astro";
+import Pill from "./Pill.astro";
+
+interface Props {
+  titre?: string;
+}
+
+const { titre = "Envie d'un site propre, rapide et singulier ?" } = Astro.props;
+---
+
+<section class="cta-final-wrap" aria-labelledby="cta-final-title">
+  <div class="cta-final container">
+    <span class="decoration decoration--top" aria-hidden="true"></span>
+    <span class="decoration decoration--bottom" aria-hidden="true"></span>
+    <div class="cta-content">
+      <Pill tone="lime">Prêt.e pour l’étape suivante&nbsp;?</Pill>
+      <h2 id="cta-final-title">{titre}</h2>
+      <p>Parlons de ton projet autour d’un vrai café à Nantes ou d’une visio de 20 minutes, sans engagement ni blabla d’agence traditionnelle.</p>
+      <div class="cta-actions">
+        <Button href="/contact" variant="pop" size="lg">Demander un devis rapide&nbsp;🚀</Button>
+        <Button href="/manifeste#simulateur" variant="ghost" size="lg">Calculer l’impact de mon projet</Button>
+      </div>
+      <ul class="cta-checks" aria-label="À quoi t’attendre">
+        <li><span aria-hidden="true">✓</span> Un devis clair, sans jargon</li>
+        <li><span aria-hidden="true">✓</span> Sans engagement</li>
+        <li><span aria-hidden="true">✓</span> Du code utile, sans superflu</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-final-wrap { padding-block: var(--space-xl); }
+  .cta-final { position: relative; isolation: isolate; overflow: hidden; padding: clamp(2rem, 5vw, 4.5rem) clamp(1.25rem, 5vw, 4rem); border-radius: var(--radius-xl); background: var(--primary); color: var(--white); text-align: center; }
+  .cta-content { position: relative; z-index: 1; max-width: 58rem; margin-inline: auto; }
+  .decoration { position: absolute; z-index: 0; display: block; width: clamp(9rem, 22vw, 17rem); aspect-ratio: 1; border: 1px solid rgba(200, 230, 118, .24); border-radius: 50%; pointer-events: none; }
+  .decoration::after { position: absolute; inset: 18%; border: 1px solid rgba(200, 230, 118, .18); border-radius: 50%; content: ""; }
+  .decoration--top { top: -38%; right: -3%; }
+  .decoration--bottom { bottom: -44%; left: -3%; }
+  h2 { max-width: 24ch; margin: 1.25rem auto .8rem; color: var(--white); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.15; letter-spacing: -.035em; }
+  .cta-content > p { max-width: 66ch; margin: 0 auto 1.5rem; color: #e4ebe5; line-height: 1.7; }
+  .cta-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: .75rem; }
+  .cta-actions :global(.btn--pop) { color: var(--ink); }
+  .cta-actions :global(.btn--ghost) { border: 1.5px solid rgba(255, 255, 255, .72); background: rgba(255, 255, 255, .1); color: var(--white); }
+  .cta-actions :global(.btn--ghost:hover) { border-color: var(--pop-lime); background: var(--pop-lime); color: var(--ink); }
+  .cta-checks { display: flex; justify-content: center; flex-wrap: wrap; gap: .6rem 1.5rem; margin: 1.6rem 0 0; padding: 0; list-style: none; color: #e4ebe5; font-size: .82rem; }
+  .cta-checks li { display: inline-flex; align-items: center; gap: .45rem; }
+  .cta-checks li span { display: grid; place-items: center; width: 1.2rem; height: 1.2rem; border-radius: 50%; background: var(--pop-lime); color: var(--primary); font-size: .75rem; font-weight: 800; }
+  @media (max-width: 42rem) { .cta-final-wrap { padding-block: var(--space-lg); } .cta-actions { align-items: stretch; flex-direction: column; } .cta-actions :global(.btn) { width: 100%; } .cta-checks { align-items: center; flex-direction: column; gap: .65rem; } }
+  @media (prefers-reduced-motion: reduce) { .cta-actions :global(.btn) { transition: none; } }
+</style>

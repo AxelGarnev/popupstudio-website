@@ -1,205 +1,128 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Pill from "../components/Pill.astro";
-import CtaBand from "../components/CtaBand.astro";
+import Button from "../components/Button.astro";
 
-const title = "Manifeste — un web plus sobre, accessible et créatif | Popup Studio";
-const description = "Découvre les choix de Popup Studio pour créer un web plus sobre, accessible et singulier, avec une méthode expliquée sans poudre aux yeux.";
+const title = "Manifeste — fabriquer un web plus sobre | Popup Studio";
+const description = "Les choix de Popup Studio pour un web plus sobre, accessible et singulier : manifeste, méthode transparente et simulateur pédagogique.";
 
-// Repères pédagogiques fictifs : à remplacer par des mesures documentées avant publication.
+// Chiffres de démonstration provisoires : les conserver visibles pour fidélité à la maquette, sans les présenter comme des résultats audités.
 const stats = [
-  { value: "0,24 g", label: "CO₂ par page vue", note: "Exemple de calcul fictif, à mesurer sur le site concerné.", tone: "lime" },
-  { value: "France", label: "Hébergement à étudier", note: "On vérifie le lieu et les informations disponibles avant de choisir.", tone: "sky" },
-  { value: "AA", label: "Accessibilité à tester", note: "Un objectif de travail, pas un certificat délivré à la louche.", tone: "violet" },
-  { value: "0", unit: "traceur", label: "Publicitaire ajouté par défaut", note: "Repère sur les choix du studio, à confirmer projet par projet.", tone: "orange" },
+  { value: "0,08 g", label: "CO₂ par page vue", note: "Valeur provisoire de maquette, à mesurer et sourcer." },
+  { value: "100%", label: "Hébergé en France", note: "Indication de design à vérifier projet par projet." },
+  { value: "AAA", label: "Accessibilité", note: "Objectif fictif, aucun audit ou niveau de conformité établi." },
+  { value: "0", label: "Mouchard ajouté", note: "Repère de maquette, à confirmer selon les outils actifs." },
 ];
-
 const commandments = [
-  { number: "01", title: "Garder les octets à leur place", text: "Des images à la bonne taille, des formats adaptés et des SVG simples quand ils font le travail. Une vidéo qui démarre toute seule peut d’abord apprendre à demander la permission.", proof: "Images adaptées au besoin" },
-  { number: "02", title: "Écrire juste le JavaScript utile", text: "Le HTML fait déjà beaucoup. On ajoute du script quand il rend un vrai service, pas pour faire sautiller un bouton qui allait très bien immobile.", proof: "Aucun script décoratif" },
-  { number: "03", title: "Choisir l’hébergement avec les faits", text: "On regarde le lieu, les informations disponibles sur l’énergie et les besoins du projet. « Vert » n’est pas une preuve : si une donnée manque, on le dit.", proof: "Choix documenté, si les données existent" },
-  { number: "04", title: "Laisser les mouchards dehors", text: "Pas de traceur publicitaire ajouté par défaut. Si un outil de mesure est utile, on vérifie ce qu’il collecte et on choisit une option adaptée.", proof: "Pas de suivi publicitaire par défaut" },
-  { number: "05", title: "Rendre le site praticable", text: "Titres bien rangés, contrastes vérifiés, clavier pris au sérieux et contenus compréhensibles. L’accessibilité se teste ; elle ne se décrète pas à grand renfort de confettis.", proof: "Tests à prévoir sur chaque projet" },
-  { number: "06", title: "Te laisser les clés", text: "Le site doit rester compréhensible après livraison. On t’explique les choix, on documente ce qui compte et on évite les dépendances qui retiennent en otage.", proof: "Prise en main expliquée" },
-];
-
-const comparison = [
-  { kind: "Exemple conventionnel", weight: "3,5 Mo", carbon: "4,61 g CO₂/page", annual: "230,5 kg CO₂e/an", tone: "standard" },
-  { kind: "Exemple plus léger", weight: "184 Ko", carbon: "0,24 g CO₂/page", annual: "12 kg CO₂e/an", tone: "light" },
+  { n:"01", title:"La règle du gramme près", text:"Des images dimensionnées au besoin, des formats adaptés et du SVG quand il fait le travail. Une vidéo en boucle peut attendre qu’on lui demande la parole.", tag:"Poids maîtrisé, sans promesse chiffrée" },
+  { n:"02", title:"Zéro graisse JavaScript superflue", text:"Le HTML sait déjà faire beaucoup. On ajoute du script quand il rend un vrai service, pas pour animer chaque virgule.", tag:"Du code utile, documenté" },
+  { n:"03", title:"Hébergement choisi avec les faits", text:"On regarde la localisation, les besoins du projet et les données disponibles. « Vert » n’est pas une preuve : si une info manque, on le dit.", tag:"Hébergeur à vérifier au cas par cas" },
+  { n:"04", title:"Pas de mouchards, pas d’otages", text:"Pas de traceur publicitaire ajouté par défaut. Si une mesure est utile, on vérifie ce qu’elle collecte et on choisit une option adaptée.", tag:"Outils tiers à examiner" },
+  { n:"05", title:"Accessibilité & durabilité", text:"Contrastes, structure des titres, clavier et contenus compréhensibles : l’accessibilité se teste avec des personnes et des outils, elle ne s’improvise pas.", tag:"Tests à mener, niveau non certifié" },
+  { n:"06", title:"Autonomie & liberté totale", text:"Tu gardes la main sur ton site et tes contenus. On explique les choix et on évite les dépendances qui te retiennent en otage.", tag:"La prise en main fait partie du projet" },
 ];
 ---
 
 <BaseLayout title={title} description={description}>
-    <section class="hero container manifesto-hero" aria-labelledby="manifesto-title">
-      <div class="manifesto-intro">
-        <Pill tone="lime">Un manifeste sans greenwashing</Pill>
-        <h1 id="manifesto-title">Un web qui a du caractère. Pas besoin de faire fondre la banquise.</h1>
-        <p class="hero__lead">Un site peut être beau, utile et singulier sans embarquer la moitié d’un data-center dans chaque page. Ici, on préfère le code bien choisi aux kilos de scripts qui font surtout du bruit.</p>
-        <div class="manifesto-pills">
-          <Pill tone="sky">Des choix expliqués, pas de poudre aux yeux</Pill>
-          <Pill tone="neutral">Sobre, accessible, à ton image</Pill>
+  <section class="container hero manifesto-hero" aria-labelledby="manifesto-title">
+    <div class="hero-copy">
+      <Pill tone="lime">Zéro poudre aux yeux · un bilan transparent</Pill>
+      <h1 id="manifesto-title">Notre Manifeste : fabriquer un web qui ne fait pas <span>fondre la banquise</span>.</h1>
+      <p class="hero-lead">Un site n’a pas besoin d’empiler les scripts, les fenêtres intrusives et les vidéos en boucle pour être beau, mémorable et utile. On choisit les bons outils, on explique nos arbitrages et on garde le superflu dehors.</p>
+      <div class="quick-pills"><Pill tone="sky">Poids médian livré : &lt; 220 Ko*</Pill><Pill tone="neutral">Des choix vérifiables, projet par projet</Pill></div>
+    </div>
+    <div class="stats-grid" aria-label="Repères provisoires de la maquette">
+      {stats.map((s) => <article class="stat-card"><span class="accent" aria-hidden="true"></span><p class="stat-value">{s.value}</p><h2>{s.label}</h2><p class="stat-note">{s.note}</p></article>)}
+    </div>
+    <p class="provisional"><strong>Chiffres provisoires, à ajuster.</strong> Les valeurs, scores, pourcentages, poids et allégations de cette maquette sont fictifs ou non vérifiés ; ils ne constituent ni audit ni certification.</p>
+    <!-- Tous les chiffres, scores et affirmations de performance/environnement affichés dans cette page sont provisoires et doivent être vérifiés avant publication comme résultats. -->
+  </section>
+
+  <section class="band commandments" aria-labelledby="commandments-title">
+    <div class="container section">
+      <div class="section-head"><div><p class="eyebrow">Code de déontologie technique</p><h2 id="commandments-title">Les 6 Commandements de Popup Studio</h2></div><p class="section-lead">Pas de vœux pieux : des choix concrets, adaptés à ton projet et expliqués sans jargon inutile.</p></div>
+      <div class="commandment-grid">{commandments.map((c) => <article class="commandment-card"><div class="card-top"><span class="number">{c.n}</span><span class="command-icon" aria-hidden="true">{c.n === "01" ? "↘" : c.n === "02" ? "</>" : c.n === "03" ? "⌂" : c.n === "04" ? "◉" : c.n === "05" ? "＋" : "↗"}</span></div><h3>{c.title}</h3><p>{c.text}</p><div class="card-foot"><span aria-hidden="true">✓</span>{c.tag}</div></article>)}</div>
+    </div>
+  </section>
+
+  <section class="container section method" id="methode" aria-labelledby="method-title">
+    <div class="method-grid">
+      <div class="method-copy"><Pill tone="sky">Méthodologie ouverte</Pill><h2 id="method-title">Comment calcule-t-on ce bilan ? La méthode sans filtre</h2>
+        <p>Une estimation dépend de ce qu’on compte : les données transférées, le terminal qui affiche la page, le réseau et les hypothèses énergétiques. Pour un vrai bilan, il faut documenter les données, la méthode, le périmètre et la date.</p>
+        <p>Cette page ne prétend pas appliquer un calcul vérifié. Les repères chiffrés ci-contre sont une illustration provisoire, pas une mesure de Popup Studio.</p>
+        <aside class="jamy"><p class="jamy-title">La minute de Jamy</p><p>« Le cloud n’a rien de vaporeux. Une page voyage entre des machines, des réseaux et ton appareil. Tout ça consomme de l’énergie ; moins il y a de données à transférer, moins on expédie de superflu. C’est tout bête — et ça mérite quand même qu’on vérifie les calculs ! »</p><small>Jamy est ici un clin d’œil pédagogique, pas un intervenant ou une caution.</small></aside>
+      </div>
+      <div class="visual-column">
+        <div class="comparison"><div class="comparison-head"><div><p class="eyebrow">Simulation annuelle d’émissions</p><p>Exemple illustratif · 50 000 visites/an</p></div><span class="mini-badge">À vérifier</span></div>
+          <article class="sim-row standard"><div class="row-title"><h3>Un site conventionnel</h3><strong>230,5 kg CO₂/an</strong></div><p>4,61 g CO₂/page · 3,8 Mo · 87 requêtes tierces</p><div class="meter"><span style="width:100%"></span></div><small>Ordre de grandeur fictif, non attribuable à un site réel.</small></article>
+          <article class="sim-row lighter"><div class="row-title"><h3>Un site plus léger</h3><strong>4,5 kg CO₂/an</strong></div><p>0,09 g CO₂/page · 180 Ko · 6 requêtes locales</p><div class="meter"><span style="width:8%"></span></div><small>Comparaison de maquette ; hypothèses non validées.</small></article>
+          <div class="chart-title">Évolution comparative de l’empreinte cumulée</div>
+          <svg class="chart" viewBox="0 0 400 100" role="img" aria-label="Graphique schématique : deux courbes illustratives, données provisoires"><path class="gridline" d="M0 25H400M0 50H400M0 75H400"/><path d="M5 88 Q100 78 190 56 T395 14" fill="none" stroke="#711e00" stroke-width="3" stroke-dasharray="6 6"/><path d="M5 90 Q100 88 190 86 T395 82" fill="none" stroke="#4f6600" stroke-width="4"/><circle cx="395" cy="14" r="4" fill="#711e00"/><circle cx="395" cy="82" r="4" fill="#4f6600"/></svg>
+          <div class="chart-labels"><span>Mois 01</span><span>Mois 06</span><span>Mois 12</span></div>
+          <p class="micro-note">Courbes et chiffres de démonstration — aucune évolution mesurée.</p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="stats__grid manifesto-stats" aria-label="Repères indicatifs et non vérifiés">
-        {stats.map((stat) => (
-          <article class:list={["stat", `stat--${stat.tone}`]}>
-            <p class="stat__value">{stat.value}{stat.unit && <span class="stat__unit"> {stat.unit}</span>}</p>
-            <h2 class="stat__label">{stat.label}</h2>
-            <p class="stat__text">{stat.note}</p>
-          </article>
-        ))}
-      </div>
-      <p class="manifesto-disclaimer">Repères fictifs ou indicatifs : ils ne décrivent pas un audit réalisé. Toute mesure publiée devra être datée, sourcée et vérifiable.</p>
-    </section>
+  <section class="container simulator-wrap" id="simulateur" aria-labelledby="sim-title">
+    <div class="simulator"><div class="sim-intro"><Pill tone="lime">À toi de jouer · estimation seulement</Pill><h2 id="sim-title">Teste l’empreinte carbone de ton propre projet</h2><p>Ajuste les paramètres et observe un ordre de grandeur pédagogique. Ce calcul simplifié n’est ni un bilan carbone ni un audit.</p></div>
+      <div class="sim-layout"><form class="sim-form" id="footprint-form">
+        <fieldset><legend><span>1</span> Trafic mensuel estimé</legend><label class="range-label" for="visits-range"><output id="visits-output" for="visits-range">5 000</output> pages vues / mois</label><input class="traffic-range" id="visits-range" name="traffic" type="range" min="1000" max="100000" step="500" value="5000" /><div class="range-presets"><button type="button" data-visits="1000">1 000 · démarrage</button><button type="button" data-visits="5000">5 000 · TPE</button><button type="button" data-visits="20000">20 000 · commerce</button><button type="button" data-visits="50000">50 000+</button></div></fieldset>
+        <fieldset><legend><span>2</span> Poids estimé d’une page</legend><div class="choice-stack"><label><input type="radio" name="weight" value="3.5" /><span><b>Lourd · 3,5 Mo</b><small>Exemple de site chargé</small></span></label><label><input type="radio" name="weight" value="1.8" checked /><span><b>Moyen · 1,8 Mo</b><small>Exemple intermédiaire</small></span></label><label><input type="radio" name="weight" value="2.4" /><span><b>Je ne sais pas · 2,4 Mo</b><small>Valeur par défaut de la maquette</small></span></label></div></fieldset>
+        <fieldset><legend><span>3</span> Hébergement actuel</legend><div class="choice-stack"><label><input type="radio" name="hosting" value="440" checked /><span><b>Standard · hypothèse monde</b><small>Facteur fictif : 440 g CO₂/kWh</small></span></label><label><input type="radio" name="hosting" value="80" /><span><b>France · hypothèse bas-carbone</b><small>Facteur fictif : 80 g CO₂/kWh, à documenter</small></span></label></div></fieldset>
+      </form>
+      <aside class="result-card" aria-live="polite"><div class="result-head"><span>Estimation illustrative</span><Pill tone="lime">Modèle simplifié</Pill></div><div class="result-numbers"><div><small>Paramètres actuels</small><strong id="current-result">—</strong><span>kg CO₂ / an*</span></div><div class="popup-result"><small>Avec page à 180 Ko*</small><strong id="lighter-result">—</strong><span>kg CO₂ / an*</span></div></div><div class="result-delta"><span>Écart calculé dans cette simulation</span><strong id="difference-result">—</strong></div><p class="result-note">* Estimation purement pédagogique : formule simplifiée basée sur le trafic, le poids de page et le facteur d’hébergement sélectionnés. Le résultat ne prédit pas l’impact réel et ne doit pas être utilisé comme déclaration environnementale.</p><p class="reality">Traduction dans la vraie vie : une piste de réflexion, pas un compteur certifié.</p></aside></div>
+    </div>
+  </section>
 
-    <section class="band manifesto-commandments" id="commandements" aria-labelledby="commandments-title">
-      <div class="container">
-        <div class="manifesto-section-head">
-          <div>
-            <p class="eyebrow">Notre façon de faire</p>
-            <h2 id="commandments-title">Les 6 commandements du studio</h2>
-          </div>
-          <p class="section__lead">Pas gravés dans le marbre — le marbre est lourd — mais assez solides pour guider chaque projet.</p>
-        </div>
-        <div class="commandment-grid">
-          {commandments.map((item) => (
-            <article class="commandment-card">
-              <div class="commandment-top">
-                <span class="commandment-number">{item.number}</span>
-                <svg class="commandment-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  {item.number === "01" && <><path d="M12 3v18M5 7h14M7 7l-4 8h8L7 7Zm10 0-4 8h8l-4-8Z" /><path d="M8 21h8" /></>}
-                  {item.number === "02" && <><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14" /></>}
-                  {item.number === "03" && <><path d="M3 10.5 12 4l9 6.5V20H3v-9.5Z" /><path d="M8 20v-6h8v6M7 10h.01M12 10h.01M17 10h.01" /></>}
-                  {item.number === "04" && <><path d="m3 3 18 18M10.6 10.6a2 2 0 0 0 2.8 2.8" /><path d="M9.9 5.2A10.7 10.7 0 0 1 12 5c5 0 8.5 5 8.5 7s-1.1 2.9-2.5 4M6.2 6.2C3.9 7.7 2.5 10.4 2.5 12c0 2 3.5 7 9.5 7a9.4 9.4 0 0 0 3.2-.5" /></>}
-                  {item.number === "05" && <><circle cx="12" cy="12" r="9" /><path d="M12 8v8M8 12h8M5.6 5.6l12.8 12.8" /></>}
-                  {item.number === "06" && <><circle cx="8" cy="8" r="4" /><path d="M2 21v-2a6 6 0 0 1 12 0v2M16 11l2 2 4-4" /></>}
-                </svg>
-              </div>
-              <h3>{item.title}</h3>
-              <p class="commandment-copy">{item.text}</p>
-              <div class="commandment-proof">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6" /></svg>
-                <span>{item.proof}</span>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
+  <section class="band proof-band" aria-labelledby="proof-title"><div class="container section proof-section"><div class="proof-copy"><Pill tone="sky">Nos repères de conception</Pill><h2 id="proof-title">La preuve par les faits</h2><p>Un chiffre seul ne prouve rien. Voici les indicateurs de la maquette, affichés pour leur rôle visuel et à remplacer par des mesures sourcées avant toute publication comme résultats.</p><p class="provisional compact"><strong>Chiffres provisoires, à ajuster.</strong> Aucun score, poids ou résultat ci-dessous n’est vérifié.</p><div class="proof-stats"><article><strong>94<span>/100</span></strong><small>Score d’exemple</small></article><article><strong>99<span>/100</span></strong><small>Score d’exemple</small></article><article><strong>184 Ko</strong><small>Poids d’exemple</small></article></div></div><div class="terminal" aria-label="Exemple fictif de sortie de terminal"><div class="terminal-bar"><i></i><i></i><i></i><span>rapport-de-demo.txt</span></div><pre><code><span>$</span> audit-popup --page accueil
 
-    <section class="container section manifesto-method" aria-labelledby="method-title">
-      <div class="method-grid">
-        <div class="method-copy">
-          <p class="eyebrow">Les chiffres, sans la boule de cristal</p>
-          <h2 id="method-title">Comparer, oui. Faire croire à une mesure réelle, non.</h2>
-          <p>Une estimation dépend de ce qu’on compte : les données transférées, le nombre de pages vues et les hypothèses retenues pour le réseau et l’hébergement. On explique le périmètre au lieu de sortir un chiffre magique du chapeau.</p>
-          <aside class="jamy-note">
-            <p class="jamy-title">La minute de Jamy</p>
-            <p>« Le cloud n’a rien de vaporeux. Une page circule entre des machines, des réseaux et ton appareil. Tout ça consomme de l’énergie ; moins il y a de données à transférer, plus on évite le superflu. C’est tout bête, et ça mérite quand même qu’on vérifie les calculs ! »</p>
-          </aside>
-          <p class="method-caveat">La comparaison ci-contre est un exemple pédagogique fictif, pas un audit de Popup Studio ni une promesse de réduction. Pour publier un bilan réel, il faut préciser méthode, source et date.</p>
-        </div>
+[info] Mesure illustrative
+[info] Transfert : 184 Ko
+[info] Score : 94 / 100
+[info] État : chiffres provisoires
 
-        <div class="comparison-card" aria-label="Comparaison fictive à titre pédagogique">
-          <p class="comparison-kicker">Exemple de calcul · 50 000 pages vues par an</p>
-          <h3>À trafic égal, pour donner un ordre d’idée</h3>
-          {comparison.map((item) => (
-            <article class:list={["comparison-row", item.tone]}>
-              <div class="comparison-label"><span class="comparison-dot" aria-hidden="true"></span><h4>{item.kind}</h4></div>
-              <dl>
-                <div><dt>Poids de page</dt><dd>{item.weight}</dd></div>
-                <div><dt>Émission estimée</dt><dd>{item.carbon}</dd></div>
-                <div><dt>Projection annuelle</dt><dd>{item.annual}</dd></div>
-              </dl>
-              <div class="comparison-meter" aria-hidden="true"><span></span></div>
-            </article>
-          ))}
-          <p class="comparison-foot">Valeurs fictives, non mesurées. La projection illustrative utilise les mêmes hypothèses de calcul pour les deux exemples.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="container manifesto-cta-wrap">
-      <CtaBand
-        title="Envie d’un site propre, rapide et singulier ?"
-        text="On peut parler de ton projet autour d’un café à Nantes ou en visio. Vingt minutes, des questions concrètes, zéro discours d’agence en costume."
-        ctaLabel="Parlons de ton projet"
-        ctaHref="/contact"
-      />
-    </section>
+<span>›</span> Pas de certification générée.</code></pre></div></div></section>
 </BaseLayout>
 
+<script>
+  const form = document.querySelector<HTMLFormElement>("#footprint-form");
+  const current = document.querySelector<HTMLElement>("#current-result");
+  const lighter = document.querySelector<HTMLElement>("#lighter-result");
+  const difference = document.querySelector<HTMLElement>("#difference-result");
+  const format = (value: number) => value.toLocaleString("fr-FR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  function updateEstimate() {
+    if (!form || !current || !lighter || !difference) return;
+    const visits = Number(form.querySelector<HTMLInputElement>('input[name="traffic"]')?.value || 5000) * 12;
+    const visitsOutput = document.querySelector<HTMLOutputElement>("#visits-output");
+    if (visitsOutput) visitsOutput.value = Number(visits / 12).toLocaleString("fr-FR");
+    const weightMb = Number(form.querySelector<HTMLInputElement>('input[name="weight"]:checked')?.value || 1.8);
+    const hostingFactor = Number(form.querySelector<HTMLInputElement>('input[name="hosting"]:checked')?.value || 440);
+    // Estimateur illustratif arbitraire, non validé comme méthodologie carbone.
+    const factor = hostingFactor / 440;
+    const oldEstimate = visits * weightMb * 0.00003 * factor;
+    const newEstimate = visits * 0.18 * 0.00003 * factor;
+    current.textContent = format(oldEstimate);
+    lighter.textContent = format(newEstimate);
+    difference.textContent = `${format(Math.max(0, oldEstimate - newEstimate))} kg CO₂/an*`;
+  }
+  form?.addEventListener("input", updateEstimate);
+  form?.addEventListener("change", updateEstimate);
+  document.querySelectorAll<HTMLButtonElement>("[data-visits]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const slider = form?.querySelector<HTMLInputElement>('input[name="traffic"]');
+      if (slider) slider.value = button.dataset.visits || "5000";
+      updateEstimate();
+    });
+  });
+  updateEstimate();
+</script>
+
 <style>
-  .manifesto-hero { padding-block: 4rem var(--space-xl); }
-  .manifesto-intro { max-width: 56rem; }
-  .manifesto-intro h1 { max-width: 18ch; margin: var(--space-md) 0; font-size: 56px; line-height: 1.12; font-weight: 800; letter-spacing: -0.03em; }
-  .hero__lead { max-width: 56ch; font-size: 18px; line-height: 28px; color: var(--on-surface-variant); }
-  .manifesto-pills { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-lg); }
-  .manifesto-stats { margin-top: var(--space-xl); }
-  .stat--lime { --tone: var(--pop-lime); }
-  .stat--sky { --tone: var(--sky-tint); }
-  .stat--violet { --tone: var(--deep-violet); }
-  .stat--orange { --tone: var(--persimmon); }
-  .stat { min-height: 13rem; padding: var(--space-lg); color: var(--ink); background: var(--white); border: 1.5px solid var(--border-passive); border-top: 4px solid var(--tone); border-radius: var(--radius-lg); }
-  .stat__value { margin-bottom: var(--space-sm); color: var(--primary); font-family: var(--font-display); font-size: 36px; line-height: 1.15; font-weight: 800; letter-spacing: -0.03em; }
-  .stat__unit { font-family: var(--font-body); font-size: 14px; font-weight: 700; letter-spacing: 0; }
-  .stat__label { margin-bottom: var(--space-sm); font-size: 16px; line-height: 24px; font-weight: 700; }
-  .stat__text { color: var(--on-surface-variant); font-size: 13px; line-height: 20px; }
-  .manifesto-disclaimer { margin-top: var(--space-md); color: var(--on-surface-variant); font-size: 12px; line-height: 18px; }
-
-  .manifesto-commandments { padding-block: var(--space-xl); }
-  .manifesto-section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--gutter); margin-bottom: var(--space-xl); }
-  .manifesto-section-head h2, .method-copy h2 { max-width: 22ch; font-size: 40px; line-height: 48px; font-weight: 700; letter-spacing: -0.02em; }
-  .manifesto-section-head .section__lead { max-width: 40ch; margin: 0; }
-  .commandment-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); }
-  .commandment-card { display: flex; min-height: 20rem; flex-direction: column; padding: var(--space-lg); background: var(--white); border: 1.5px solid var(--border-passive); border-radius: var(--radius-lg); }
-  .commandment-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-lg); }
-  .commandment-number { color: var(--deep-violet); font-family: var(--font-display); font-size: 28px; line-height: 36px; font-weight: 800; }
-  .commandment-icon { width: 42px; height: 42px; padding: 9px; color: var(--primary); background: var(--pop-lime); border-radius: var(--radius-full); }
-  .commandment-card h3 { margin-bottom: var(--space-sm); color: var(--primary); font-size: 20px; line-height: 28px; }
-  .commandment-copy { color: var(--on-surface-variant); font-size: 14px; line-height: 22px; }
-  .commandment-proof { display: flex; align-items: flex-start; gap: var(--space-sm); margin: auto calc(-1 * var(--space-lg)) calc(-1 * var(--space-lg)); padding: var(--space-md) var(--space-lg); background: var(--surface-low); color: var(--primary); font-size: 12px; line-height: 18px; font-weight: 700; }
-  .commandment-proof svg { width: 17px; height: 17px; flex: 0 0 17px; }
-
-  .manifesto-method { padding-block: var(--space-xl); }
-  .method-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: var(--space-xl); align-items: start; }
-  .method-copy > p:not(.eyebrow) { margin-top: var(--space-md); color: var(--on-surface-variant); }
-  .jamy-note { margin-top: var(--space-lg); padding: var(--space-lg); background: var(--surface-container); border-radius: var(--radius-lg); }
-  .jamy-title { margin-bottom: var(--space-sm); color: var(--primary); font-weight: 700; }
-  .jamy-note p:last-child { color: var(--on-surface-variant); font-size: 14px; line-height: 22px; font-style: italic; }
-  .method-copy .method-caveat { font-size: 12px; line-height: 18px; }
-  .comparison-card { padding: var(--space-lg); background: var(--white); border: 1.5px solid var(--border-passive); border-radius: var(--radius-lg); }
-  .comparison-kicker { margin-bottom: var(--space-sm); color: var(--on-surface-variant); font-size: 11px; line-height: 16px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-  .comparison-card > h3 { margin-bottom: var(--space-lg); color: var(--primary); font-size: 20px; line-height: 28px; }
-  .comparison-row { margin-top: var(--space-md); padding: var(--space-md); border-radius: var(--radius-md); }
-  .comparison-row.standard { background: var(--surface-low); }
-  .comparison-row.light { background: rgba(200, 230, 118, 0.24); }
-  .comparison-label { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md); }
-  .comparison-label h4 { color: var(--primary); font-family: var(--font-body); font-size: 15px; line-height: 20px; font-weight: 700; }
-  .comparison-dot { width: 10px; height: 10px; flex: 0 0 10px; background: var(--persimmon); border-radius: var(--radius-full); }
-  .comparison-row.light .comparison-dot { background: var(--primary-container); }
-  .comparison-row dl { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-sm); margin: 0; }
-  .comparison-row dt { color: var(--on-surface-variant); font-size: 11px; line-height: 16px; }
-  .comparison-row dd { margin: var(--space-xs) 0 0; color: var(--ink); font-size: 13px; line-height: 19px; font-weight: 700; }
-  .comparison-meter { height: 8px; margin-top: var(--space-md); overflow: hidden; background: var(--surface-high); border-radius: var(--radius-full); }
-  .comparison-meter span { display: block; width: 100%; height: 100%; background: var(--persimmon); border-radius: inherit; }
-  .comparison-row.light .comparison-meter span { width: 5.2%; min-width: 8px; background: var(--primary-container); }
-  .comparison-foot { margin-top: var(--space-md); color: var(--on-surface-variant); font-size: 11px; line-height: 16px; }
-  .manifesto-cta-wrap { padding-bottom: var(--space-xl); }
-
-  @media (max-width: 64rem) {
-    .manifesto-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .commandment-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .method-grid { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 48rem) {
-    .manifesto-hero { padding-block: var(--space-xl); }
-    .manifesto-intro h1 { font-size: 38px; line-height: 44px; letter-spacing: -0.02em; }
-    .manifesto-section-head { align-items: flex-start; flex-direction: column; margin-bottom: var(--space-lg); }
-    .manifesto-section-head h2, .method-copy h2 { font-size: 28px; line-height: 36px; }
-    .manifesto-stats, .commandment-grid { grid-template-columns: 1fr; }
-    .stat { min-height: auto; }
-    .comparison-row dl { grid-template-columns: 1fr; gap: var(--space-sm); }
-  }
+  :global(:root){--m-ink:#141514;--m-green:#012d1d;--m-lime:#cdec7b;--m-accent:#f45010;--m-violet:#3a1b79;--m-sky:#acd6f6;--m-paper:#fbf9f6;--m-muted:#414844;--m-border:rgba(20,21,20,.14)}
+  .manifesto-hero{padding-block:3rem 4rem}.hero-copy{max-width:950px}.hero-copy h1{max-width:18ch;margin:1.25rem 0;color:var(--m-green);font-size:clamp(2.6rem,6vw,4.6rem);line-height:1.08;letter-spacing:-.045em;font-weight:800}.hero-copy h1 span{text-decoration:underline wavy var(--m-lime);text-decoration-thickness:6px;text-underline-offset:8px}.hero-lead{max-width:70ch;color:var(--m-muted);font-size:18px;line-height:1.7}.quick-pills{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.5rem}.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.25rem;margin-top:3.5rem}.stat-card{display:flex;min-height:240px;flex-direction:column;background:#fff;border:1px solid var(--m-border);border-radius:1rem;padding:1.5rem}.accent{display:block;width:3rem;height:6px;margin-bottom:1.4rem;border-radius:9px;background:var(--m-lime)}.stat-card:nth-child(2) .accent{background:var(--m-sky)}.stat-card:nth-child(3) .accent{background:#ffdbd0}.stat-card:nth-child(4) .accent{background:#b5d264}.stat-value{margin:.1rem 0;color:var(--m-green);font-size:clamp(2rem,3.3vw,2.75rem);font-weight:800;letter-spacing:-.04em}.stat-card h2{margin:.2rem 0 .5rem;color:var(--m-green);font-size:17px;line-height:1.35}.stat-note{margin-top:auto;color:var(--m-muted);font-size:13px;line-height:1.55}.provisional{margin:1.5rem 0 0;padding:1rem 1.2rem;background:#fff0e8;border-left:4px solid var(--m-accent);border-radius:.35rem;color:#4c1100;font-size:14px;line-height:1.6}.band{background:#f5f3f0}.section{padding-block:5rem}.section-head{display:flex;align-items:end;justify-content:space-between;gap:2rem;margin-bottom:2.5rem}.eyebrow{margin:0 0 .65rem;color:#536b00;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.section-head h2,.method h2,.proof-copy h2{max-width:22ch;margin:0;color:var(--m-green);font-size:clamp(2rem,4vw,2.65rem);line-height:1.14;letter-spacing:-.035em}.section-lead{max-width:42ch;margin:0;color:var(--m-muted);line-height:1.65}.commandment-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4rem}.commandment-card{display:flex;min-height:330px;flex-direction:column;padding:1.8rem 1.75rem 1.25rem;background:white;border:1px solid var(--m-border);border-radius:1rem;transition:transform .18s,border-color .18s}.commandment-card:hover{transform:translateY(-3px);border-color:#758b5a}.card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.6rem}.number{color:#4f6600;font-size:2rem;font-weight:800;letter-spacing:-.04em}.command-icon{display:grid;place-items:center;width:2.8rem;height:2.8rem;border-radius:50%;background:var(--m-lime);color:var(--m-green);font-size:17px;font-weight:800}.commandment-card h3{margin:0 0 .7rem;color:var(--m-green);font-size:20px;line-height:1.3}.commandment-card>p{margin:0;color:var(--m-muted);font-size:14px;line-height:1.7}.card-foot{display:flex;align-items:center;gap:.55rem;margin:auto -1.75rem -1.25rem;padding:.9rem 1.75rem;background:#f5f3f0;border-radius:0 0 1rem 1rem;color:var(--m-ink);font-size:12px;font-weight:700}.card-foot span{color:#536b00;font-weight:900}.method{padding-block:5rem}.method-grid{display:grid;grid-template-columns:minmax(280px,.85fr) minmax(0,1.15fr);gap:3rem;align-items:start}.method-copy h2{margin:1rem 0}.method-copy>p{color:var(--m-muted);line-height:1.75}.jamy{margin-top:1.5rem;padding:1.5rem;background:#efeeeb;border-radius:1rem;border-left:4px solid var(--m-lime)}.jamy-title{margin:0 0 .65rem;color:var(--m-green);font-size:17px;font-weight:800}.jamy p:nth-child(2){margin:0;color:var(--m-muted);font-size:14px;line-height:1.7;font-style:italic}.jamy small{display:block;margin-top:.9rem;color:#536b00;font-size:11px;font-weight:700}.comparison{padding:1.75rem;background:#fff;border:1px solid var(--m-border);border-radius:1.25rem}.comparison-head{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.4rem}.comparison-head .eyebrow{margin-bottom:.2rem}.comparison-head p:last-child{margin:0;color:var(--m-muted);font-size:13px}.mini-badge{padding:.35rem .65rem;border-radius:99px;background:#efeeeb;color:var(--m-muted);font-size:11px;font-weight:700}.sim-row{margin:1rem 0;padding:1.25rem;border-radius:.85rem}.sim-row.standard{background:#f5f3f0}.sim-row.lighter{background:rgba(205,236,123,.25)}.row-title{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}.row-title h3{margin:0;color:#4c1100;font-size:16px}.lighter .row-title h3,.lighter .row-title strong{color:var(--m-green)}.row-title strong{color:#711e00;font-size:17px}.sim-row p{margin:.5rem 0;color:var(--m-muted);font-size:12px}.meter{height:12px;margin:.9rem 0 .5rem;overflow:hidden;border-radius:99px;background:#e4e2df}.meter span{display:block;height:100%;border-radius:inherit;background:#711e00}.lighter .meter span{background:#4f6600}.sim-row small{color:var(--m-muted);font-size:11px}.chart-title{margin-top:1.5rem;color:var(--m-muted);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.chart{display:block;width:100%;height:115px;margin-top:.8rem}.gridline{fill:none;stroke:#e4e2df;stroke-width:1}.chart-labels{display:flex;justify-content:space-between;color:var(--m-muted);font-size:11px}.micro-note{margin:.8rem 0 0;color:var(--m-muted);font-size:11px}.simulator-wrap{padding-block:1rem 5rem}.simulator{padding:clamp(1.25rem,4vw,3rem);background:white;border:1px solid var(--m-border);border-radius:1.5rem}.sim-intro{max-width:760px;margin-bottom:2rem}.sim-intro h2{margin:1rem 0 .65rem;color:var(--m-green);font-size:clamp(2rem,4vw,2.6rem);line-height:1.15;letter-spacing:-.03em}.sim-intro p{color:var(--m-muted);line-height:1.65}.sim-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);gap:1.5rem}.sim-form fieldset{margin:0 0 1.4rem;padding:0;border:0}.sim-form legend{display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem;color:var(--m-ink);font-size:15px;font-weight:800}.sim-form legend span{display:grid;place-items:center;width:1.8rem;height:1.8rem;border-radius:50%;background:#efeeeb;color:var(--m-green)}.range-label{display:flex;align-items:baseline;gap:.4rem;margin-bottom:.4rem;color:var(--m-muted);font-size:13px}.range-label output{color:var(--m-green);font-size:20px;font-weight:800}.traffic-range{width:100%;accent-color:#4f6600}.range-presets{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}.range-presets button{padding:.35rem .55rem;border:1px solid var(--m-border);border-radius:999px;background:white;color:var(--m-muted);font-size:10px}.range-presets button:hover{background:var(--m-lime);color:var(--m-green)}.choice-stack label{position:relative;display:flex;cursor:pointer}.choice-stack input{position:absolute;opacity:0}.choice-stack small{display:block;margin-top:.2rem;color:var(--m-muted);font-size:10px;font-weight:500}.choice-stack input:checked+span{border-color:#4f6600;background:rgba(205,236,123,.2);box-shadow:inset 0 0 0 1px #4f6600}.choice-stack input:focus-visible+span{outline:3px solid #012d1d;outline-offset:2px}.choice-stack{display:grid;gap:.5rem}.choice-stack label span{width:100%;padding:.8rem .9rem;border:1.5px solid var(--m-border);border-radius:.65rem;color:var(--m-ink);font-size:13px}.choice-stack b{font-size:13px}.result-card{display:flex;flex-direction:column;padding:1.4rem;background:#f5f3f0;border:1px solid var(--m-border);border-radius:1rem}.result-head{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding-bottom:.9rem;border-bottom:1px solid var(--m-border);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.result-head .pill{white-space:nowrap}.result-numbers{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-top:1.2rem}.result-numbers>div{min-height:130px;padding:1rem;background:white;border-radius:.75rem}.result-numbers small,.result-numbers span{display:block;color:var(--m-muted);font-size:11px}.result-numbers strong{display:block;margin:.9rem 0 .15rem;color:#711e00;font-size:28px;letter-spacing:-.04em}.result-numbers .popup-result{background:var(--m-green)}.popup-result small,.popup-result span{color:#e4ebe5}.result-numbers .popup-result strong{color:var(--m-lime)}.result-delta{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-top:.8rem;padding:.85rem;background:#fff;border:1px solid #cdec7b;border-radius:.7rem;font-size:11px}.result-delta strong{color:var(--m-green)}.result-note{margin:1rem 0;color:var(--m-muted);font-size:11px;line-height:1.55}.reality{margin:auto 0 0;padding:.85rem;background:rgba(205,236,123,.35);border-radius:.65rem;color:var(--m-green);font-size:12px;font-weight:700;line-height:1.5}.proof-section{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3rem}.proof-copy h2{margin:1rem 0}.proof-copy>p:not(.provisional){color:var(--m-muted);line-height:1.7}.provisional.compact{font-size:12px}.proof-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin-top:1.25rem}.proof-stats article{padding:1rem .75rem;background:white;border:1px solid var(--m-border);border-radius:.8rem}.proof-stats strong{display:block;color:var(--m-green);font-size:clamp(1.4rem,2.5vw,2rem);letter-spacing:-.04em}.proof-stats strong span{font-size:.65em}.proof-stats small{color:var(--m-muted);font-size:10px}.terminal{overflow:hidden;border-radius:1rem;background:#141514;color:#e4e2df;box-shadow:4px 4px 0 #cdec7b}.terminal-bar{display:flex;align-items:center;gap:.4rem;padding:.85rem 1rem;background:#30312f}.terminal-bar i{width:9px;height:9px;border-radius:50%;background:#f45010}.terminal-bar i:nth-child(2){background:#cdec7b}.terminal-bar i:nth-child(3){background:#acd6f6}.terminal-bar span{margin-left:auto;color:#c1c8c2;font-size:11px}.terminal pre{overflow:auto;margin:0;padding:1.5rem;color:#e4e2df;font-size:clamp(11px,1.5vw,14px);line-height:1.8}.terminal code{font-family:ui-monospace,SFMono-Regular,monospace}.terminal code span{color:#cdec7b}.final-wrap{padding-block:4rem}.final-cta{padding:clamp(2rem,5vw,4.5rem);background:#012d1d;border-radius:1.25rem;color:#fff;text-align:center}.final-cta h2{max-width:23ch;margin:1.25rem auto .8rem;color:white;font-size:clamp(2rem,4vw,3rem);line-height:1.15;letter-spacing:-.035em}.final-cta>p{max-width:66ch;margin:0 auto 1.5rem;color:#e4ebe5;line-height:1.7}.final-cta :global(.btn){text-decoration:none}.final-cta :global(.btn--pop){color:var(--m-ink)}
+  @media(max-width:900px){.stats-grid{grid-template-columns:repeat(2,1fr)}.commandment-grid{grid-template-columns:repeat(2,1fr)}.method-grid{grid-template-columns:1fr}.sim-layout{grid-template-columns:1fr}.proof-section{grid-template-columns:1fr}}
+  @media(max-width:600px){.manifesto-hero{padding-block:2rem 3rem}.hero-copy h1{font-size:2.55rem}.stats-grid,.commandment-grid{grid-template-columns:1fr}.stat-card{min-height:190px}.section{padding-block:3rem}.section-head{display:block}.section-lead{margin-top:1rem}.commandment-card{min-height:290px}.row-title{align-items:flex-start;flex-direction:column;gap:.35rem}.comparison{padding:1rem}.traffic-options{grid-template-columns:repeat(2,1fr)}.result-numbers{grid-template-columns:1fr 1fr}.proof-stats{grid-template-columns:1fr 1fr}.proof-stats article:last-child{grid-column:span 2}.chart{height:90px}}
+  @media(prefers-reduced-motion:reduce){.commandment-card{transition:none}.commandment-card:hover{transform:none}}
 </style>

@@ -1,4 +1,6 @@
 ---
+import Button from "./Button.astro";
+
 const links = [
   { href: "/", label: "Accueil" },
   { href: "/offres-tarifs", label: "Offres & Tarifs" },
@@ -49,13 +51,13 @@ const isActive = (href: string) =>
           </li>
         ))}
       </ul>
-      <a href="/contact" class="btn-pop">
+      <Button href="/contact" variant="pop">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
           <path d="M14 3v6h6M9 13h6M9 17h6" />
         </svg>
-        Demander un devis
-      </a>
+        Demander un devis <span aria-hidden="true">🚀</span>
+      </Button>
     </nav>
   </div>
 </header>
@@ -132,7 +134,7 @@ const isActive = (href: string) =>
     display: flex;
     gap: var(--space-xs);
     padding: var(--space-xs);
-    background: var(--surface-container);
+    background: var(--surface-low);
     border-radius: var(--radius-full);
   }
   .nav__link {
@@ -147,9 +149,8 @@ const isActive = (href: string) =>
   }
   .nav__link:hover { color: var(--ink); }
   .nav__link[aria-current="page"] {
-    background: var(--white);
+    background: var(--surface-high);
     color: var(--ink);
-    border: 1.5px solid var(--ink);
   }
 
   .btn-pop {
@@ -180,6 +181,8 @@ const isActive = (href: string) =>
     border-radius: var(--radius);
     color: var(--ink);
   }
+
+  
 
   @media (max-width: 64rem) {
     .eco-badge { display: none; }

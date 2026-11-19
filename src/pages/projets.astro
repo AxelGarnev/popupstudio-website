@@ -1,30 +1,46 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Pill from '../components/Pill.astro';
-import CtaBand from '../components/CtaBand.astro';
+import ProjectCard from "../components/ProjectCard.astro";
+import { projets } from "../data/projets";
 
-const practices = [
+
+const projetsVisibles = projets.filter((projet) => !projet.draft);
+
+const practices: { title: string; text: string; tone: string; icon: IconName }[] = [
   {
     title: "Images taillées au gramme près",
-    text: "Formats modernes (WebP/AVIF), redimensionnées selon l’écran, pour ne jamais envoyer plus que nécessaire.",
-    tone: "var(--pop-lime)",
+    text: "Formats modernes (WebP/AVIF), images redimensionnées selon l’écran : on n’envoie jamais plus que nécessaire. Les visuels restent éclatants, sans jamais ramer.",
+    tone: "lime",
+    icon: "image",
   },
   {
     title: "Peu de scripts tiers",
-    text: "Pas de méga-scripts de suivi ni de bibliothèques gourmandes. Du HTML sémantique et du CSS léger, pensés sur mesure.",
-    tone: "var(--sky-tint)",
+    text: "Pas de méga-scripts de suivi ni de dépendances tentaculaires. Du HTML sémantique et du CSS léger, taillés sur mesure pour une page qui charge vite.",
+    tone: "mint",
+    icon: "code",
   },
   {
     title: "Hébergement choisi avec soin",
-    text: "Je t’aide à choisir un hébergeur adapté et responsable, sans promesse magique : on regarde ensemble ce qui est transparent.",
-    tone: "var(--secondary-container)",
+    text: "Je t’aide à choisir un hébergeur responsable et transparent, plutôt que de te promettre la lune. On regarde ensemble ce qui est vérifiable.",
+    tone: "sky",
+    icon: "leaf",
   },
 ];
+
+const icons = {
+  image: '<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="1.6"/><path d="m21 15-5-5L5 21"/>',
+  code: '<path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m13.5 6-3 12"/>',
+  leaf: '<path d="M11 20A7 7 0 0 1 4 13c0-6 6-9 16-9 0 10-3 16-9 16Z"/><path d="M4 21c3-6 6-9 10-11"/>',
+};
+
+type IconName = keyof typeof icons;
 ---
 
 <BaseLayout
   title="Projets"
   description="Les réalisations de Popup Studio : un aperçu de sites légers, singuliers et pensés pour consommer peu. Découvre SABOOM."
+  ctaTitle="Envie de voir ton activité sur cette page avec un score A ?"
 >
   <section class="hero container">
     <Pill tone="lime">Nos bébés numériques</Pill>
@@ -35,50 +51,33 @@ const practices = [
   </section>
 
   <section class="container section">
-    <article class="project">
-      <!-- Remplace par ton visuel Stitch -->
-      <img src="/images/saboom.webp" alt="Aperçu du site SABOOM, boutique de bijoux artisanaux" width="720" height="480" loading="lazy" />
-      <div class="project__body">
-        <Pill tone="sky">E-commerce • Bijoux artisanaux</Pill>
-        <h2>SABOOM</h2>
-        <p>
-          Une identité pétillante pour des bijoux artisanaux en pâte polymère. Un site pensé pour que les couleurs et les formes restent au premier plan, sans que la page ne devienne un poids lourd.
-        </p>
-        <!-- FICTIF : chiffres provisoires -->
-        <dl class="project__metrics">
-          <div><dt>Poids total</dt><dd>240 Ko</dd></div>
-          <div><dt>Éco-index</dt><dd>A</dd></div>
-          <div><dt>Chargement</dt><dd>0,6 s</dd></div>
-        </dl>
-        <ul class="project__tags">
-          <li class="chip">#Ecommerce</li>
-          <li class="chip">#Artisanat</li>
-          <li class="chip">#Sobriété</li>
-        </ul>
-      </div>
-    </article>
+    <article class="projects-grid">
+  {projetsVisibles.map((projet) => (
+    <ProjectCard {...projet} />
+  ))}
+</article>
   </section>
 
-  <section class="band">
-    <div class="container">
-      <p class="eyebrow">Sous le capot</p>
-      <h2>L’éco-conception en pratique sur nos projets</h2>
-      <p class="section__lead">Pas de greenwashing : voici comment nos sites chargent en un clin d’œil sans ruiner ta facture énergétique ni celle de la planète.</p>
-      <div class="practices">
-        {practices.map((p) => (
-          <article class="practice" style={`--tone:${p.tone}`}>
-            <span class="practice__dot" aria-hidden="true"></span>
-            <h3>{p.title}</h3>
-            <p>{p.text}</p>
-          </article>
-        ))}
-      </div>
+<section class="capot container">
+  <div class="capot__inner">
+    <h2>L’éco-conception en pratique sur nos projets</h2>
+    <p class="capot__lead">
+      Pas de greenwashing : voici comment nos sites chargent en un clin d’œil sans ruiner ta facture énergétique ni celle de la planète.
+    </p>
+
+    <div class="practices">
+      {practices.map((p) => (
+        <article class="practice">
+          <span class={`practice__icon practice__icon--${p.tone}`} aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={icons[p.icon]} />
+          </span>
+          <h3>{p.title}</h3>
+          <p>{p.text}</p>
+        </article>
+      ))}
     </div>
-  </section>
-
-  <section class="container">
-    <CtaBand title="Tu veux que ton projet apparaisse ici ?" text="Fais briller ton savoir-faire sans plomber le web. Parlons de tes objectifs et de ton futur site sur mesure" ctaHref="/contact" ctaLabel="Lancer mon projet" />
-  </section>
+  </div>
+</section>
 </BaseLayout>
 
 <style>
@@ -128,4 +127,59 @@ const practices = [
     .hero h1 { font-size: 38px; line-height: 44px; letter-spacing: -0.02em; }
     h2, .project__body h2 { font-size: 28px; line-height: 36px; }
   }
+  .capot__inner {
+  background: var(--surface-low);
+  border-radius: 1.5rem;
+  padding: var(--space-xl);
+}
+
+.capot__lead {
+  max-width: 44ch;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.practices {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gutter);
+  margin-top: var(--space-xl);
+}
+
+.practice {
+  background: #fff;
+  border-radius: 1rem;
+  padding: var(--space-lg);
+}
+
+.practice h3 {
+  font-size: 20px;
+  line-height: 28px;
+  color: #1b4332;
+  margin: var(--space-md) 0 var(--space-sm);
+}
+
+.practice p {
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+}
+
+.practice__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 0.75rem;
+  color: #1b4332;
+}
+.practice__icon--lime { background: #c8e676; }
+.practice__icon--mint { background: #c1ecd4; }
+.practice__icon--sky  { background: #acd6f6; }
+
+@media (max-width: 64rem) {
+  .practices { grid-template-columns: 1fr; }
+  .capot__inner { padding: var(--space-lg); }
+}
 </style>

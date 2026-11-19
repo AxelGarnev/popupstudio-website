@@ -4,99 +4,8 @@ import OfferCard from "../components/OfferCard.astro";
 import Pill from '../components/Pill.astro';
 import Button from '../components/Button.astro';
 import ProjectCard from "../components/ProjectCard.astro";
-
-const offers = [
-  {
-    tag: "Formule express",
-    name: "Page Unique",
-    price: "850 €",
-    price_details: "TTC • Paiement en 2 ou 3 fois possible",
-    note: "Idéal pour lancer une activité ou concentrer toute son offre sur une seule page. Paiement en 3 fois sans frais possible.",
-    features: [
-      "Design sur mesure, sobre et responsive",
-      "Une page sculptée avec soin",
-      "Formulaire de contact sans cookies",
-      "Hébergement conseillé et configuré",
-    ],
-    cta: "Choisir la Page Unique",
-    href: "/contact",
-  },
-  {
-    tag: "Formule complète",
-    name: "Site Vitrine",
-    price: "1 450 €",
-    price_details: "TTC • Livrable complet clé en main",
-    note: "L'arme absolue des artisans, freelances et créateurs engagés.",
-    features: [
-      "3 à 5 pages sur mesure",
-      "Référencement de base soigné",
-      "Formation vidéo de 30 minutes",
-      "Autonomie après livraison",
-    ],
-    cta: "Choisir le Site Vitrine",
-    href: "/contact",
-    featured: true,
-  },
-  {
-    tag: "Formule commerce",
-    name: "Boutique en Ligne",
-    price: "2 200 €",
-    price_details: "TTC • Architecture micro-boutique fluide",
-    note: "Vendez vos créations sans faire exploser la facture énergétique.",
-    features: [
-      "Catalogue produits et tunnel de commande",
-      "Paiement en ligne sécurisé",
-      "Emails transactionnels sobres",
-      "Formation vidéo de 30 minutes",
-    ],
-    cta: "Choisir la Boutique",
-    href: "/contact",
-  },
-];
-
-const projects = [
-  {
-    category: "E-commerce • Bijoux artisanaux",
-    categoryTone: "lime" as const,
-    image: "/images/sites/saboom.png",
-    imageAlt: "Aperçu du site Saboom, boutique de bijoux artisanaux",
-    title: "Saboom Bijoux",
-    subtitle: "Boutique en ligne",
-    description:
-      "Une identité pétillante pour des bijoux en pâte polymère, avec un site pensé pour rester léger sans rien perdre de sa couleur.",
-    href: "/projets",
-    metrics: [
-      { label: "Poids page", value: "142 Ko" },
-      { label: "Éco-index", value: "89/100 (A)" },
-      { label: "Vitesse mobile", value: "0,6 s" },
-    ],
-    draft: false,
-  },
-  {
-    category: "Catégorie à définir",
-    categoryTone: "sky" as const,
-    image: "/images/sites/projet-a-venir-1.png",
-    imageAlt: "Visuel du projet à venir",
-    title: "Projet à venir",
-    subtitle: "Type de projet à définir",
-    description: "Description à ajouter quand le projet sera prêt à présenter.",
-    href: "/projets",
-    metrics: [],
-    draft: false,
-  },
-  {
-    category: "Catégorie à définir",
-    categoryTone: "lime" as const,
-    image: "/images/sites/projet-a-venir-2.png",
-    imageAlt: "Visuel du projet à venir",
-    title: "Projet à venir",
-    subtitle: "Type de projet à définir",
-    description: "Description à ajouter quand le projet sera prêt à présenter.",
-    href: "/projets",
-    metrics: [],
-    draft: false,
-  },
-];
+import { offres } from "../data/offres";
+import { projets } from "../data/projets";
 ---
 
 <BaseLayout
@@ -174,7 +83,7 @@ const projects = [
   <!-- Ces métriques sont fictives/provisoires ; elles ne constituent pas des preuves vérifiées. -->
   <section class="stats" aria-labelledby="stats-title">
     <div class="container">
-      <p class="eyebrow eyebrow--light stats__eyebrow">
+      <p class="eyebrow eyebrow--dark stats__eyebrow">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.5a3.2 3.2 0 0 0-5.8 1.9 3.5 3.5 0 0 0-1 6.6A3.2 3.2 0 0 0 8 18.5h4V4.5Zm0 0a3.2 3.2 0 0 1 5.8 1.9 3.5 3.5 0 0 1 1 6.6 3.2 3.2 0 0 1-2.8 5.5H12V4.5Z"/><path d="M8 9.5h.01M16 9.5h.01M8.5 14h.01m7-.01h.01M12 4.5v13.9"/></svg>
         Vulgarisation scientifique &amp; bienveillante
       </p>
@@ -223,9 +132,11 @@ const projects = [
   </p>
 
   <div class="offers">
-    {offers.map((o) => <OfferCard {...o} />)}
+    {offres.map((o) => <OfferCard {...o} />)}
   </div>
-
+  <p class="section__note">
+      Tous les tarifs sont <strong>TTC</strong>. Le paiement en 3 fois sans frais est possible.
+    </p>
   <p class="section__more">
     <a href="/offres-tarifs" class="link-arrow">
       Comparer toutes les formules en détail <span aria-hidden="true">→</span>
@@ -247,7 +158,7 @@ const projects = [
   </div>
 
   <div class="projects-grid">
-    {projects
+    {projets
   .filter((project) => !project.draft)
   .map((project) => <ProjectCard {...project} />)}
   </div>
@@ -263,22 +174,6 @@ const projects = [
       </blockquote>
       <figcaption>Léa M., créatrice indépendante</figcaption>
     </figure>
-  </section>
-
-  <!-- 7. CTA FINAL -->
-  <section class="container">
-    <div class="cta">
-      <p class="eyebrow eyebrow--light">Passe à l’action</p>
-      <h2>Prêt.e à créer un site qui te ressemble (sans carboniser la planète) ?</h2>
-      <p>
-        On s’appelle 20 minutes pour faire le tour de tes besoins, estimer ton
-        budget et voir ensemble ce qui est possible.
-      </p>
-      <div class="hero__actions">
-        <Button href="/contact" variant="pop" size="lg">Discuter de mon projet <span aria-hidden="true">💬</span></Button>
-        <a href="mailto:axel@popupstudio.fr" class="cta__mail">ou écris-moi : axel@popupstudio.fr</a>
-      </div>
-    </div>
   </section>
 </BaseLayout>
 
@@ -315,6 +210,8 @@ const projects = [
     flex-wrap: wrap;
     margin-bottom: var(--space-lg);
   }
+  .section__note { margin-top: var(--space-lg); text-align: center; font-size: 14px; color: var(--on-surface-variant); }
+
 
   /* --- Hero --- */
   .hero {
@@ -455,8 +352,6 @@ const projects = [
   color: var(--white);
 }
 .stats > .container { position: relative; }
-.stats .eyebrow--dark { background: var(--ink-base); }
-.stats__eyebrow { margin-bottom: var(--space-md); }
 .stats h2 { max-width: 28ch; }
 .stats__lead {
   max-width: 64ch;
@@ -607,30 +502,6 @@ const projects = [
     letter-spacing: -0.01em;
   }
   .quote figcaption { font-size: 14px; font-weight: 600; color: var(--on-surface-variant); }
-
-  /* --- CTA final --- */
-  .cta {
-    margin-bottom: var(--space-xl);
-    padding: 5rem var(--space-xl);
-    background:
-    radial-gradient(
-      ellipse 45% 75% at 100% 100%,
-      rgba(108, 157, 74, 0.35) 0%,
-      rgba(108, 157, 74, 0) 100%
-    ),
-    var(--primary);
-    color: var(--white);
-    border-radius: var(--radius-xl);
-    text-align: center;
-  }
-  .cta h2 { max-width: 24ch; margin: 0 auto var(--space-md); }
-  .cta > p:not(.eyebrow) {
-    max-width: 52ch;
-    margin: 0 auto var(--space-lg);
-    color: var(--primary-fixed, #c1ecd4);
-  }
-  .cta__mail { color: var(--white); font-size: 14px; text-underline-offset: 4px; }
-
   /* --- Responsive --- */
   @media (max-width: 64rem) {
     .offers { grid-template-columns: 1fr; }
@@ -642,11 +513,6 @@ const projects = [
     h2 { font-size: 28px; line-height: 36px; }
     .quote blockquote { font-size: 22px; line-height: 30px; }
   }
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--gutter);
-}
 
 @media (max-width: 64rem) {
   .projects-grid {

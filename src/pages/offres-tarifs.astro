@@ -2,55 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import OfferCard from "../components/OfferCard.astro";
 import Pill from '../components/Pill.astro';
-import CtaBand from '../components/CtaBand.astro';
-
-const offers = [
-  {
-    tag: "1 semaine • formule essentielle",
-    name: "Page Unique",
-    price: "850 €",
-    note: "Paiement en 3 fois sans frais possible (Alma, par exemple).",
-    features: [
-      "Design sur mesure, sobre et responsive",
-      "Une page sculptée avec soin",
-      "Formulaire de contact sans cookies",
-      "Optimisation pour le référencement de base",
-    ],
-    cta: "Choisir la Page Unique",
-    href: "/contact",
-  },
-  {
-    tag: "2 à 3 semaines • recommandé",
-    name: "Site Vitrine",
-    price: "1 450 €",
-    note: "Paiement en 3 fois sans frais possible (Alma, par exemple).",
-    features: [
-      "Tout ce qui compose la Page Unique",
-      "3 à 5 pages complètes (accueil, services, à propos, contact…)",
-      "Gestion simple de tes contenus, sans coder",
-      "Formation vidéo personnalisée de 30 minutes",
-      "Attention portée à l’accessibilité",
-    ],
-    cta: "Choisir le Site Vitrine",
-    href: "/contact",
-    featured: true,
-  },
-  {
-    tag: "3 à 4 semaines • vente en ligne",
-    name: "Boutique en Ligne",
-    price: "2 200 €",
-    note: "Paiement en 3 fois sans frais possible (Alma, par exemple).",
-    features: [
-      "Tout ce qui compose le Site Vitrine",
-      "Catalogue produits et tunnel de commande fluide",
-      "Paiement en ligne sécurisé",
-      "Gestion des stocks simplifiée",
-      "Emails transactionnels sobres",
-    ],
-    cta: "Choisir la Boutique",
-    href: "/contact",
-  },
-];
+import { offres } from "../data/offres";
 
 // FICTIF : valeurs provisoires, à ajuster
 const table = [
@@ -104,10 +56,10 @@ const faq = [
   <!-- OFFRES -->
   <section class="container section">
     <div class="offers">
-      {offers.map((o) => <OfferCard {...o} />)}
+      {offres.map((o) => <OfferCard {...o} />)}
     </div>
     <p class="section__note">
-      Tous les tarifs sont <strong>TTC</strong>. Le paiement en 3 fois sans frais est possible (Alma, par exemple).
+      Tous les tarifs sont <strong>TTC</strong>. Le paiement en 3 fois sans frais est possible.
     </p>
   </section>
 
@@ -170,11 +122,6 @@ const faq = [
       ))}
     </div>
   </section>
-
-  <!-- CTA -->
-  <section class="container">
-    <CtaBand title="Tu hésites sur la formule ?" text="On fait un appel de découverte de 20 minutes, sans engagement, pour faire le point sur tes priorités." ctaHref="/contact" ctaLabel="Réserver un créneau (20 min)" />
-  </section>
 </BaseLayout>
 
 <style>
@@ -218,7 +165,7 @@ const faq = [
   .compare thead th { background: var(--surface-container); font-weight: 700; }
   .compare tbody th { text-align: left; font-weight: 600; }
   .compare__hl { background: rgba(200, 230, 118, 0.25); }
-  .compare td svg { color: var(--primary-container); vertical-align: middle; }
+  .compare td svg { color: var(--primary-container); vertical-align: middle; margin: auto;}
 
   .faq { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gutter); margin-top: var(--space-lg); }
   .faq__item {

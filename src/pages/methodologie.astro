@@ -1,0 +1,93 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Pill from "../components/Pill.astro";
+import Button from "../components/Button.astro";
+
+const segments = [
+  { number: "01", share: "52%", name: "Terminal utilisateur", icon: "▣", copy: "Ton téléphone ou ton ordinateur reçoit la page, fait tourner le navigateur et affiche les images. Le poids transféré n’explique pas tout le travail côté appareil.", practice: "DOM allégé, images adaptées et scripts utiles uniquement.", stat: "+38% d’autonomie préservée pour l’utilisateur — estimation provisoire." },
+  { number: "02", share: "14%", name: "Réseau & télécoms", icon: "⌁", copy: "Les données voyagent par des équipements successifs entre le site et ton écran. Le type de connexion et le volume échangé changent la donne.", practice: "Moins d’octets, formats adaptés et cache pertinent.", stat: "Moins de 180 Ko par page — valeur provisoire." },
+  { number: "03", share: "34%", name: "Datacenters & serveurs", icon: "⌂", copy: "Les serveurs traitent et stockent les pages. Leur efficacité, leur localisation et les données énergétiques disponibles font partie des hypothèses.", practice: "Hébergeur et données énergétiques à documenter au cas par cas.", stat: "Mix électrique estimé à 54 g CO₂/kWh — hypothèse provisoire." },
+];
+const comparisons = [
+  ["Poids moyen par page", "3 500 Ko (3,5 Mo)", "180 Ko (−95 %)"],
+  ["Émissions estimées / an", "280 kg CO₂ éq.", "4,2 kg CO₂ éq."],
+  ["Équivalence mobilité", "12 allers-retours Paris–Marseille en TGV", "18 km en trottinette électrique"],
+  ["ÉcoIndex", "Note E à F", "Note A (94/100)"],
+  ["Chargement en 4G", "3,8 à 5,2 secondes", "0,4 seconde"],
+];
+const tools = [
+  { name: "EcoIndex.fr", type: "Référentiel France", text: "Un repère pour examiner le poids, le nombre de requêtes et la complexité du DOM. Un score n’est pas un bilan carbone." },
+  { name: "Website Carbon", type: "Estimateur en ligne", text: "Un modèle public d’estimation. Note la date, les paramètres et les limites du résultat obtenu." },
+  { name: "PageSpeed Insights", type: "Performance web", text: "Des indicateurs de chargement et de réactivité. Ils ne mesurent pas à eux seuls l’empreinte carbone." },
+  { name: "EcoCode", type: "Code sobre", text: "Des pistes pour repérer certaines pratiques de code coûteuses. Pas un certificat environnemental." },
+];
+---
+
+<BaseLayout title="Méthodologie carbone" description="Comment Popup Studio estime l’empreinte d’une page web : méthode, hypothèses, limites et outils publics.">
+  <section class="container hero" aria-labelledby="method-title">
+    <Pill tone="lime">Méthodologie scientifique & transparence</Pill>
+    <h1 id="method-title">Comment compte-t-on les grammes de CO₂&nbsp;? <span class="wave">La méthode sans filtre.</span></h1>
+    <p class="intro">Pas de formule magique ni d’arbres plantés au bout du monde pour compenser du code inutile. Voici les formules, les hypothèses et les données à regarder pour estimer l’empreinte d’un site — sans cacher les limites.</p>
+    <div class="chips" aria-label="Repères de méthode">
+      <span>01&nbsp; Sustainable Web Design</span><span>02&nbsp; GreenIT.fr</span><span>03&nbsp; Terminal · réseau · serveur</span>
+    </div>
+    <p class="provisional"><strong>Chiffres provisoires — à ajuster.</strong> Les pourcentages, scores, Ko, secondes et émissions de cette page sont des valeurs de maquette, non des mesures vérifiées. Elles restent affichées pour illustrer le modèle et seront remplacées après validation d’un protocole et de sources.</p>
+  </section>
+
+  <section class="container section map" aria-labelledby="segments-title">
+    <div class="section-head"><div><p class="eyebrow">Cartographie de l’empreinte</p><h2 id="segments-title">Le modèle des 3 segments</h2></div><p class="lead">L’erreur classique consiste à ne regarder que le serveur. Une page circule, est traitée, puis s’affiche sur un appareil : les trois maillons entrent dans le périmètre.</p></div>
+    <div class="bar" aria-label="Répartition illustrative : terminal 52 %, réseau 14 %, datacenters 34 %"><span></span><span></span><span></span></div>
+    <div class="bar-label"><span>Répartition illustrative</span><span>100% de l’empreinte estimée</span></div>
+    <div class="segment-grid">
+      {segments.map((item) => <article class="segment-card">
+        <div class="segment-meta"><span class="icon" aria-hidden="true">{item.icon}</span><span>SEGMENT {item.number}</span></div>
+        <strong class="share">{item.share}</strong><h3>{item.name}</h3><p>{item.copy}</p>
+        <div class="approach"><span>L’approche Popup Studio</span><p>{item.practice}</p></div>
+        <p class="segment-stat">{item.stat}</p>
+      </article>)}
+    </div>
+    <!-- Tous les pourcentages et indicateurs chiffrés de cette maquette sont fictifs/provisoires et doivent être ajustés avant publication comme résultats. -->
+  </section>
+
+  <section class="container section" aria-labelledby="equation-title">
+    <div class="equation">
+      <p class="eyebrow">Sous le capot</p><h2 id="equation-title">L’équation d’une page vue</h2>
+      <p class="eq-intro">Pas de boîte noire : on rend visibles les facteurs utilisés et ce qu’ils couvrent.</p>
+      <p class="formula">E = (données transférées × facteur énergétique × PUE) × intensité carbone</p>
+      <p class="formula-note">Un modèle de référence utilise ici <strong>0,81 kWh/Go</strong>, puis ajuste l’estimation selon l’efficacité du centre de données (PUE) et l’intensité carbone retenue. Ces paramètres doivent être sourcés, datés et adaptés au calcul.</p>
+      <div class="stat-grid"><article><span>Médiane mondiale · repère fictif</span><strong>~1,2 g</strong><small>CO₂ / vue</small></article><article><span>Popup Studio · exemple fictif</span><strong>0,08 g</strong><small>CO₂ / vue</small></article></div>
+      <p class="equation-note">Chiffres provisoires, à ajuster : aucune mesure de site ni comparaison vérifiée n’est publiée ici.</p>
+    </div>
+  </section>
+
+  <section class="container section jamy" aria-labelledby="jamy-title">
+    <div class="jamy-image"><img src="/images/norbert.png" alt="Illustration de Norbert, personnage fictif utilisé pour expliquer le poids d’une page" loading="lazy" /></div>
+    <div class="jamy-copy"><Pill tone="sky">Vulgarisation complice · avec Norbert</Pill><h2 id="jamy-title">« Dis-moi Jamy, pourquoi mon site a-t-il une empreinte, même quand personne ne clique&nbsp;? »</h2>
+      <p>Imagine une tarte aux pommes emballée dans trois cartons, puis livrée en hélicoptère alors qu’une boîte à vélo suffit. Une page trop lourde, c’est un peu ça : des images géantes, des scripts oubliés et des polices qui font un long voyage.</p>
+      <p>Dans l’exemple, Norbert, pâtissier amateur, est un personnage entièrement fictif — pas un client ni un témoignage. La métaphore aide à visualiser le sujet ; elle ne remplace pas un calcul.</p>
+      <div class="jamy-foot">Une comparaison parlante, pas une preuve scientifique.</div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="comparison-title"><div class="container section">
+    <p class="eyebrow">Étalonnage terrain</p><h2 id="comparison-title">Traduire des Ko en vie réelle</h2>
+    <p class="lead comparison-lead">Exemple de tableau comparatif pour 10 000 visites annuelles. Les résultats ci-dessous sont fictifs/provisoires : ils ne décrivent pas une mesure de Popup Studio ou d’un site tiers.</p>
+    <div class="table-wrap" role="region" aria-label="Comparaison illustrative de métriques annuelles" tabindex="0"><table><caption class="visually-hidden">Chiffres illustratifs à ne pas interpréter comme des mesures vérifiées</caption><thead><tr><th scope="col">Métrique annuelle<br />(10 000 visites)</th><th scope="col">Site moyen<br />standard</th><th scope="col" class="popup-col">Site Popup Studio<br />éco-conçu</th></tr></thead><tbody>{comparisons.map(([label,standard,popup])=><tr><th scope="row">{label}</th><td>{standard}</td><td class="popup-col">{popup}</td></tr>)}</tbody></table></div>
+    <p class="table-note">Chiffres provisoires — à ajuster avec des mesures comparables, un protocole commun et des sources datées. L’ÉcoIndex n’est pas une certification carbone.</p>
+  </div></section>
+
+  <section class="container section"><aside class="notice"><span class="notice-mark" aria-hidden="true">≠</span><div><p class="eyebrow">Sobriété à la source</p><h2>Zéro compensation carbone artificielle</h2><p>On ne prétend pas annuler l’impact d’un site en achetant une promesse de compensation. On commence par comprendre le périmètre, puis par éviter les données et fonctions inutiles. Moins d’octets, c’est une piste concrète — pas un permis de polluer.</p></div></aside></section>
+
+  <section class="band" aria-labelledby="tools-title"><div class="container section">
+    <p class="eyebrow">Écosystème ouvert</p><h2 id="tools-title">Outils & sources publiques</h2><p class="lead">Des points de départ accessibles pour refaire le chemin. Leurs résultats ne sont pas interchangeables et doivent être accompagnés de leur contexte.</p>
+    <div class="tool-grid">{tools.map((tool,index)=><article class="tool-card"><div class="tool-head"><span class="tool-index">0{index+1}</span><span>{tool.type}</span></div><h3>{tool.name}</h3><p>{tool.text}</p></article>)}</div>
+  </div></section>
+
+  <section class="container section"><div class="final-cta"><Pill tone="lime">Sans engagement & sans jugement</Pill><h2>Envie d’un audit de ton site actuel sans langue de bois&nbsp;?</h2><p>On peut regarder les mesures réelles, les estimations et les trois leviers prioritaires. L’appel de découverte dure 20 minutes — pas de diagnostic carbone sorti du chapeau.</p><div class="actions"><Button href="/contact" variant="pop" size="lg">Tester mon site actuel</Button><Button href="/contact" variant="ghost" size="lg">Prendre un appel découverte (20 min)</Button></div></div></section>
+</BaseLayout>
+
+<style>
+.hero{padding-block:4.5rem 2.5rem}.hero h1{max-width:17ch;margin:1.4rem 0 1rem;color:var(--primary);font-size:56px;line-height:1.12;letter-spacing:-.04em}.wave{color:var(--tertiary-container);text-decoration:underline wavy var(--pop-lime);text-decoration-thickness:5px;text-underline-offset:8px}.intro{max-width:66ch;color:var(--on-surface-variant);font-size:18px;line-height:1.65}.chips{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.7rem}.chips span{padding:.6rem .9rem;background:var(--white);border:1px solid var(--border-passive);border-radius:999px;font-size:13px;font-weight:700}.provisional{margin-top:1.5rem;padding:1rem 1.25rem;background:#fff3e9;border-left:4px solid var(--persimmon);border-radius:.5rem;color:#4c1100;font-size:14px;line-height:1.55}.section{padding-block:3.5rem}.section-head{display:flex;justify-content:space-between;align-items:end;gap:2rem;margin-bottom:1.5rem}.eyebrow{display:block;margin-bottom:.65rem;color:#536b00;font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.section h2,.section-head h2{color:var(--primary);font-size:38px;line-height:1.17;letter-spacing:-.03em}.lead{max-width:55ch;color:var(--on-surface-variant);line-height:1.7}.bar{display:flex;height:12px;gap:4px;margin-top:1.6rem;overflow:hidden;border-radius:99px;background:#eee}.bar span:first-child{width:52%;background:var(--primary)}.bar span:nth-child(2){width:14%;background:var(--sky-tint)}.bar span:nth-child(3){flex:1;background:var(--pop-lime)}.bar-label{display:flex;justify-content:space-between;margin:.6rem 0 1.1rem;color:var(--on-surface-variant);font-size:12px;font-weight:700}.segment-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.segment-card{padding:1.35rem;background:white;border:1px solid var(--border-passive);border-radius:1rem}.segment-meta{display:flex;align-items:center;gap:.65rem;color:var(--on-surface-variant);font-size:11px;font-weight:800;letter-spacing:.08em}.icon{display:grid;place-items:center;width:2rem;height:2rem;background:#e9f3e9;border-radius:50%;color:var(--primary);font-size:19px}.share{display:block;margin:.9rem 0 .25rem;color:var(--primary);font-family:var(--font-display);font-size:40px;line-height:1.15}.segment-card h3,.tool-card h3{margin:0 0 .65rem;color:var(--primary);font-size:20px}.segment-card>p{color:var(--on-surface-variant);font-size:14px;line-height:1.65}.approach{margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--border-passive)}.approach span{color:#536b00;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em}.approach p{margin-top:.35rem;font-size:13px;line-height:1.55}.segment-stat{margin-top:.9rem;padding:.65rem .7rem;background:#f5f3f0;border-radius:.6rem;font-size:12px!important;font-weight:700}.equation{padding:2.4rem;background:var(--primary);border-radius:1.25rem;color:white}.equation .eyebrow{color:var(--pop-lime)}.equation h2{color:white}.eq-intro{margin-top:.7rem;color:#e8efe9}.formula{margin:1.4rem 0 .8rem;padding:1rem;background:var(--pop-lime);border-radius:.7rem;color:var(--ink);font-family:var(--font-display);font-size:20px;font-weight:800;text-align:center}.formula-note{max-width:75ch;color:#e4ebe5;font-size:14px;line-height:1.7}.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.4rem}.stat-grid article{display:flex;align-items:baseline;gap:.55rem;flex-wrap:wrap;padding:1rem 1.2rem;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.28);border-radius:.8rem}.stat-grid article span{flex-basis:100%;color:#dce7df;font-size:12px}.stat-grid strong{color:var(--pop-lime);font-family:var(--font-display);font-size:32px}.stat-grid small{font-weight:700}.equation-note{margin-top:1rem;color:#dce7df;font-size:12px}.jamy{display:grid;grid-template-columns:minmax(230px,.78fr) 1.35fr;gap:2rem;align-items:center;padding:2rem;background:#fff0e8;border-radius:1.25rem}.jamy-image{align-self:stretch;display:grid;place-items:center;min-height:250px;background:#f9d6c4;border-radius:1rem;overflow:hidden}.jamy-image img{width:100%;height:100%;max-height:340px;object-fit:contain;object-position:center bottom}.jamy-copy h2{margin:1rem 0;color:var(--primary);font-size:26px;line-height:1.3}.jamy-copy p{margin-top:.8rem;color:var(--on-surface-variant);line-height:1.7}.jamy-foot{margin-top:1rem;padding-top:.8rem;border-top:1px solid #eccbb9;color:#7b351b;font-size:12px;font-weight:800}.band{background:var(--surface-low)}.comparison-lead{margin-top:.7rem}.table-wrap{margin-top:1.5rem;overflow:auto;border-radius:1rem;background:#fff;box-shadow:0 0 0 1px var(--border-passive)}table{width:100%;border-collapse:collapse;text-align:left}thead{background:var(--primary);color:#fff}th,td{padding:1rem 1.1rem;border-bottom:1px solid var(--border-passive);vertical-align:middle}thead th{font-size:13px;line-height:1.45}tbody th{width:27%;font-size:14px}tbody td{color:var(--on-surface-variant);font-family:var(--font-body);font-size:13px}.popup-col{background:rgba(200,230,118,.24);color:var(--primary);font-weight:800}.table-note{margin-top:.8rem;color:var(--on-surface-variant);font-size:12px;line-height:1.55}.notice{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;padding:1.7rem;background:#efeeeb;border-radius:1rem}.notice-mark{display:grid;place-items:center;width:3rem;height:3rem;background:var(--white);border-radius:50%;font-family:var(--font-display);font-size:24px;font-weight:800}.notice h2{margin-bottom:.7rem}.notice p:last-child{max-width:75ch;color:var(--on-surface-variant);line-height:1.7}.tool-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin-top:1.5rem}.tool-card{padding:1.25rem;background:white;border:1px solid var(--border-passive);border-radius:1rem}.tool-head{display:flex;justify-content:space-between;align-items:center;gap:.5rem;margin-bottom:1rem;color:var(--on-surface-variant);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.tool-index{display:grid;place-items:center;width:1.8rem;height:1.8rem;border-radius:50%;background:var(--pop-lime);color:var(--ink);font-size:11px}.tool-card p{color:var(--on-surface-variant);font-size:13px;line-height:1.65}.final-cta{padding:2.7rem 2rem;background:var(--primary);color:white;border-radius:1.25rem;text-align:center}.final-cta h2{max-width:28ch;margin:1rem auto .7rem;color:white;font-size:34px;line-height:1.2}.final-cta>p{max-width:68ch;margin:0 auto;color:#e4ebe5;line-height:1.65}.actions{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;margin-top:1.4rem}.actions :global(.btn--ghost){border:1.5px solid white;color:white}.actions :global(.btn--ghost:hover){color:var(--ink)}.table-wrap:focus-visible{outline:3px solid var(--primary-container);outline-offset:3px}
+@media(max-width:900px){.segment-grid{grid-template-columns:1fr 1fr}.tool-grid{grid-template-columns:1fr 1fr}.section-head{display:block}.section-head .lead{margin-top:.7rem}}
+@media(max-width:700px){.hero{padding-block:3rem 1rem}.hero h1{font-size:39px}.section{padding-block:2.5rem}.section h2,.section-head h2{font-size:30px}.segment-grid,.tool-grid,.stat-grid{grid-template-columns:1fr}.jamy{grid-template-columns:1fr;padding:1.2rem}.jamy-image{min-height:180px}.equation{padding:1.35rem}.formula{font-size:16px}.bar-label{font-size:10px}.notice{grid-template-columns:1fr}.final-cta{padding:2rem 1rem}.final-cta h2{font-size:28px}.table-wrap{margin-inline:-.5rem}table{min-width:720px}}
+</style>
