@@ -13,7 +13,7 @@ const { tag, name, price, note, features, cta, href, featured = false } = Astro.
 ---
 
 <article class:list={["offer", { "offer--featured": featured }]}>
-  {featured && <span class="offer__ribbon">La plus plébiscitée</span>}
+  {featured && <span class="offer__ribbon">Le chouchou <span aria-hidden="true">⭐</span></span>}
   <p class="offer__tag">{tag}</p>
   <h3 class="offer__name">{name}</h3>
   <p class="offer__price">
@@ -45,8 +45,7 @@ const { tag, name, price, note, features, cta, href, featured = false } = Astro.
     border-radius: var(--radius-lg);
   }
   .offer--featured {
-    border-color: var(--ink);
-    box-shadow: var(--shadow-offset);
+    border-color: var(--pop-lime);
   }
   .offer__ribbon {
     position: absolute;
@@ -54,7 +53,7 @@ const { tag, name, price, note, features, cta, href, featured = false } = Astro.
     left: var(--space-lg);
     padding: var(--space-xs) var(--space-md);
     background: var(--pop-lime);
-    border: 1.5px solid var(--ink);
+    border: 1.5px solid var(--pop-lime);
     border-radius: var(--radius-full);
     font-size: 11px;
     font-weight: 700;

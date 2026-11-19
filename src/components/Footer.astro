@@ -21,15 +21,16 @@ const legal = [
         Axel, créateur de sites légers, complices et créatifs pour les
         indépendant.e.s, créateur.ices et marques engagées.
       </p>
+      
       <span class="chip">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M11 20A7 7 0 0 1 4 13c0-4 3-9 9-11 2 6 7 7 7 11a7 7 0 0 1-7 7z" />
           <path d="M11 20c0-4 2-7 5-9" />
         </svg>
-        Site éco-conçu, zéro cookie
+        EMpreinte numérique minimale garantie
       </span>
     </div>
-
+    
     <nav class="footer__col" aria-labelledby="footer-nav">
       <h2 id="footer-nav" class="footer__title">Navigation</h2>
       <ul class="footer__links">
@@ -46,11 +47,8 @@ const legal = [
           <li><a href={href}>{label}</a></li>
         ))}
       </ul>
-      <!-- FICTIF : valeur à ajuster plus tard -->
-      <p class="footer__note">
-        Site éco-conçu, plus propre que 71 % des sites sur le web •
-        Hébergement vert en circuit court
-      </p>
+        <div id="wcb" class="carbonbadge footer__note"></div>
+        <script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script>
     </nav>
   </div>
 
@@ -123,13 +121,9 @@ const legal = [
     text-underline-offset: 3px;
   }
   .footer__note {
+    display: inline-flex;
+    align-items: left;
     margin-top: var(--space-md);
-    padding: var(--space-sm) var(--space-md);
-    background: var(--white);
-    border: 1.5px solid var(--border-passive);
-    border-radius: var(--radius);
-    font-size: 13px;
-    line-height: 18px;
   }
 
   .footer__bottom {

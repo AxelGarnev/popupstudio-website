@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import OfferCard from "../components/OfferCard.astro";
 import Pill from '../components/Pill.astro';
-import CtaBand from '../components/CtaBand.astro';
+import Button from '../components/Button.astro';
 
 const offers = [
   {
@@ -50,12 +50,6 @@ const offers = [
   },
 ];
 
-// FICTIF : tous les chiffres ci-dessous sont provisoires, à ajuster plus tard
-const stats = [
-  { value: "4,6 g", label: "de CO₂ par vue", text: "L’empreinte moyenne d’une page web classique. Ça paraît peu, jusqu’à multiplier par des millions de visites.", chip: "Page web standard", tone: "var(--persimmon)" },
-  { value: "−65 %", label: "d’empreinte nette", text: "Moins d’images lourdes, moins de scripts, un code léger : l’éco-conception en pratique.", chip: "Méthode Popup Studio", tone: "var(--pop-lime)" },
-  { value: "71 %", label: "plus propre que le web", text: "Un site sobre se classe mieux que la majorité des sites mesurés.", chip: "Valeur indicative", tone: "var(--sky-tint)" },
-];
 ---
 
 <BaseLayout
@@ -65,7 +59,7 @@ const stats = [
   <!-- 1. HERO -->
   <section class="hero container">
     <!-- FICTIF -->
-    <Pill tone="lime">Éco-index A • 0,08 g de CO₂ par visite</Pill>
+    <Pill tone="lime"><span aria-hidden="true">🌱</span> Moins de CO2, plus de clients</Pill>
     <h1>
       Création de sites web engagés pour indépendant.e.s & créateur.ices
     </h1>
@@ -73,62 +67,102 @@ const stats = [
       (En gros : tout ce que tu veux, mais un site web pas égoïste ni glouton en énergie.)
     </p>
     <div class="hero__actions">
-      <a href="/contact" class="btn btn--primary">Demander un devis gratuit</a>
-      <a href="/offres-tarifs" class="btn btn--ghost">Découvrir les offres</a>
+      <Button variant="primary" href="/contact">Demander un devis gratuit <span aria-hidden="true">🚀</span></Button>
+      <Button variant="ghost" href="/offres-tarifs">Découvrir les offres</Button>
     </div>
     <ul class="hero__chips">
-      <li class="chip">Chargement ultra-rapide</li>
-      <li class="chip">Hébergé en France</li>
-      <li class="chip">Zéro cookie</li>
+      <li class="chip"><span aria-hidden="true">⚡</span> Chargement rapide</li>
+      <li class="chip"><span aria-hidden="true">🌿</span> Hébergement en France</li>
+      <li class="chip"><span aria-hidden="true">🔒</span> Zéro cookie</li>
     </ul>
   </section>
 
-  <!-- 2. NORBERT -->
-  <section class="band">
-    <div class="container norbert">
-      <div class="norbert__text">
-        <p class="eyebrow">Pourquoi un site sobre ?</p>
-        <h2>Même quand on s’appelle Norbert (et qu’on fait des merveilles)</h2>
-        <p>
-          Prends Norbert. Il est pâtissier amateur et il fait des tartes aux pommes
-          à tomber. Le problème ? Son site pèse plus lourd que sa pâte feuilletée
-          et personne ne le trouve.
-        </p>
-        <p>
-          Spoiler : Norbert n’existe pas. C’est notre boutade pédagogique, mais
-          son problème, lui, est très réel : un site trop lourd fatigue tout le
-          monde, de ton visiteur à la planète.
-        </p>
-        <p class="norbert__quote">
-          Un site léger, c’est un site qui s’affiche vite, qui consomme peu
-          et que tout le monde peut utiliser.
-        </p>
-      </div>
-      <div class="norbert__card" aria-hidden="true">
-        <span class="norbert__emoji">🥧</span>
-        <p>Norbert, pâtissier imaginaire, tartes aux pommes bien réelles dans nos têtes.</p>
+  <!-- 2. STORYTELLING -->
+<section class="band">
+  <div class="container storytelling">
+    <figure class="storytelling__visual">
+      <!-- Visuel généré avec GPT -->
+      <img
+        src="/images/brigitte.png"
+        alt="Illustration : Brigitte, cliente pressée, souriante dans une cuisine"
+        width="600"
+        height="500"
+        loading="lazy"
+      />
+      <span class="storytelling__badge"><Pill tone="lime">Le cas Tante Brigitte</Pill></span>
+      <figcaption class="storytelling__caption">
+        <span class="storytelling__caption-label">Brigitte, cliente pressée</span>
+        Trente secondes de patience, un téléphone, et une fuite sous l'évier.
+      </figcaption>
+    </figure>
+
+    <div class="storytelling__text">
+      <p class="eyebrow storytelling__eyebrow">Pourquoi avoir un site web ?</p>
+      <h2>Tante Brigitte t'a cherché. Elle a trouvé quelqu'un d'autre.</h2>
+      <p>
+        Tante Brigitte a besoin d'une céramiste pour un cadeau, d'un plombier pour sa fuite ou d'une photographe pour le mariage de sa nièce. Elle sort son téléphone, tape trois mots, regarde les deux premiers résultats. Elle ne lit pas les avis en détail, elle ne scrolle pas jusqu'en bas. Elle veut savoir ce que tu fais, où tu es et comment t'appeler. Point.
+      </p>
+      <p>
+        Si ta page n'existe pas, elle ne t'en voudra pas : elle ne saura jamais que tu existes. Si ta page met trop longtemps à s'afficher sur son forfait à deux barres de réseau, elle repart aussi. Un site léger, clair et honnête, c'est juste ce qui permet à tante Brigitte de te trouver, de te comprendre et de t'appeler. Rien de plus, rien de moins.
+      </p>
+      <div class="storytelling__moral">
+        <span class="storytelling__icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V16h8v-1.3A7 7 0 0 0 12 2z"/>
+          </svg>
+        </span>
+        <div>
+          <p class="storytelling__moral-title">Ton site répond à ta place quand tu as les mains dans le travail.</p>
+          <p>
+            Pas de pages à rallonge, pas de jargon, pas d'animation qui fait ramer le téléphone. Juste l'essentiel, bien dit, qui charge vite. Et une fois livré, tu sais le faire vivre toi-même.
+          </p>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- 3. STATS (« Jamy ») -->
-  <section class="stats">
+
+  <!-- 3. ÉCOLOGIE & REPÈRES -->
+  <!-- Ces métriques sont fictives/provisoires ; elles ne constituent pas des preuves vérifiées. -->
+  <section class="stats" aria-labelledby="stats-title">
     <div class="container">
-      <p class="eyebrow eyebrow--light">Vulgarisation scientifique & bienveillante</p>
-      <h2>Hop hop hop ! Oui mais Jamy… pourquoi ton site peut (et doit) faire mieux pour la planète ?</h2>
+      <p class="eyebrow eyebrow--light stats__eyebrow">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.5a3.2 3.2 0 0 0-5.8 1.9 3.5 3.5 0 0 0-1 6.6A3.2 3.2 0 0 0 8 18.5h4V4.5Zm0 0a3.2 3.2 0 0 1 5.8 1.9 3.5 3.5 0 0 1 1 6.6 3.2 3.2 0 0 1-2.8 5.5H12V4.5Z"/><path d="M8 9.5h.01M16 9.5h.01M8.5 14h.01m7-.01h.01M12 4.5v13.9"/></svg>
+        Vulgarisation scientifique &amp; bienveillante
+      </p>
+      <h2 id="stats-title">Hop hop hop&#8239;! Oui mais Jamy… Pourquoi ton site peut (et doit) faire mieux pour la planète&#8239;?</h2>
       <p class="stats__lead">
-        Internet consomme beaucoup d’électricité. La bonne nouvelle ? On peut
-        réduire ce poids par quelques choix simples, sans rien perdre en style.
+        Internet consomme de l’électricité, et chaque page a sa part. La bonne nouvelle&#8239;? En allégeant images, scripts et contenus superflus, tu peux réduire l’impact de ton site — sans lui enlever son style.
       </p>
       <div class="stats__grid">
-        {stats.map((s) => (
-          <article class="stat" style={`--tone:${s.tone}`}>
-            <p class="stat__value">{s.value}</p>
-            <h3 class="stat__label">{s.label}</h3>
-            <p class="stat__text">{s.text}</p>
-            <span class="stat__chip">{s.chip}</span>
-          </article>
-        ))}
+        <article class="stat stat--warning">
+          <span class="stat__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10.3 3.9-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3.1l-8-14a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 4h.01"/></svg>
+          </span>
+          <p class="stat__value"><span>4,6</span><small>g</small></p>
+          <h3 class="stat__label">de CO₂ / page vue</h3>
+          <p class="stat__text">Repère provisoire pour une page dite <strong>conventionnelle</strong>. Le résultat varie selon le <strong>poids de la page</strong>, l’appareil et la méthode de calcul.</p>
+          <span class="stat__chip stat__chip--warning">Web conventionnel</span>
+        </article>
+        <article class="stat stat--method">
+          <span class="stat__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 3.2c-7.4-.3-13.2 1.5-15.6 5.6-1.9 3.3-.6 7.3 2.4 8.5 3 1.1 6.2-.6 8.3-3.6 2.3-3.2 3.3-7 4.9-10.5Z"/><path d="M3 21c2.8-5.2 6.8-8.8 12-11"/></svg>
+          </span>
+          <p class="stat__value"><span>−65</span><small>&#8239;%</small></p>
+          <h3 class="stat__label">d’empreinte nette</h3>
+          <p class="stat__text">Un chiffre indicatif, pas une promesse. Images mieux dimensionnées, scripts limités et <strong>code léger</strong>&#8239;: des pistes concrètes pour alléger un site.</p>
+          <span class="stat__chip stat__chip--method">Méthode Popup Studio</span>
+        </article>
+        <article class="stat stat--indicative">
+          <span class="stat__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16.5 9"/></svg>
+          </span>
+          <p class="stat__value"><span>71</span><small>&#8239;%</small></p>
+          <h3 class="stat__label">plus propre que le web</h3>
+          <p class="stat__text">Valeur indicative, sans comparaison vérifiée. Il faudra préciser le périmètre et la méthode avant d’en tirer une conclusion.</p>
+          <span class="stat__chip stat__chip--indicative">À vérifier</span>
+        </article>
       </div>
     </div>
   </section>
@@ -157,10 +191,10 @@ const stats = [
     </div>
     <article class="project">
       <!-- Remplace par ton visuel Stitch -->
-      <img src="/images/saboom.webp" alt="Aperçu du site SABOOM, boutique de bijoux artisanaux" width="720" height="420" loading="lazy" />
+      <img src="/images/sites/saboom.png" alt="Aperçu du site Saboom, boutique de bijoux artisanaux" width="720" height="420" loading="lazy" />
       <div class="project__body">
         <Pill tone="sky">E-commerce • Bijoux artisanaux</Pill>
-        <h3>SABOOM</h3>
+        <h3>Saboom Bijoux</h3>
         <p>
           Une identité pétillante pour des bijoux en pâte polymère, avec un site
           pensé pour rester léger sans rien perdre de sa couleur.
@@ -207,15 +241,6 @@ const stats = [
 
 <style>
   /* --- Atomes --- */
-  .eyebrow {
-    margin-bottom: var(--space-sm);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--on-surface-variant);
-  }
-  .eyebrow--light { color: var(--on-primary-container); }
   h2 {
     font-size: 40px;
     line-height: 48px;
@@ -223,6 +248,9 @@ const stats = [
     letter-spacing: -0.02em;
   }
   .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     padding: var(--space-xs) 0.75rem;
     background: var(--white);
     border: 1.5px solid var(--border-passive);
@@ -259,7 +287,7 @@ const stats = [
     letter-spacing: -0.03em;
   }
   .hero__lead {
-    max-width: 46ch;
+    max-width: 60ch;
     margin: 0 auto var(--space-lg);
     font-size: 18px;
     line-height: 28px;
@@ -281,71 +309,188 @@ const stats = [
   }
 
   /* --- Norbert --- */
-  .band { background: var(--surface-low); padding-block: var(--space-xl); }
-  .norbert {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: var(--space-xl);
-    align-items: center;
-  }
-  .norbert__text { display: flex; flex-direction: column; gap: var(--space-md); }
-  .norbert__text p { font-size: 18px; line-height: 28px; }
-  .norbert__quote {
-    padding: var(--space-md) var(--space-lg);
-    background: var(--primary-container);
-    color: var(--white);
-    border-radius: var(--radius-lg);
-    font-weight: 600;
-  }
-  .norbert__card {
-    padding: var(--space-xl) var(--space-lg);
-    background: var(--pop-lime);
-    border: 1.5px solid var(--ink);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-offset);
-    text-align: center;
-  }
-  .norbert__emoji { display: block; font-size: 64px; margin-bottom: var(--space-md); }
-  .norbert__card p { font-weight: 600; }
+.band { background: var(--surface-low); padding-block: var(--space-xl); }
+.storytelling {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
 
-  /* --- Stats --- */
-  .stats {
-    padding-block: var(--space-xl);
-    background: var(--primary-container);
-    color: var(--white);
-  }
-  .stats h2 { max-width: 24ch; }
-  .stats__lead { max-width: 56ch; margin: var(--space-md) 0 var(--space-lg); color: var(--primary-fixed, #c1ecd4); }
-  .stats__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--gutter);
-  }
-  .stat {
-    padding: var(--space-lg);
-    background: var(--primary);
-    border: 1.5px solid rgba(255, 255, 255, 0.15);
-    border-top: 4px solid var(--tone);
-    border-radius: var(--radius-lg);
-  }
-  .stat__value {
-    font-family: var(--font-display);
-    font-size: 40px;
-    line-height: 48px;
-    font-weight: 800;
-    color: var(--tone);
-  }
-  .stat__label { margin: var(--space-xs) 0 var(--space-sm); font-size: 20px; }
-  .stat__text { font-size: 14px; line-height: 20px; color: var(--primary-fixed, #c1ecd4); }
-  .stat__chip {
-    display: inline-block;
-    margin-top: var(--space-md);
-    padding: var(--space-xs) 0.75rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-full);
-    font-size: 11px;
-    font-weight: 700;
-  }
+/* Visuel */
+.storytelling__visual {
+  position: relative;
+  margin: 0;
+}
+.storytelling__visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 6 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--border-passive);
+  background: var(--surface-container);
+}
+.storytelling__badge {
+  position: absolute;
+  top: -0.75rem;
+  right: -0.75rem;
+}
+.storytelling__caption {
+  position: absolute;
+  left: var(--space-sm);
+  right: var(--space-sm);
+  bottom: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--white);
+  border: 1.5px solid var(--border-passive);
+  border-radius: var(--radius-md, 0.75rem);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  color: var(--ink);
+}
+.storytelling__caption-label {
+  display: block;
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--secondary, #4f6600);
+}
+
+/* Texte */
+.storytelling__text { display: flex; flex-direction: column; gap: var(--space-md); }
+.storytelling__eyebrow { margin-bottom: 0; color: var(--secondary, #4f6600); }
+.storytelling__text h2 { color: var(--primary-container); }
+.storytelling__text > p:not(.eyebrow) {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--on-surface-variant);
+}
+
+/* Morale */
+.storytelling__moral {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+  margin-top: var(--space-sm);
+  padding: var(--space-lg);
+  background: var(--primary);
+  color: var(--white);
+  border-radius: var(--radius-lg);
+}
+.storytelling__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  background: var(--pop-lime);
+  color: var(--ink);
+  border-radius: var(--radius-full);
+}
+.storytelling__moral-title {
+  margin-bottom: var(--space-xs);
+  font-weight: 700;
+  color: var(--pop-lime);
+}
+.storytelling__moral p:not(.storytelling__moral-title) {
+  font-size: 14px;
+  line-height: 20px;
+}
+/* ---------- Écologie / statistiques ---------- */
+.stats {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: var(--space-xl);
+  background-color: var(--primary-container);
+  background-image: radial-gradient(circle, color-mix(in srgb, var(--on-primary-container) 16%, transparent) 1px, transparent 1.4px);
+  background-size: 24px 24px;
+  color: var(--white);
+}
+.stats > .container { position: relative; }
+.stats .eyebrow--dark { background: var(--ink-base); }
+.stats__eyebrow { margin-bottom: var(--space-md); }
+.stats h2 { max-width: 28ch; }
+.stats__lead {
+  max-width: 64ch;
+  margin: var(--space-md) 0 var(--space-lg);
+  color: var(--on-primary-container);
+}
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gutter);
+  align-items: stretch;
+}
+.stat {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--space-lg);
+  background: var(--primary);
+  border: 1.5px solid color-mix(in srgb, var(--white) 16%, transparent);
+  border-radius: var(--radius-lg);
+}
+.stat__icon {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: var(--space-md);
+  place-items: center;
+  border-radius: var(--radius-full);
+}
+.stat__icon svg { width: 1.4rem; height: 1.4rem; }
+.stat--warning .stat__icon {
+  background: var(--tertiary-container);
+  color: var(--on-tertiary-container);
+}
+.stat--method .stat__icon { background: var(--pop-lime); color: var(--on-secondary-fixed, var(--ink)); }
+.stat--indicative .stat__icon { background: var(--sky-tint); color: var(--ink); }
+.stat__value {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+  margin: 0;
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 48px;
+  letter-spacing: -0.02em;
+}
+.stat--method .stat__value { color: var(--pop-lime); }
+.stat__value small {
+  color: var(--on-primary-container);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+.stat__label { margin: var(--space-xs) 0 var(--space-sm); color: var(--white); font-size: 18px; line-height: 26px; }
+.stat__text { color: var(--on-primary-container); font-size: 14px; line-height: 20px; margin-bottom: var(--space-lg); }
+.stat__text strong { color: var(--white); font-weight: 700; }
+.stat__chip {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  margin-top: auto;
+  padding: var(--space-xs) 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 16px;
+}
+.stat__chip--warning {
+  background: color-mix(in srgb, var(--tertiary-container) 72%, transparent);
+  color: var(--on-tertiary-container);
+}
+.stat__chip--method { background: var(--pop-lime); color: var(--ink); }
+.stat__chip--indicative { background: var(--sky-tint); color: var(--ink); }
 
   /* --- Offres --- */
   .offers {
@@ -426,7 +571,7 @@ const stats = [
 
   /* --- Responsive --- */
   @media (max-width: 64rem) {
-    .offers, .stats__grid { grid-template-columns: 1fr; }
+    .offers { grid-template-columns: 1fr; }
     .norbert, .project { grid-template-columns: 1fr; }
   }
   @media (max-width: 48rem) {
