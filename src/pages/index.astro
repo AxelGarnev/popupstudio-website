@@ -3,13 +3,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import OfferCard from "../components/OfferCard.astro";
 import Pill from '../components/Pill.astro';
 import Button from '../components/Button.astro';
+import ProjectCard from "../components/ProjectCard.astro";
 
 const offers = [
   {
     tag: "Formule express",
     name: "Page Unique",
     price: "850 €",
-    note: "Paiement en 3 fois sans frais possible.",
+    price_details: "TTC • Paiement en 2 ou 3 fois possible",
+    note: "Idéal pour lancer une activité ou concentrer toute son offre sur une seule page. Paiement en 3 fois sans frais possible.",
     features: [
       "Design sur mesure, sobre et responsive",
       "Une page sculptée avec soin",
@@ -23,7 +25,8 @@ const offers = [
     tag: "Formule complète",
     name: "Site Vitrine",
     price: "1 450 €",
-    note: "Paiement en 3 fois sans frais possible.",
+    price_details: "TTC • Livrable complet clé en main",
+    note: "L'arme absolue des artisans, freelances et créateurs engagés.",
     features: [
       "3 à 5 pages sur mesure",
       "Référencement de base soigné",
@@ -38,7 +41,8 @@ const offers = [
     tag: "Formule commerce",
     name: "Boutique en Ligne",
     price: "2 200 €",
-    note: "Paiement en 3 fois sans frais possible.",
+    price_details: "TTC • Architecture micro-boutique fluide",
+    note: "Vendez vos créations sans faire exploser la facture énergétique.",
     features: [
       "Catalogue produits et tunnel de commande",
       "Paiement en ligne sécurisé",
@@ -50,6 +54,49 @@ const offers = [
   },
 ];
 
+const projects = [
+  {
+    category: "E-commerce • Bijoux artisanaux",
+    categoryTone: "lime" as const,
+    image: "/images/sites/saboom.png",
+    imageAlt: "Aperçu du site Saboom, boutique de bijoux artisanaux",
+    title: "Saboom Bijoux",
+    subtitle: "Boutique en ligne",
+    description:
+      "Une identité pétillante pour des bijoux en pâte polymère, avec un site pensé pour rester léger sans rien perdre de sa couleur.",
+    href: "/projets",
+    metrics: [
+      { label: "Poids page", value: "142 Ko" },
+      { label: "Éco-index", value: "89/100 (A)" },
+      { label: "Vitesse mobile", value: "0,6 s" },
+    ],
+    draft: false,
+  },
+  {
+    category: "Catégorie à définir",
+    categoryTone: "sky" as const,
+    image: "/images/sites/projet-a-venir-1.png",
+    imageAlt: "Visuel du projet à venir",
+    title: "Projet à venir",
+    subtitle: "Type de projet à définir",
+    description: "Description à ajouter quand le projet sera prêt à présenter.",
+    href: "/projets",
+    metrics: [],
+    draft: false,
+  },
+  {
+    category: "Catégorie à définir",
+    categoryTone: "lime" as const,
+    image: "/images/sites/projet-a-venir-2.png",
+    imageAlt: "Visuel du projet à venir",
+    title: "Projet à venir",
+    subtitle: "Type de projet à définir",
+    description: "Description à ajouter quand le projet sera prêt à présenter.",
+    href: "/projets",
+    metrics: [],
+    draft: false,
+  },
+];
 ---
 
 <BaseLayout
@@ -67,8 +114,8 @@ const offers = [
       (En gros : tout ce que tu veux, mais un site web pas égoïste ni glouton en énergie.)
     </p>
     <div class="hero__actions">
-      <Button variant="primary" href="/contact">Demander un devis gratuit <span aria-hidden="true">🚀</span></Button>
-      <Button variant="ghost" href="/offres-tarifs">Découvrir les offres</Button>
+      <Button variant="primary" href="/contact" size="lg">Demander un devis gratuit <span aria-hidden="true">🚀</span></Button>
+      <Button variant="ghost" href="/offres-tarifs" size="lg">Découvrir les offres</Button>
     </div>
     <ul class="hero__chips">
       <li class="chip"><span aria-hidden="true">⚡</span> Chargement rapide</li>
@@ -168,47 +215,43 @@ const offers = [
   </section>
 
   <!-- 4. OFFRES -->
-  <section class="section container">
-    <p class="eyebrow">Solutions & accompagnement</p>
-    <h2>Ce que je peux faire pour toi</h2>
-    <p class="section__lead">Trois formules claires, sans jargon technique ni frais cachés.</p>
-    <div class="offers">
-      {offers.map((o) => <OfferCard {...o} />)}
-    </div>
-    <p class="section__more">
-      <a href="/offres-tarifs" class="link-arrow">Comparer toutes les formules en détail →</a>
-    </p>
-  </section>
+<section class="offers-section container" aria-labelledby="offers-title">
+  <p class="eyebrow offers-section__eyebrow">Solutions & accompagnement</p>
+  <h2 id="offers-title">Ce que je peux faire pour toi</h2>
+  <p class="offers-section__lead">
+    Trois formules claires, garanties sans jargon technique indigeste ni frais cachés.
+  </p>
 
-  <!-- 5. PROJETS -->
-  <section class="section container">
-    <div class="section__head">
-      <div>
-        <p class="eyebrow">Nouveautés numériques</p>
-        <h2>Des sites qui claquent, sans polluer</h2>
-      </div>
-      <a href="/projets" class="btn btn--ghost">Voir tous les projets</a>
+  <div class="offers">
+    {offers.map((o) => <OfferCard {...o} />)}
+  </div>
+
+  <p class="section__more">
+    <a href="/offres-tarifs" class="link-arrow">
+      Comparer toutes les formules en détail <span aria-hidden="true">→</span>
+    </a>
+  </p>
+</section>
+
+<!-- 5. PROJETS -->
+<section class="section container" aria-labelledby="projects-title">
+  <div class="section__head">
+    <div>
+      <p class="eyebrow">Travaux récents</p>
+      <h2 id="projects-title">Un projet qui claque, sans en faire trop</h2>
     </div>
-    <article class="project">
-      <!-- Remplace par ton visuel Stitch -->
-      <img src="/images/sites/saboom.png" alt="Aperçu du site Saboom, boutique de bijoux artisanaux" width="720" height="420" loading="lazy" />
-      <div class="project__body">
-        <Pill tone="sky">E-commerce • Bijoux artisanaux</Pill>
-        <h3>Saboom Bijoux</h3>
-        <p>
-          Une identité pétillante pour des bijoux en pâte polymère, avec un site
-          pensé pour rester léger sans rien perdre de sa couleur.
-        </p>
-        <!-- FICTIF : chiffres provisoires -->
-        <ul class="project__metrics">
-          <li><span>Poids page</span> 240 Ko</li>
-          <li><span>Éco-index</span> A</li>
-          <li><span>Chargement</span> 0,6 s</li>
-        </ul>
-        <a href="/projets" class="link-arrow">Voir l’étude de cas →</a>
-      </div>
-    </article>
-  </section>
+
+    <Button href="/projets" variant="ghost">
+      Voir le projet <span aria-hidden="true">→</span>
+    </Button>
+  </div>
+
+  <div class="projects-grid">
+    {projects
+  .filter((project) => !project.draft)
+  .map((project) => <ProjectCard {...project} />)}
+  </div>
+</section>
 
   <!-- 6. TÉMOIGNAGE -->
   <section class="section container">
@@ -232,7 +275,7 @@ const offers = [
         budget et voir ensemble ce qui est possible.
       </p>
       <div class="hero__actions">
-        <a href="/contact" class="btn btn--lime">Discuter de mon projet</a>
+        <Button href="/contact" variant="pop" size="lg">Discuter de mon projet <span aria-hidden="true">💬</span></Button>
         <a href="mailto:axel@popupstudio.fr" class="cta__mail">ou écris-moi : axel@popupstudio.fr</a>
       </div>
     </div>
@@ -493,45 +536,58 @@ const offers = [
 .stat__chip--indicative { background: var(--sky-tint); color: var(--ink); }
 
   /* --- Offres --- */
-  .offers {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--gutter);
-    margin-top: var(--space-xl);
-    align-items: stretch;
-  }
+  .offers-section {
+  padding-block: var(--space-xl);
+  text-align: center;
+}
 
-  /* --- Projet --- */
-  .project {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    background: var(--white);
-    border: 1.5px solid var(--border-passive);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
+.offers-section__eyebrow {
+  margin-bottom: var(--space-xs);
+  font-size: 0.6rem;
+}
+
+.offers-section h2 {
+  color: var(--primary-container);
+}
+
+.offers-section__lead {
+  margin-top: var(--space-xs);
+  color: var(--on-surface-variant);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.offers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gutter);
+  margin-top: var(--space-xl);
+  text-align: left;
+}
+
+.offers-section .section__more {
+  margin-top: var(--space-lg);
+  font-size: 14px;
+}
+
+.offers-section .link-arrow {
+  color: var(--primary-container);
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 64rem) {
+  .offers {
+    grid-template-columns: 1fr;
+    max-width: 34rem;
+    margin-inline: auto;
   }
-  .project img { width: 100%; height: 100%; object-fit: cover; background: var(--surface-container); }
-  .project__body {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-md);
-    padding: var(--space-lg);
+}
+
+@media (max-width: 48rem) {
+  .offers-section {
+    padding-block: var(--space-xl);
   }
-  .project__body h3 { font-size: 28px; line-height: 36px; }
-  .project__metrics {
-    display: flex;
-    gap: var(--space-lg);
-    flex-wrap: wrap;
-    font-weight: 700;
-  }
-  .project__metrics span {
-    display: block;
-    font-size: 11px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--on-surface-variant);
-  }
+}
 
   /* --- Témoignage --- */
   .quote {
@@ -555,8 +611,14 @@ const offers = [
   /* --- CTA final --- */
   .cta {
     margin-bottom: var(--space-xl);
-    padding: var(--space-xl);
-    background: var(--primary-container);
+    padding: 5rem var(--space-xl);
+    background:
+    radial-gradient(
+      ellipse 45% 75% at 100% 100%,
+      rgba(108, 157, 74, 0.35) 0%,
+      rgba(108, 157, 74, 0) 100%
+    ),
+    var(--primary);
     color: var(--white);
     border-radius: var(--radius-xl);
     text-align: center;
@@ -580,4 +642,21 @@ const offers = [
     h2 { font-size: 28px; line-height: 36px; }
     .quote blockquote { font-size: 22px; line-height: 30px; }
   }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gutter);
+}
+
+@media (max-width: 64rem) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 48rem) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
 </style>

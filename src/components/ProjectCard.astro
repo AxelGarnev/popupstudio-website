@@ -1,0 +1,191 @@
+---
+interface Metric {
+  label: string;
+  value: string;
+}
+
+interface Props {
+  category: string;
+  categoryTone?: "lime" | "sky";
+  image: string;
+  imageAlt: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  href: string;
+  metrics?: Metric[];
+}
+
+const {
+  category,
+  categoryTone = "lime",
+  image,
+  imageAlt,
+  title,
+  subtitle,
+  description,
+  href,
+  metrics = [],
+} = Astro.props;
+---
+
+<article class="project-card">
+  <a class="project-card__image-link" href={href} aria-label={`Découvrir le projet ${title}`}>
+    <img
+      class="project-card__image"
+      src={image}
+      alt={imageAlt}
+      width="720"
+      height="420"
+      loading="lazy"
+    />
+    <span class:list={["project-card__category", `project-card__category--${categoryTone}`]}>
+      {category}
+    </span>
+  </a>
+
+  <div class="project-card__body">
+    <div class="project-card__heading">
+      <h3 class="project-card__title">{title}</h3>
+      <span class="project-card__subtitle">{subtitle}</span>
+    </div>
+
+    <p class="project-card__description">{description}</p>
+
+    {metrics.length > 0 && (
+      <ul class="project-card__metrics" aria-label="Repères du projet">
+        {metrics.map((metric) => (
+          <li>
+            <span class="project-card__metric-label">{metric.label}</span>
+            <span class="project-card__metric-value">{metric.value}</span>
+          </li>
+        ))}
+      </ul>
+    )}
+
+    <a class="project-card__link" href={href}>
+      Voir le projet <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</article>
+
+<style>
+  .project-card {
+    min-width: 0;
+    overflow: hidden;
+    background: var(--white);
+    border: 1.5px solid var(--border-passive);
+    border-radius: var(--radius-lg);
+  }
+
+  .project-card__image-link {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    background: var(--surface-container);
+  }
+
+  .project-card__image {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .project-card__category {
+    position: absolute;
+    top: var(--space-sm);
+    left: var(--space-sm);
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-full);
+    color: var(--ink);
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 16px;
+  }
+
+  .project-card__category--lime {
+    background: var(--pop-lime);
+  }
+
+  .project-card__category--sky {
+    background: var(--sky-tint);
+  }
+
+  .project-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+  }
+
+  .project-card__heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .project-card__title {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .project-card__subtitle {
+    color: var(--on-surface-variant);
+    font-size: 10px;
+    line-height: 16px;
+  }
+
+  .project-card__description {
+    color: var(--on-surface-variant);
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .project-card__metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-sm);
+    margin-top: var(--space-xs);
+    padding: var(--space-sm);
+    background: var(--surface-low);
+    border-radius: var(--radius);
+  }
+
+  .project-card__metrics li {
+    min-width: 0;
+  }
+
+  .project-card__metric-label {
+    display: block;
+    color: var(--on-surface-variant);
+    font-size: 9px;
+    line-height: 14px;
+  }
+
+  .project-card__metric-value {
+    display: block;
+    color: var(--primary-container);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 16px;
+  }
+
+  .project-card__link {
+    align-self: flex-start;
+    margin-top: var(--space-xs);
+    color: var(--primary-container);
+    font-size: 12px;
+    font-weight: 700;
+    text-underline-offset: 3px;
+  }
+
+  @media (max-width: 48rem) {
+    .project-card__body {
+      padding: var(--space-md);
+    }
+  }
+</style>
