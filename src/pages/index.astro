@@ -13,8 +13,8 @@ import { projets } from "../data/projets";
   description="Popup Studio crée des sites web éco-conçus et créatifs pour les indépendant.e.s, TPE, associations et créateur.ices. Moins de code, plus d’audace."
 >
   <!-- 1. HERO -->
-  <section class="hero container">
-    <!-- FICTIF -->
+  <section class="hero">
+    <div class="container hero__inner">
     <Pill tone="lime"><span aria-hidden="true">🌱</span> Moins de CO2, plus de clients</Pill>
     <h1>
       Création de sites web engagés pour indépendant.e.s & créateur.ices
@@ -31,6 +31,7 @@ import { projets } from "../data/projets";
       <li class="chip"><span aria-hidden="true">🌿</span> Hébergement en France</li>
       <li class="chip"><span aria-hidden="true">🔒</span> Zéro cookie</li>
     </ul>
+    </div>
   </section>
 
   <!-- 2. STORYTELLING -->
@@ -83,10 +84,6 @@ import { projets } from "../data/projets";
   <!-- Ces métriques sont fictives/provisoires ; elles ne constituent pas des preuves vérifiées. -->
   <section class="stats" aria-labelledby="stats-title">
     <div class="container">
-      <p class="eyebrow eyebrow--dark stats__eyebrow">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.5a3.2 3.2 0 0 0-5.8 1.9 3.5 3.5 0 0 0-1 6.6A3.2 3.2 0 0 0 8 18.5h4V4.5Zm0 0a3.2 3.2 0 0 1 5.8 1.9 3.5 3.5 0 0 1 1 6.6 3.2 3.2 0 0 1-2.8 5.5H12V4.5Z"/><path d="M8 9.5h.01M16 9.5h.01M8.5 14h.01m7-.01h.01M12 4.5v13.9"/></svg>
-        Vulgarisation scientifique &amp; bienveillante
-      </p>
       <h2 id="stats-title">Hop hop hop&#8239;! Oui mais Jamy… Pourquoi ton site peut (et doit) faire mieux pour la planète&#8239;?</h2>
       <p class="stats__lead">
         Internet consomme de l’électricité, et chaque page a sa part. La bonne nouvelle&#8239;? En allégeant images, scripts et contenus superflus, tu peux réduire l’impact de ton site — sans lui enlever son style.
@@ -163,18 +160,6 @@ import { projets } from "../data/projets";
   .map((project) => <ProjectCard {...project} />)}
   </div>
 </section>
-
-  <!-- 6. TÉMOIGNAGE -->
-  <section class="section container">
-    <!-- FICTIF : témoignage provisoire -->
-    <figure class="quote">
-      <blockquote>
-        « Un site ultra rapide, canon, et qui correspond exactement à mes valeurs
-        écolos. Et Axel m’a écouté et fait rire en même temps. »
-      </blockquote>
-      <figcaption>Léa M., créatrice indépendante</figcaption>
-    </figure>
-  </section>
 </BaseLayout>
 
 <style>
@@ -214,11 +199,28 @@ import { projets } from "../data/projets";
 
 
   /* --- Hero --- */
-  .hero {
-    padding-block: 5rem var(--space-xl);
-    text-align: center;
-  }
-  .hero h1 {
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: 5rem var(--space-xl);
+  text-align: center;
+  background-color: var(--surface-low);
+  background-image: radial-gradient(circle, color-mix(in srgb, var(--primary) 14%, transparent) 1px, transparent 1.4px);
+  background-size: 24px 24px;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 40%;
+  background: linear-gradient(to bottom, transparent, var(--page-bg, #fbf9f6));
+  pointer-events: none;
+  z-index: 0;
+}
+.hero > .container { position: relative; z-index: 1; }
+
+  .hero h1 { 
     max-width: 22ch;
     margin: var(--space-md) auto;
     font-size: 56px;

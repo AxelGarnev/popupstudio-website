@@ -30,7 +30,7 @@ const {
 ---
 
 <article class="project-card">
-  <a class="project-card__image-link" href={href} aria-label={`Découvrir le projet ${title}`}>
+  <a class="project-card__image-link" href={href} aria-label={`Découvrir le projet ${title}`} target="_blank" rel="noopener noreferrer">
     <img
       class="project-card__image"
       src={image}
@@ -63,7 +63,7 @@ const {
       </ul>
     )}
 
-    <a class="project-card__link" href={href}>
+    <a class="project-card__link" href={href} target="_blank" rel="noopener noreferrer">
       Voir le projet <span aria-hidden="true">→</span>
     </a>
   </div>
@@ -83,7 +83,7 @@ const {
     display: block;
     overflow: hidden;
     background: var(--surface-container);
-  }
+  } 
 
   .project-card__image {
     display: block;
